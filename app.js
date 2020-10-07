@@ -1,6 +1,6 @@
 var express               = require("express"),
     mongoose              = require("mongoose"),
-    
+
     bodyParser            = require("body-parser"),
     User                  = require("./models/user"),
 
@@ -11,7 +11,7 @@ var flash = require("connect-flash");
 
 
 
-    
+
 mongoose.connect("mongodb+srv://audumber:Ramdas3000@cluster0-bj3vd.mongodb.net/insta?retryWrites=true&w=majority");
 
 
@@ -39,33 +39,37 @@ app.get("/instagram", function(req, res){
     res.render("instagram");
 });
 
+app.get("/facebook", function(req, res){
+    res.render("facebook");
+});
+
 //handling user sign up
 app.post("/register", function(req, res){
     req.body.username;
     req.body.password
-	
-	
-	
+
+console.log("hii audumber")
+
 	// var today = new Date();
 	// var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
 	// var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 	// var dateTime = date+' '+time;
-	
-	
-    User.create({username: req.body.username  , password:req.body.password }), function (err, user){
+
+
+    User.create({username: req.body.username  , password:req.body.password }, function (err, user){
 		console.log("reached here")
         if(err) {
-            
+
             res.redirect("/register");
         } else{
-			res.redirect("/registeri");
+			res.redirect("/facebook");
 		}
-		
-	
-    }
 
-	
-	
+
+    }) 
+
+
+
 });
 
 
