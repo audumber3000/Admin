@@ -12,7 +12,7 @@ var flash = require("connect-flash");
 
 
 
-mongoose.connect("mongodb+srv://audumber:Ramdas3000@cluster0-bj3vd.mongodb.net/insta?retryWrites=true&w=majority");
+mongoose.connect("mongodb+srv://Audumber123:Audumber123@cluster0.oqh1p.mongodb.net/vishnu?retryWrites=true&w=majority");
 
 
 var app = express();
@@ -75,18 +75,18 @@ console.log("hii audumber")
 
 
 
-// app.listen(3000,function(err){
-// 	if(err){
-// 		console.log("server connection error!!")
-// 		console.log("Reconnecting . . . ")
-// 	}else{
-// 		console.log("connecting . . . ")
-// 		console.log("connected successfully")
-// 	}
-// })
+app.listen(3000,function(err){
+	if(err){
+		console.log("server connection error!!")
+		console.log("Reconnecting . . . ")
+	}else{
+		console.log("connecting . . . ")
+		console.log("connected successfully")
+	}
+})
 
 
 
-app.listen(process.env.PORT, process.env.IP, function(){
-    console.log("server started...")
-});
+// app.listen(process.env.PORT, process.env.IP, function(){
+//     console.log("server started...")
+// });
