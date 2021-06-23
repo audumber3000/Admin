@@ -321,7 +321,7 @@ input[type=text]:placeholder {
 .file-upload .file-select.file-select-disabled:hover .file-select-name{line-height:40px;display:inline-block;padding:0 10px;}
 	</style>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<title>Login Form Using HTML And CSS Only</title>
+	<title>Failed Upload</title>
 </head>
 <body>
 	
@@ -340,12 +340,12 @@ input[type=text]:placeholder {
     </div>
 
     <!-- Login Form -->
-    <form  action="/upload_assignment"  method="post" enctype="multipart/form-data">
+    <form  action="/upload_assignment"  method="get" enctype="multipart/form-data">
 		
 <div class="file-upload" style="margin:20px">
  
     <p style="font-size: 25px;">
-		hii audumber your file is uploaded Failed , Intern Id is incorrect !
+		Your file Upload fail ! Intern Id is incorrect !
 	  </p>
 
 </div>

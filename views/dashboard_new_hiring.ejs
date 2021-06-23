@@ -10,7 +10,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap 5 Simple Admin Dashboard</title>
+    <title>New Hiring | Education4ol</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
     <style>
@@ -72,7 +72,7 @@
             </div>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                  Hello, John Doe
+                  Hello, HR
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <li><a class="dropdown-item" href="#">Settings</a></li>
@@ -100,15 +100,15 @@
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">
+                          <a class="nav-link" href="/dashboard_assignedetail">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                             <span class="ml-2">Assignment</span>
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a id="profile-tab" class="nav-link" href="#profile">
+                          <a id="profile-tab" class="nav-link" href="/hrdashboard_Interndetail">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                            <span class="ml-2">Interns</span>
+                            <span class="ml-2">Interns Details</span>
                           </a>
                         </li>
                         <li class="nav-item">
@@ -133,7 +133,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-sm btn-warning ml-3 mt-2" href="https://themesberg.com/product/admin-dashboard/volt-bootstrap-5-dashboard">
-                                ⚡︎ Volt Dashboard
+                                ⚡︎ Eduol Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
@@ -143,6 +143,16 @@
                         </li>
                       </ul>
                 </div>
+				
+				<div style="margin-top: 25px; font-size: 12px;text-align: center; margin-bottom: -50px;">
+					 <li class="nav-item">
+                           Powered by <b>UpClick Labs PVT</b>
+                        </li>
+					<p>
+						
+					</p>
+					
+				</div>
             </nav>
             <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
                 <nav aria-label="breadcrumb">
@@ -171,7 +181,7 @@
   </li>
 
 <li class="nav-item" role="presentation">
-    <button class="btn btn-sm btn-primary ml-3 mt-2" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false" style="background-color:red ">Expellied</button>
+    <button class="btn btn-sm btn-primary ml-3 mt-2" id="pills-rejected-tab" data-bs-toggle="pill" data-bs-target="#pills-Reject" type="button" role="tab" aria-controls="pills-contact" aria-selected="false" style="background-color:red ">Rejected</button>
   </li>				
 					
 </ul>
@@ -197,8 +207,8 @@
 		  <ul>
   <li><b>Contact :</b> +91 <%= intern[i].Contact %></li>
   <li><b>Email :</b> <%= intern[i].Email %></li>
-			    <li><b>Qualification :</b> BTech</li>
-			    <li><b>Skills :</b> Java,Python,Nodejs</li>
+		  <li><b>Qualification :</b><%= intern[i].Qualification %> </li>
+			    <li><b>Skills :</b><%= intern[i].Skills %></li>
 			
 
 		
@@ -250,8 +260,8 @@
 		  <ul>
   <li><b>Contact :</b> +91 <%= intern[i].Contact %></li>
   <li><b>Email :</b> <%= intern[i].Email %></li>
-			    <li><b>Qualification :</b> BTech</li>
-			    <li><b>Skills :</b> Java,Python,Nodejs</li>
+			    <li><b>Qualification :</b><%= intern[i].Qualification %> </li>
+			    <li><b>Skills :</b><%= intern[i].Skills %></li>
 			
 
 		
@@ -305,8 +315,8 @@
 		  <ul>
   <li><b>Contact :</b> +91 <%= intern[i].Contact %></li>
   <li><b>Email :</b> <%= intern[i].Email %></li>
-			    <li><b>Qualification :</b> BTech</li>
-			    <li><b>Skills :</b> Java,Python,Nodejs</li>
+			  	    <li><b>Qualification :</b><%= intern[i].Qualification %> </li>
+			    <li><b>Skills :</b><%= intern[i].Skills %></li>
 			
 
 		
@@ -334,14 +344,14 @@
 	</div>
 </div>
 
+<!-- -------------------------------------------------section4------------------- -->
 
 
 				
-				
-	
+
 		
-                <footer class="pt-5 d-flex justify-content-between">
-                    <span>Copyright © 2019-2020 <a href="https://themesberg.com">Themesberg</a></span>
+                <footer class="pt-5 d-flex justify-content-between " style="margin-top: 400px;">
+                    <span>Copyright © 2020-2021 <a href="https://www.education4ol.com">Education4ol | Powered by UpClick Labs Pvt.Ltd. </a></span>
                     <ul class="nav m-0">
                         <li class="nav-item">
                           <a class="nav-link text-secondary" aria-current="page" href="#">Privacy Policy</a>
