@@ -63,7 +63,7 @@ router.post("/upload_assignment" ,upload.single('profile'), function(req, res){
 	var path = './public/tempfile/' + filname;
 	cloudinary.uploader.upload(path , function(error, result) {
 		
-		console.log(result, error)
+		console.log(result)
 	
 		
 			 fs.readdirSync('./public/tempfile').forEach(file => {
@@ -76,35 +76,7 @@ router.post("/upload_assignment" ,upload.single('profile'), function(req, res){
 			 }
 			 
 			 
-			 if(req.body.task === "Task1"){
-	Interninfo_final.updateOne({InternID: req.body.internid }, {Task1: "Yes" }, function(err,result) {
-    if (err) {
-      res.render("./assign_upload/not-welcome");
-    }
-		 console.log(result);
-	   res.render("./assign_upload/welcome");
-   });
-			 }else if(req.body.task === "Task2"){
-				 
-	Interninfo_final.updateOne({InternID: req.body.internid }, {Task2: "Yes" }, function(err,result) {
-    if (err) {
-    res.render("./assign_upload/not-welcome");
-    }
-		 console.log(result);
-	   res.render("./assign_upload/welcome");
-   });
-				 
-			 }else{
-				 Interninfo_final.updateOne({InternID: req.body.internid }, {Task3: "Yes" }, function(err,result) {
-    if (err) {
-		
-       res.render("./assign_upload/not-welcome");
-    }
-					
-	   res.render("./assign_upload/welcome");
-   });
-				 
-			 }
+			
 			 
 			 
 
@@ -113,7 +85,35 @@ router.post("/upload_assignment" ,upload.single('profile'), function(req, res){
    
   });
 	});
-    
+     if(req.body.task === "Task1"){
+	Interninfo_final.updateOne({InternID: req.body.internid }, {Task1: "Yes" }, function(err,result) {
+    if (err) {
+          console.log(err);
+    }
+		
+	   res.render("./assign_upload/welcome");
+   });
+	}else if(req.body.task === "Task2"){
+				 
+	Interninfo_final.updateOne({InternID: req.body.internid }, {Task2: "Yes" }, function(err,result) {
+    if (err) {
+    console.log(err)
+    }
+		
+	   res.render("./assign_upload/welcome");
+   });
+				 
+			 }else{
+				 Interninfo_final.updateOne({InternID: req.body.internid }, {Task3: "Yes" }, function(err,result) {
+    if (err) {
+		
+           console.log(err)
+    }
+					
+	   res.render("./assign_upload/welcome");
+   });
+				 
+			 }
 });
 
 
