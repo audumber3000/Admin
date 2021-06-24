@@ -11,10 +11,14 @@
 /* BASIC */
 
 html {
-  background-color: #56baed;
+    background-image: url("https://html.sammy-codes.com/images/background.jpg");
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
 }
 
 body {
+	    background-image: url("https://html.sammy-codes.com/images/background.jpg");
   font-family: "Poppins", sans-serif;
   height: 100vh;
 }
@@ -274,10 +278,32 @@ input[type=text]:placeholder {
   box-sizing: border-box;
 }
 	
+	.button {
+  background-color: #5fbae9; /* Green */
+	border-radius: 10px;
+  border: none;
+  color: white;
+	
+
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+	
+}
+
+.button1 {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
 	
 	</style>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<title>Login Form Using HTML And CSS Only</title>
+	<title>Intern Portal</title>
 </head>
 <body>
 	
@@ -285,20 +311,28 @@ input[type=text]:placeholder {
 	<div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
-    <h2 class="active"> HR Dashboard </h2>
+    <h2 class="active"> Verification </h2>
    
 
     <!-- Icon -->
     <div class="fadeIn first" >
 		
-      <img src="https://img.icons8.com/bubbles/2x/user-male.png" id="icon" alt="User Icon" />
+      <img src="https://img.icons8.com/bubbles/500/000000/services.png" id="icon" alt="User Icon" />
     </div>
+	  <p>
+		Please Check you Registered Mail for OTP !  
+		 
+	  </p>
 
     <!-- Login Form -->
-    <form>
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Employee ID">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="Password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
+    <form action="/intern_portal_otp" method="post">
+      <input type="text" id="login" class="fadeIn second" name="intern_otp" placeholder="ENTER OTP">
+      <!-- <input type="text" id="password" class="fadeIn third" name="login" placeholder="Password"> -->
+		<input type="hidden" id="custId" name="pto" value=<%= otp%>> 
+		<input type="hidden" id="custId" name="intern_id" value= <%= intern%>> 
+		<div style="margin-top : 10px; margin-bottom:20px">
+		<button class="button button1" type="submit" >Submit</button>
+		</div>	
     </form>
 
     <!-- Remind Passowrd -->

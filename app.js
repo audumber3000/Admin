@@ -117,7 +117,81 @@ app.get("/dashboard_assignedetail", function(req, res){
 
 
 
-//--upload assignment-------------------------------------------------------------------------------------
+//--intern poratl-------------------------------------------------------------------------------------
+
+app.get("/intern_portal", function(req, res){
+	
+res.render("portal_intern/dashboard_ID")
+});
+   
+app.post("/intern_portal", function(req, res){
+
+	console.log(req.body.intern_id);
+
+	
+		
+	Interninfo_final.find({InternID : req.body.intern_id}, function (err, one_detail) {
+          if (err){
+            console.log("something went wrong!!!")
+          }else{
+			  
+			  if(one_detail.length <1){
+				  console.log("please enter valid id")
+				  res.render("portal_intern/incorrect_info")
+			  }else{
+				    console.log(one_detail)
+			  var val = Math.floor(1000 + Math.random() * 9000);
+				  console.log(val)
+			  res.render("portal_intern/dashboard_OTP",{otp:val , intern:req.body.intern_id})
+			  }
+             
+          
+          }
+});
+	
+	
+});
+   
+app.post("/intern_portal_otp", function(req, res){
+
+	console.log(req.body.intern_id)
+	console.log(req.body.pto)
+	console.log(req.body.intern_otp)
+	
+	if(req.body.intern_otp === req.body.pto){
+		console.log("success otp");
+		
+		
+			Interninfo_final.find({InternID : req.body.intern_id}, function (err, one_detail) {
+          if (err){
+            console.log("something went wrong!!!")
+          }else{
+			    res.render("portal_intern/dashboard_portal",{ intern:one_detail})
+		}
+});
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+});
+
+
+
+
+
+
+
+
+
+
+
 
 //-----hiring dashboard-------------------------------------------------------------------------------------------
 
