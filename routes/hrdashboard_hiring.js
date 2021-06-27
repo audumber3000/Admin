@@ -31,7 +31,7 @@ var transporter = nodemailer.createTransport({
 });
 
 
-router.get("/dashboard_new_hiring", function(req, res){
+router.get("/dashboard_new_hiring",isLoggedIn, function(req, res){
 
 	
 	Interninfo_final.find({}, function (err, one_detail) {
@@ -45,7 +45,7 @@ router.get("/dashboard_new_hiring", function(req, res){
 });
 
 
-router.post("/selection_action", function(req, res){
+router.post("/selection_action",isLoggedIn, function(req, res){
 	var action = req.body.action;
 	var applyid = req.body.custId;
 	
@@ -189,6 +189,13 @@ transporter.sendMail(mailOptions, function(error, info){
 });
 
 
+function isLoggedIn(req, res, next) { //next is the next thing that needs to be called.
+    if (req.isAuthenticated()){
+        return next();
+    }
+	  req.flash("error_msg","OOPS!! Entered crediantials are Incorrect!")
+    res.redirect("/login");
+}
 
 
 

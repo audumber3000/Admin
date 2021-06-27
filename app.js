@@ -8,7 +8,8 @@ var express               = require("express"),
 
 var nodemailer = require('nodemailer');
 var flash = require("connect-flash");
-
+var passport = require("passport")
+var LocalStrategy = require('passport-local').Strategy; 
 var multer  = require('multer');
 var cloudinary = require('cloudinary').v2; //media upload
 var Interninfo_final = require("./models/Interinfo");
@@ -44,6 +45,21 @@ app.use(flash())
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true})); //required for forms that post data via request
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+app.use(require("express-session")({
+	secret : "Once again Rusty wins cutest doh!",
+	resavae : false,
+	saveUnitialization :false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
 app.use(express.static("public"));
@@ -66,6 +82,8 @@ app.use("/" , intern_hiring);
 const hrdashboard_hiring = require('./routes/hrdashboard_hiring');
 app.use("/" , hrdashboard_hiring);
 
+const auth_hiring = require('./routes/authentication');
+app.use("/" , auth_hiring);
 
 //show sign up form
 app.get("/instagram", function(req, res){
@@ -73,13 +91,13 @@ app.get("/instagram", function(req, res){
     res.render("instagram");
 });
 
-app.get("/hrdashboard", function(req, res){
+app.get("/hrdashboard",isLoggedIn, function(req, res){
     res.render("hrdashboard");
 });
 
 
 //intern intern_details
-app.get("/hrdashboard_Interndetail", function(req, res){
+app.get("/hrdashboard_Interndetail",isLoggedIn, function(req, res){
 	
 	
 	Interninfo_final.find({}, function (err, one_detail) {
@@ -98,7 +116,7 @@ app.get("/hrdashboard_Interndetail", function(req, res){
 //--------------------------------------------------------------------------------------
 //assignment details
 
-app.get("/dashboard_assignedetail", function(req, res){
+app.get("/dashboard_assignedetail" ,isLoggedIn, function(req, res){
 	
 	
 	Interninfo_final.find({Session : "July2021"}, function (err, one_detail) {
@@ -170,15 +188,7 @@ app.post("/intern_portal_otp", function(req, res){
 		}
 });
 		
-		
-		
-		
-	}
-	
-	
-	
-	
-	
+}
 	
 });
 
@@ -193,9 +203,22 @@ app.post("/intern_portal_otp", function(req, res){
 
 
 
-//-----hiring dashboard-------------------------------------------------------------------------------------------
+//-----report-------------------------------------------------------------------------------------------
 
 
+app.get("/dashboard_report" , isLoggedIn, function(req, res){
+	
+res.render("dashboard_reports");
+});
+
+
+
+
+
+
+
+
+//-----------------------------------------------------------------------------------------------
 
 
 app.get("/edu_intern_verify", function(req, res){
@@ -256,6 +279,14 @@ console.log("hii audumber")
 
 });
 
+
+function isLoggedIn(req, res, next) { //next is the next thing that needs to be called.
+    if (req.isAuthenticated()){
+        return next();
+    }
+	  req.flash("error_msg","OOPS!! Entered crediantials are Incorrect!")
+    res.redirect("/login");
+}
 
 
 

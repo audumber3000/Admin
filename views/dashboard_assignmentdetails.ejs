@@ -65,7 +65,9 @@
     <nav class="navbar navbar-light bg-light p-3">
         <div class="d-flex col-12 col-md-3 col-lg-2 mb-2 mb-lg-0 flex-wrap flex-md-nowrap justify-content-between">
             <a class="navbar-brand" href="#">
-               <b>Education4ol</b>
+				<img src="https://res.cloudinary.com/education4ol/image/upload/v1624697903/education4ol_vuw0rx.jpg"/>
+               <b> Education4ol</b>
+			
             </a>
             <button class="navbar-toggler d-md-none collapsed mb-3" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -85,7 +87,7 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <li><a class="dropdown-item" href="#">Settings</a></li>
                   <li><a class="dropdown-item" href="#">Messages</a></li>
-                  <li><a class="dropdown-item" href="#">Sign out</a></li>
+                  <li><a class="dropdown-item" href="/logout">Sign out</a></li>
                 </ul>
               </div>
         </div>
@@ -120,7 +122,7 @@
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">
+                          <a class="nav-link" href="/dashboard_report">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
                             <span class="ml-2">Reports</span>
                           </a>
@@ -249,6 +251,58 @@
 	<!-- Section Two -------------------------------------------------------   -->
 	
   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+	  
+	  <div class="card  text-white bg-success" style="margin-bottom:10px">
+  <div class="card-header text-center" style="color:red ">
+    *From Here you can send important notice to every intern with sigle click. | Be Cautious
+  </div>
+  <div class="card-body">
+    <h5 class="card-title text-center">Notice Board !</h5>
+    <p class="card-text">
+	  
+		
+		
+		<form>
+			
+			
+ 	
+			
+			
+  <div class="form-group" style="margin-bottom:10px">
+    <label for="formGroupExampleInput2" style="margin-bottom:5px"><b>Add Notice</b></label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+			
+			
+	 <div class="form-check form-check-inline" >
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" disabled>
+  <label class="form-check-label" for="inlineRadio1">June Session</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="July2021">
+  <label class="form-check-label" for="inlineRadio2">July Session</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
+  <label class="form-check-label" for="inlineRadio3">September Session</label>
+</div>
+				
+			
+			
+</form>
+	  
+	  
+	  
+	  </p>
+    <a href="#" class="btn btn-primary">Send Notice</a>
+  </div>
+
+</div>
+	  
+	  
+	  
+	  
+	  
 	
 	  <div class="row row-cols-1 row-cols-md-3 g-4">
  <% for(var i=0;i<intern.length;i++){ %>
