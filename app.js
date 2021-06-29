@@ -136,12 +136,30 @@ app.get("/dashboard_assignedetail" ,isLoggedIn, function(req, res){
 
 
 //--intern poratl-------------------------------------------------------------------------------------
+app.get("/intern_messager", function(req, res){
+	
+res.render("portal_intern/messanger")
+});
+   
 
 app.get("/intern_portal", function(req, res){
 	
 res.render("portal_intern/dashboard_ID")
 });
    
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'education4ol4@gmail.com',
+    pass: 'Audumber@3000'
+  }
+});
+
+
+
+	
+
 app.post("/intern_portal", function(req, res){
 
 	console.log(req.body.intern_id);
@@ -159,8 +177,30 @@ app.post("/intern_portal", function(req, res){
 			  }else{
 				    console.log(one_detail)
 			  var val = Math.floor(1000 + Math.random() * 9000);
-				  console.log(val)
-			  res.render("portal_intern/dashboard_OTP",{otp:val , intern:req.body.intern_id})
+				  console.log(val);
+				  console.log(one_detail[0].Email)
+				  
+	var mailOptions = {
+  from: 'education4ol4@gmail.com',
+  to: one_detail[0].Email,
+  subject: 'OTP for Intern Portal',
+  text: 'Hi Intern'   +'\n Thankyou for  Using Intern portal . \n\n 1.OTP : ' + val  + '\n\n Good Luck ! with the Intern Portal , we hope you have an smooth Experience. \n\n Education4ol | Powered by UpClick Labs \n Company Details : www.education4ol.com \n Company Linkedin : https://www.linkedin.com/company/education-4-ol  '
+};
+				  
+				  
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+	res.render("portal_intern/dashboard_OTP",{otp:val , intern:req.body.intern_id})
+				  
+  }
+	
+});
+				  
+				  
+			 
 			  }
              
           
@@ -184,11 +224,19 @@ app.post("/intern_portal_otp", function(req, res){
           if (err){
             console.log("something went wrong!!!")
           }else{
+			  
+			  
+			  
+			  
+			  
+			  
 			    res.render("portal_intern/dashboard_portal",{ intern:one_detail})
 		}
 });
 		
 }
+	
+	
 	
 });
 
@@ -290,18 +338,18 @@ function isLoggedIn(req, res, next) { //next is the next thing that needs to be 
 
 
 
-// app.listen(3000,function(err){
-// 	if(err){
-// 		console.log("server connection error!!")
-// 		console.log("Reconnecting . . . ")
-// 	}else{
-// 		console.log("connecting . . . ")
-// 		console.log("connected successfully")
-// 	}
-// })
+app.listen(3000,function(err){
+	if(err){
+		console.log("server connection error!!")
+		console.log("Reconnecting . . . ")
+	}else{
+		console.log("connecting . . . ")
+		console.log("connected successfully")
+	}
+})
 
 
 
-app.listen(process.env.PORT, process.env.IP, function(){
-    console.log("server started...")
-});
+// app.listen(process.env.PORT, process.env.IP, function(){
+//     console.log("server started...")
+// });
