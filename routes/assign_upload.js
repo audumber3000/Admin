@@ -43,11 +43,63 @@ router.get("/upload_assignment", function(req, res){
     res.render("assign_upload/assignment_upload");
 });
 
+router.get("/upload_assignment1", function(req, res){
+	
+		
+    res.render("assign_upload/assignment_upload1");
+});
+
 router.get("/upsu", function(req, res){
 	
 		
     res.render("assign_upload/not-welcome");
 });
+
+//assignment 1 and 4
+router.post("/upload_assignment1" , function(req, res){
+	 
+	
+	console.log(req.body.internid);
+	console.log(req.body.link);
+	console.log(req.body.task);
+	
+	
+  
+	
+ 
+
+
+     if(req.body.task === "Task1"){
+	Interninfo_final.updateMany({InternID: req.body.internid }, {Task1: "Yes" , Task1_link:req.body.link }, function(err,result) {
+    if (err) {
+          console.log(err);
+    }
+		console.log("task1 reached");
+	   res.render("./assign_upload/welcome");
+   });
+	}
+	
+	
+	else if(req.body.task === "Task4"){
+				 
+	Interninfo_final.updateMany({InternID: req.body.internid }, {Task4: "Yes" ,Task4_link:req.body.link }, function(err,result) {
+    if (err) {
+    console.log(err)
+    }
+		console.log(result);
+	   res.render("./assign_upload/welcome");
+   });
+				 
+	}	
+});
+
+
+
+
+
+
+
+
 
  //upload.single('profile-file')
 router.post("/upload_assignment" ,upload.single('profile'), function(req, res){

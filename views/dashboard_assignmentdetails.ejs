@@ -200,6 +200,7 @@
     <tr style="background-color:black ">
       <th style="color:white" scope="col">Intern ID</th>
       <th style="color:white" scope="col">Name</th>
+		<th style="color:white" scope="col">Department</th>
       <th style="color:white" scope="col">Contact</th>
       <th style="color:white" scope="col">Assignment</th>
     </tr>
@@ -212,6 +213,7 @@
     <tr>
       <th scope="row"><%= intern[i].InternID %></th>
       <td><%= intern[i].Name %></td>
+		   <td><%= intern[i].Internship %></td>
       <td><%= intern[i].Contact %></td>
       <td>
 		  <% if(intern[i].Task1 === 'Yes' ){ %>
@@ -227,6 +229,12 @@
 	  <%}%>
 		  
 		    <% if(intern[i].Task3 === 'Yes' ){ %>
+		  <span style="background-color: green" class="dot"></span>
+		  <% } else{ %> 
+		  <span  class="dot"></span>
+	  <%}%>
+		  
+		    <% if(intern[i].Task4 === 'Yes' ){ %>
 		  <span style="background-color: green" class="dot"></span>
 		  <% } else{ %> 
 		  <span  class="dot"></span>

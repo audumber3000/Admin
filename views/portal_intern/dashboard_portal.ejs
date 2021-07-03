@@ -53,6 +53,7 @@
     <nav class="navbar navbar-light bg-light p-3">
         <div class="d-flex col-12 col-md-3 col-lg-2 mb-2 mb-lg-0 flex-wrap flex-md-nowrap justify-content-between">
             <a class="navbar-brand" href="#">
+				<img src="https://res.cloudinary.com/education4ol/image/upload/v1624697903/education4ol_vuw0rx.jpg"/>
                <b>Education4ol</b>
             </a>
             <button class="navbar-toggler d-md-none collapsed mb-3" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
@@ -207,6 +208,13 @@ he/she will be withdrawn from the internship programme immediately.</p></li>
 									
 									<%} %>
 								
+								<%	if(intern[0].Task4 === "Yes"){  %>
+									<p class="card-text" style="color:green">Task 4 : <b>Submitted</b> </p>
+									<%}else{ %>
+									<p class="card-text" >Task 4 : <b>Not Submitted</b> </p>
+									
+									<%} %>
+								
 								
                              
                             </div>
@@ -267,7 +275,7 @@ he/she will be withdrawn from the internship programme immediately.</p></li>
                                             <td>Task 1</td>
                                             <td>2 days</td>
                                             
-                                            <td><a href="#" class="btn btn-sm btn-primary">Submit</a></td>
+                                            <td><a href="https://dashboard-education4ol.herokuapp.com/upload_assignment1" class="btn btn-sm btn-primary">Submit</a></td>
                                           </tr>
                                           <tr>
                                             <th scope="row">17370540</th>
@@ -283,7 +291,14 @@ he/she will be withdrawn from the internship programme immediately.</p></li>
                                            
                                             <td><a href="https://dashboard-education4ol.herokuapp.com/upload_assignment" class="btn btn-sm btn-primary">Submit</a></td>
                                           </tr>
-                                         
+											
+                                         <tr>
+										<th scope="row">19375705</th>
+                                            <td>Task 4</td>
+                                            <td>2 days</td>
+                                            
+                                            <td><a href="https://dashboard-education4ol.herokuapp.com/upload_assignment1" class="btn btn-sm btn-primary">Submit</a></td>
+                                          </tr>
                                           
                                           
                                         </tbody>
