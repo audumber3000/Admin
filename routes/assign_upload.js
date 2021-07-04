@@ -14,6 +14,10 @@ var multer  = require('multer');
 var cloudinary = require('cloudinary').v2; //media upload
 var Interninfo_final = require("../models/Interinfo");
 
+var date = require('date-and-time');
+var now = new Date();
+const pattern = date.compile('ddd, MMM DD YYYY');
+console.log(date.format(now, pattern));
 
 const router = express.Router();
 
@@ -70,7 +74,7 @@ router.post("/upload_assignment1" , function(req, res){
 
 
      if(req.body.task === "Task1"){
-	Interninfo_final.updateMany({InternID: req.body.internid }, {Task1: "Yes" , Task1_link:req.body.link }, function(err,result) {
+	Interninfo_final.updateMany({InternID: req.body.internid }, {Task1: "Yes" , Task1_link:req.body.link ,Task1_date:date.format(now, pattern) }, function(err,result) {
     if (err) {
           console.log(err);
     }
@@ -82,7 +86,7 @@ router.post("/upload_assignment1" , function(req, res){
 	
 	else if(req.body.task === "Task4"){
 				 
-	Interninfo_final.updateMany({InternID: req.body.internid }, {Task4: "Yes" ,Task4_link:req.body.link }, function(err,result) {
+	Interninfo_final.updateMany({InternID: req.body.internid }, {Task4: "Yes" ,Task4_link:req.body.link,Task4_date:date.format(now, pattern) }, function(err,result) {
     if (err) {
     console.log(err)
     }
@@ -107,6 +111,7 @@ router.post("/upload_assignment" ,upload.single('profile'), function(req, res){
 	var filname = req.file.filename;
 	console.log(req.body.internid);
 	console.log(req.body.task);
+	console.log(dt);
 	
   
 	
@@ -137,17 +142,9 @@ router.post("/upload_assignment" ,upload.single('profile'), function(req, res){
    
   });
 	});
-     if(req.body.task === "Task1"){
-	Interninfo_final.updateOne({InternID: req.body.internid }, {Task1: "Yes" }, function(err,result) {
-    if (err) {
-          console.log(err);
-    }
-		
-	   res.render("./assign_upload/welcome");
-   });
-	}else if(req.body.task === "Task2"){
+ if(req.body.task === "Task2"){
 				 
-	Interninfo_final.updateOne({InternID: req.body.internid }, {Task2: "Yes" }, function(err,result) {
+	Interninfo_final.updateMany({InternID: req.body.internid }, {Task2: "Yes",Task2_date:date.format(now, pattern) }, function(err,result) {
     if (err) {
     console.log(err)
     }
@@ -156,7 +153,7 @@ router.post("/upload_assignment" ,upload.single('profile'), function(req, res){
    });
 				 
 			 }else{
-				 Interninfo_final.updateOne({InternID: req.body.internid }, {Task3: "Yes" }, function(err,result) {
+				 Interninfo_final.updateMany({InternID: req.body.internid }, {Task3: "Yes",Task2_date:date.format(now, pattern) }, function(err,result) {
     if (err) {
 		
            console.log(err)

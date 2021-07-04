@@ -65,14 +65,14 @@
         </div>
         <div class="col-12 col-md-5 col-lg-8 d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
             <div class="mr-3 mt-1">
-                <a class="github-button" href="#" data-color-scheme="no-preference: dark; light: light; dark: light;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="0">00</a>
+                <a class="github-button" href="https://github.com/themesberg/simple-bootstrap-5-dashboard" data-color-scheme="no-preference: dark; light: light; dark: light;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star /themesberg/simple-bootstrap-5-dashboard">Star</a>
             </div>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
                   Hi , <%= intern[0].Name %>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li><a class="dropdown-item" href="/assignment_display">Tasks</a></li>
+                  <li><a class="dropdown-item" href="#">Settings</a></li>
                   <li><a class="dropdown-item" href="/intern_messager">Messages</a></li>
                   <li><a class="dropdown-item" href="https://education4ol.com">Sign out</a></li>
                 </ul>
@@ -85,15 +85,14 @@
                 <div class="position-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="#">
+                          <a class="nav-link " aria-current="page" href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                             <span class="ml-2">Intern Dashboard</span>
                           </a>
                         </li>
                     
-                      
                         <li class="nav-item">
-                          <a class="nav-link" href="#">
+                          <a class="nav-link active" href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
                             <span class="ml-2">Activity</span>
                           </a>
@@ -169,9 +168,6 @@ he/she will be withdrawn from the internship programme immediately.</p></li>
       
       
     </blockquote>
-  </div>
-					<div class="card-footer" style="color:red">
-    <b>Feedback on Task Submission :</b> 
   </div>
 </div>
 				
@@ -274,7 +270,6 @@ he/she will be withdrawn from the internship programme immediately.</p></li>
                                             <th scope="col">Tasks Id</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">DeadLine</th>
-											  <th scope="col">Uploaded At</th>
                                            
                                             <th scope="col">Submit</th>
                                           </tr>
@@ -283,23 +278,22 @@ he/she will be withdrawn from the internship programme immediately.</p></li>
                                           <tr>
                                             <th scope="row">17371705</th>
                                             <td>Task 1</td>
-											 
                                             <td>2 days</td>
-                                             <td><%=intern[0].Task1_date%></td>
+                                            
                                             <td><a href="https://dashboard-education4ol.herokuapp.com/upload_assignment1" class="btn btn-sm btn-primary">Submit</a></td>
                                           </tr>
                                           <tr>
                                             <th scope="row">17370540</th>
                                             <td>Task 2</td>
                                             <td>1 month</td>
-                                           <td><%=intern[0].Task2_date%></td>
+                                           
                                             <td><a href="https://dashboard-education4ol.herokuapp.com/upload_assignment" class="btn btn-sm btn-primary">Submit</a></td>
                                           </tr>
                                           <tr>
                                             <th scope="row">17371705</th>
                                             <td>Task 3</td>
                                             <td>1 month</td>
-                                            <td><%=intern[0].Task3_date%></td>
+                                           
                                             <td><a href="https://dashboard-education4ol.herokuapp.com/upload_assignment" class="btn btn-sm btn-primary">Submit</a></td>
                                           </tr>
 											
@@ -307,7 +301,7 @@ he/she will be withdrawn from the internship programme immediately.</p></li>
 										<th scope="row">19375705</th>
                                             <td>Task 4</td>
                                             <td>2 days</td>
-                                             <td><%=intern[0].Task4_date%></td>
+                                            
                                             <td><a href="https://dashboard-education4ol.herokuapp.com/upload_assignment1" class="btn btn-sm btn-primary">Submit</a></td>
                                           </tr>
                                           

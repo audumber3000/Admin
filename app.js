@@ -141,6 +141,11 @@ app.get("/intern_messager", function(req, res){
 res.render("portal_intern/messanger")
 });
    
+app.get("/assignment_display", function(req, res){
+	
+res.render("portal_intern/assignment_display")
+});
+
 
 app.get("/intern_portal", function(req, res){
 	
@@ -241,7 +246,21 @@ app.post("/intern_portal_otp", function(req, res){
 });
 
 
+//intern-Activity-------------------------------------------------------------------------------------
 
+app.get("/intern_activity" , function(req, res){
+	
+Interninfo_final.find({InternID : req.body.intern_id}, function (err, one_detail) {
+          if (err){
+            console.log("something went wrong!!!")
+          }else{
+			  
+			res.render("portal_intern/intern_activity",{ intern:one_detail})
+		}
+	
+      });
+	
+	});
 
 
 

@@ -30,7 +30,12 @@ var interninfo_finals = new mongoose.Schema({
 	Task3 : String,
 	Task4 : String,
 	Task1_link: String,
-	Task4_link : String
+	Task4_link : String,
+	
+	Task1_date:String,
+	Task2_date:String,
+	Task3_date:String,
+	Task4_date:String
 
 	
    
