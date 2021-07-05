@@ -111,7 +111,7 @@ router.post("/upload_assignment" ,upload.single('profile'), function(req, res){
 	var filname = req.file.filename;
 	console.log(req.body.internid);
 	console.log(req.body.task);
-	console.log(dt);
+
 	
   
 	
