@@ -86,7 +86,7 @@ router.post("/upload_assignment1" , function(req, res){
 	
 	else if(req.body.task === "Task4"){
 				 
-	Interninfo_final.updateMany({InternID: req.body.internid }, {Task4: "Yes" ,Task4_link:req.body.link,Task4_date:date.format(now, pattern) }, function(err,result) {
+   Interninfo_final.updateMany({InternID: req.body.internid }, {Task4: "Yes" ,Task4_link:req.body.link,Task4_date:date.format(now, pattern) }, function(err,result) {
     if (err) {
     console.log(err)
     }
@@ -153,7 +153,7 @@ router.post("/upload_assignment" ,upload.single('profile'), function(req, res){
    });
 				 
 			 }else{
-				 Interninfo_final.updateMany({InternID: req.body.internid }, {Task3: "Yes",Task2_date:date.format(now, pattern) }, function(err,result) {
+				 Interninfo_final.updateMany({InternID: req.body.internid }, {Task3: "Yes",Task3_date:date.format(now, pattern) }, function(err,result) {
     if (err) {
 		
            console.log(err)
