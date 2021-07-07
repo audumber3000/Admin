@@ -53,8 +53,8 @@ router.post("/intern_application", function(req, res){
 var mailOptions = {
   from: 'hr.education4ol@gmail.com',
   to: req.body.email,
-  subject: 'Thankyou for Applying at Education4ol',
-  text: 'Hi ' +req.body.name   +'\n Thankyou for  applying on Education4ol career portal . Please make sure that the following details  are Correct for the hassle free  communication. \n\n 1.Email : ' + req.body.email  +'\n 2.Contact number : ' + req.body.contact + '\n\n Our HR Team will soon contact you for futher Details. \n\n Education4ol | Powered by UpClick Labs \n Company Details : www.education4ol.com \n Company Linkdin : https://www.linkedin.com/company/education-4-ol  '
+  subject: 'Thank you for applying at Education4ol',
+  text: 'Dear ' +req.body.name+',\nWe appreciate your interest in internship at Education4ol.Thank you for giving us your valuable time.\n\nPlease cross verify your details given below for smooth interview and onboarding process \n\n Email : ' + req.body.email  +'\n Contact number : ' + req.body.contact + '\n\nOur HR team will soon be connecting with you for further process. \n\nRegards,\nEducation4ol \nPowered by UpClick Labs  \n\nWebsite: www.education4ol.com \nLinkedIn profile: https://www.linkedin.com/company/education-4-ol  '
 };
 	
 	

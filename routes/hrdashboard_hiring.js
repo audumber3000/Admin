@@ -140,8 +140,8 @@ Interninfo_final.find({}, function (err, one_detail) {
 	var mailOptions = {
   from: 'hr.education4ol@gmail.com',
   to: req.body.email,
-  subject: 'Congratulations ! You have been Selected for Internship.',
-  text: 'Hi ' +req.body.name   +'\n  We are so happy to inform you that You have been selected as Intern at Education4ol.\n\n 1.Your InternID :'+ val  +'\n\n Our HR Team will soon contact you for futher Details. \n\n Education4ol | Powered by UpClick Labs \n Company Details : www.education4ol.com \n Company Linkdin : https://www.linkedin.com/company/education-4-ol  '
+  subject: 'Congratulations! You have been selected.',
+  text: 'Dear ' +req.body.name+',\nWe are glad to inform that you have cleared your interview and you have been selected as an intern at Education4ol.\nWe are looking forward to the best in you throughout this learning experience\n\n Intern ID :'+ val  +'\n\nAll the very best for your future endeavors. \n\nRegards,\nEducation4ol \nPowered by UpClick Labs \n\nWebsite: www.education4ol.com \nLinkedin profile: https://www.linkedin.com/company/education-4-ol  '
 };
 	   
       //sending mail	   	
