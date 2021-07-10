@@ -72,6 +72,13 @@
                   Hi , <%= intern[0].Name %>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<li>
+					<form action="/intern_profile"  method="POST"  >
+						<input type="hidden" id="adu" name="internid" value=<%= intern[0].InternID %>  >
+				<button type="submit" class="dropdown-item">Profile</button>
+
+					</form>
+						</li>
                   <li><a class="dropdown-item" href="/assignment_display">Tasks</a></li>
                   <li><a class="dropdown-item" href="/intern_messager">Messages</a></li>
                   <li><a class="dropdown-item" href="https://education4ol.com">Sign out</a></li>

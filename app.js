@@ -136,6 +136,28 @@ app.get("/dashboard_assignedetail" ,isLoggedIn, function(req, res){
 
 
 //--intern poratl-------------------------------------------------------------------------------------
+
+app.post("/intern_profile", function(req, res){
+	console.log("profile id");
+	console.log(req.body.internid);
+	
+			Interninfo_final.find({InternID : req.body.internid}, function (err, one_detail) {
+          if (err){
+            console.log("something went wrong!!!")
+          }else{
+			  
+			  
+			  
+			  
+			  
+			  
+			    res.render("portal_intern/Profile",{ intern:one_detail})
+		}
+});
+
+});
+   
+
 app.get("/intern_messager", function(req, res){
 	
 res.render("portal_intern/messanger")

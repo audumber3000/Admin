@@ -41,7 +41,6 @@ router.get("/intern_application", function(req, res){
 
 
 
-
 router.post("/intern_application", function(req, res){
 	let today = new Date().toLocaleDateString()
 
@@ -68,7 +67,14 @@ transporter.sendMail(mailOptions, function(error, info){
 	  //saving to database
 // 	    mongoose.connect("mongodb+srv://audumber:Ramdas3000@cluster0-bj3vd.mongodb.net/Dashboard?retryWrites=true& w=majority");
 	var InternSession = "July2021"  //Change
-	Interninfo_final.create({ Name:req.body.name   ,Contact:req.body.contact  ,Email:req.body.email,Internship:req.body.intern, CollegeName:req.body.colname ,CollegeState:req.body.colstate ,CollegeCity:req.body.clgcity , Year:req.body.Year, Qualification:req.body.qualification, ApplicationID:applyID, Accepted:"No" ,Selected:"No",Rejected:"No", Completed:"No", Year:req.body.clgyear ,Skills:req.body.skills    ,ApplyDate:today,Session:InternSession,InternID:"No" , Task1:"No" , Task2:"No" , Task3:"No"}, function (err, small) {
+	Interninfo_final.create({ Name:req.body.name   ,Contact:req.body.contact  ,Email:req.body.email,Internship:req.body.intern, CollegeName:req.body.clgname ,CollegeState:req.body.clgstate ,CollegeCity:req.body.clgcity , Qualification:req.body.qualification, ApplicationID:applyID, Accepted:"No" ,Selected:"No",Rejected:"No", Completed:"No", Year:req.body.clgyear ,Skills:req.body.skills    ,ApplyDate:today,Session:InternSession,InternID:"No" , Task1:"No" , Task2:"No" , Task3:"No" , Task4 : "No",
+	Task1_link: "",
+	Task4_link : "",
+	
+	Task1_date:"",
+	Task2_date:"",
+	Task3_date:"",
+	Task4_date:""}, function (err, small) {
      
       if (err){
         console.log("somthing went wrong!!")
