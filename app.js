@@ -113,6 +113,22 @@ app.get("/hrdashboard_Interndetail",isLoggedIn, function(req, res){
 	
 });
 
+//from filters
+app.post("/hrdashboard_Interndetail",isLoggedIn, function(req, res){
+	
+	console.log(req.body.customRadio);
+	Interninfo_final.find({Session: req.body.customRadio}, function (err, one_detail) {
+          if (err){
+            console.log("something went wrong!!!")
+          }else{
+      // console.log(one_detail)
+			   res.render("Intern_Details/dashboard_Interndetail" , {intern:one_detail});
+          
+          }
+});
+   
+	
+});
 //--------------------------------------------------------------------------------------
 //assignment details
 
