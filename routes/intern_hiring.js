@@ -74,7 +74,8 @@ transporter.sendMail(mailOptions, function(error, info){
 	Task1_date:"",
 	Task2_date:"",
 	Task3_date:"",
-	Task4_date:""}, function (err, small) {
+	Task4_date:"" ,
+    profile_img:""}, function (err, small) {
      
       if (err){
         console.log("somthing went wrong!!")

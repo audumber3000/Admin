@@ -168,6 +168,62 @@ router.post("/upload_assignment" ,upload.single('profile'), function(req, res){
 
 
 
+//upload profile image
+
+router.get("/upload_image", function(req, res){
+	
+		
+    res.render("portal_intern/uploadimage");
+});
+
+
+router.post("/upload_image" ,upload.single('profile'), function(req, res){
+	 
+	var filname = req.file.filename;
+	console.log(req.body.internid);
+	
+
+	
+  
+	
+ 
+// console.log(JSON.stringify(req.file))
+	var path = './public/tempfile/' + filname;
+	cloudinary.uploader.upload(path, {
+              folder: 'profile pictures',
+              use_filename: true
+             } , function(error, result) {
+		
+		console.log(result.url)
+	     fs.readdirSync('./public/tempfile').forEach(file => {
+		 var path = './public/tempfile/' + filname;
+		 console.log(path);
+			 
+			 //responsible for deleting file
+		 fs.unlink(path, function(err){
+	    
+	Interninfo_final.updateMany({InternID: req.body.internid }, {profile_img: result.url }, function(err,result) {
+    if (err) {
+    console.log(err)
+    }
+		
+   res.render("./assign_upload/welcome");
+   });
+			 
+			 
+			})
+   
+         });
+	});
+	
+	
+
+  
+});
+
+
+
+
 
 
 

@@ -35,7 +35,8 @@ var interninfo_finals = new mongoose.Schema({
 	Task1_date:String,
 	Task2_date:String,
 	Task3_date:String,
-	Task4_date:String
+	Task4_date:String,
+	profile_img : String
 
 	
    
