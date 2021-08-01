@@ -202,6 +202,16 @@ router.post("/upload_image" ,upload.single('profile'), function(req, res){
 			 //responsible for deleting file
 		 fs.unlink(path, function(err){
 	    
+	if(err){
+		console.log("eroor in deleting");
+	}
+			 
+	});
+			 
+	
+   
+         });
+		
 	Interninfo_final.updateMany({InternID: req.body.internid }, {profile_img: result.url }, function(err,result) {
     if (err) {
     console.log(err)
@@ -209,11 +219,6 @@ router.post("/upload_image" ,upload.single('profile'), function(req, res){
 		
    res.render("./assign_upload/welcome");
    });
-			 
-			 
-			})
-   
-         });
 	});
 	
 	
