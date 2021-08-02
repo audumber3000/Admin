@@ -362,10 +362,7 @@ app.post("/register", function(req, res){
 
 console.log("hii audumber")
 
-	// var today = new Date();
-	// var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
-	// var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-	// var dateTime = date+' '+time;
+	
 
 
     User.create({username: req.body.username  , password:req.body.password }, function (err, user){
