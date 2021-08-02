@@ -194,7 +194,7 @@ router.post("/upload_image" ,upload.single('profile'), function(req, res){
               use_filename: true
              } , function(error, result) {
 		
-		console.log(result.url)
+		
 	     fs.readdirSync('./public/tempfile').forEach(file => {
 		 var path = './public/tempfile/' + filname;
 		 console.log(path);
