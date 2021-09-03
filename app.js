@@ -91,8 +91,57 @@ app.get("/instagram", function(req, res){
     res.render("instagram");
 });
 
-app.get("/hrdashboard",isLoggedIn, function(req, res){
-    res.render("hrdashboard");
+app.get("/hrdashboard",isLoggedIn, async function(req, res){
+	
+	 Interninfo_final.find({}, await function (err, one_detail) {
+          if (err){
+            console.log("something went wrong!!!")
+          }else{
+			var audu =   one_detail.length;
+		
+		console.log(audu);
+			var selected = 0 ;
+			var rejected = 0;
+			var completed = 0;  
+			  
+			  console.log(one_detail[0].Accepted);  
+			  
+			 for(let i = 0 ; i < audu ; i++){
+			 
+		 
+			
+			 if(one_detail[i].Selected == "Yes"){
+			 selected = selected + 1;
+			
+			 }
+			 if(one_detail[i].Rejected == "Yes"){
+			 rejected = rejected + 1;
+			 }
+			 if(one_detail[i].Completed == "Yes"){
+			 completed =completed  + 1;
+			 }
+				  
+				  
+			  }
+	 
+			  
+			
+			
+			
+			   console.log(selected); 
+			   console.log(rejected); 
+			   console.log(completed); 
+	res.render("hrdashboard", {selected : selected , rejected:rejected , completed:completed , total : audu});
+			  
+			  
+			  
+        // res.render("Intern_Details/dashboard_Interndetail" , {intern:one_detail});
+          }
+});
+
+	
+	
+   
 });
 
 
