@@ -13,6 +13,8 @@ var LocalStrategy = require('passport-local').Strategy;
 var multer  = require('multer');
 var cloudinary = require('cloudinary').v2; //media upload
 var Interninfo_final = require("./models/Interinfo");
+var refral = require("./models/refral");
+
 
 
 var storage = multer.diskStorage({
@@ -365,6 +367,11 @@ app.get("/dashboard_report" , isLoggedIn, function(req, res){
 res.render("dashboard_reports");
 });
 
+
+app.get("/Education4ol/refral/Harsha" , function(req,res){
+	
+	res.render("ref1")
+})
 
 
 
