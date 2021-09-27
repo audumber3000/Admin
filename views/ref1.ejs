@@ -1,480 +1,500 @@
-
-		
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta name="viewport" content="width=device-width,initial-scale=1"/>
-	<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-
-	 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
- -->
-<style>
-	@import url('https://fonts.googleapis.com/css?family=Poppins');
-
-/* BASIC */
-
-html {
-   background-image: url("https://html.sammy-codes.com/images/background.jpg");
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-}
-
-body {
-  font-family: "Poppins", sans-serif;
-  height: 100vh;
-}
-
-a {
-  color: #92badd;
-  display:inline-block;
-  text-decoration: none;
-  font-weight: 400;
-}
-
-h2 {
-  text-align: center;
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
-  display:inline-block;
-  margin: 40px 8px 10px 8px; 
-  color: #cccccc;
-}
-
-
-
-/* STRUCTURE */
-
-.wrapper {
-  display: flex;
-  align-items: center;
-  flex-direction: column; 
-  justify-content: center;
-  width: 100%;
-  min-height: 100%;
-  padding: 20px;
-}
-
-#formContent {
-  -webkit-border-radius: 10px 10px 10px 10px;
-  border-radius: 10px 10px 10px 10px;
-  background: #fff;
-  padding: 30px;
-  width: 90%;
-  max-width: 450px;
-  position: relative;
-  padding: 0px;
-  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-  text-align: center;
-}
-
-#formFooter {
-  background-color: #f6f6f6;
-  border-top: 1px solid #dce8f1;
-  padding: 25px;
-  text-align: center;
-  -webkit-border-radius: 0 0 10px 10px;
-  border-radius: 0 0 10px 10px;
-}
-
-
-
-/* TABS */
-
-h2.inactive {
-  color: #cccccc;
-}
-
-h2.active {
-  color: #0d0d0d;
-  border-bottom: 2px solid #5fbae9;
-}
-
-
-
-/* FORM TYPOGRAPHY*/
-
-input[type=button], input[type=submit], input[type=reset],select[type=button],select[type=submit]  {
-  background-color: #56baed;
-  border: none;
-  color: white;
-  padding: 15px 80px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  text-transform: uppercase;
-  font-size: 13px;
-  -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-  -webkit-border-radius: 5px 5px 5px 5px;
-  border-radius: 5px 5px 5px 5px;
-  margin: 5px 20px 40px 20px;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: green;
-}
-
-input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
-  -moz-transform: scale(0.95);
-  -webkit-transform: scale(0.95);
-  -o-transform: scale(0.95);
-  -ms-transform: scale(0.95);
-  transform: scale(0.95);
-}
-
-input[type=text],select[type=button],select[type=submit] {
-  background-color: #f6f6f6;
-  border: none;
-  color: #0d0d0d;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 5px;
-  width: 85%;
-  border: 2px solid #f6f6f6;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-  -webkit-border-radius: 5px 5px 5px 5px;
-  border-radius: 5px 5px 5px 5px;
-}
-
-input[type=text]:focus {
-  background-color: #fff;
-  border-bottom: 2px solid #5fbae9;
-}
-
-input[type=text]:placeholder {
-  color: #cccccc;
-}
-
-	input[type="radio"]
-{
-  appearance: none;
-}
-
-input[type="radio"] + label
-{
-  cursor: pointer;
-  position: relative;
-  padding-left: 30px;
-}
-
-input[type="radio"] + label::before
-{
-  content: "";
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 1px solid #686de0;
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 1;
-  transition: all 0.3s;
-}
-
-input[type="radio"] + label::after
-{
-  content: "";
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border: 1px solid #686de0;
-  background: #686de0;
-  border-radius: 50%;
-  position: absolute;
-  left: 5px;
-  bottom: 5px;
-  opacity: 0;
-  transition: all 0.3s;
-}
-
-input[type="radio"]:checked + label::after
-{
-  opacity: 1;
-}
-
-
-/* ANIMATIONS */
-
-/* Simple CSS3 Fade-in-down Animation */
-.fadeInDown {
-  -webkit-animation-name: fadeInDown;
-  animation-name: fadeInDown;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-@-webkit-keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
-}
-
-@keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
-}
-
-/* Simple CSS3 Fade-in Animation */
-@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-
-.fadeIn {
-  opacity:0;
-  -webkit-animation:fadeIn ease-in 1;
-  -moz-animation:fadeIn ease-in 1;
-  animation:fadeIn ease-in 1;
-
-  -webkit-animation-fill-mode:forwards;
-  -moz-animation-fill-mode:forwards;
-  animation-fill-mode:forwards;
-
-  -webkit-animation-duration:1s;
-  -moz-animation-duration:1s;
-  animation-duration:1s;
-}
-
-.fadeIn.first {
-  -webkit-animation-delay: 0.4s;
-  -moz-animation-delay: 0.4s;
-  animation-delay: 0.4s;
-}
-
-.fadeIn.second {
-  -webkit-animation-delay: 0.6s;
-  -moz-animation-delay: 0.6s;
-  animation-delay: 0.6s;
-}
-
-.fadeIn.third {
-  -webkit-animation-delay: 0.8s;
-  -moz-animation-delay: 0.8s;
-  animation-delay: 0.8s;
-}
-
-.fadeIn.fourth {
-  -webkit-animation-delay: 1s;
-  -moz-animation-delay: 1s;
-  animation-delay: 1s;
-}
-
-/* Simple CSS3 Fade-in Animation */
-.underlineHover:after {
-  display: block;
-  left: 0;
-  bottom: -10px;
-  width: 0;
-  height: 2px;
-  background-color: #56baed;
-  content: "";
-  transition: width 0.2s;
-}
-
-.underlineHover:hover {
-  color: #0d0d0d;
-}
-
-.underlineHover:hover:after{
-  width: 100%;
-}
-
-
-
-/* OTHERS */
-
-*:focus {
-    outline: none;
-} 
-
-#icon {
-  width:60%;
-}
-
-* {
-  box-sizing: border-box;
-}
 	
-			
-			
-			
-			
-			
-/* body { 
-  width: 400px; 
-  margin: 100px auto; 
-  background-color: #f5f5f5; 
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intern Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            padding: 90px 0 0;
+            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+            z-index: 99;
+        }
+
+        @media (max-width: 767.98px) {
+            .sidebar {
+                top: 11.5rem;
+                padding: 0;
+            }
+        }
+            
+        .navbar {
+            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .1);
+        }
+
+        @media (min-width: 767.98px) {
+            .navbar {
+                top: 0;
+                position: sticky;
+                z-index: 999;
+            }
+        }
+
+        .sidebar .nav-link {
+            color: #333;
+        }
+
+        .sidebar .nav-link.active {
+            color: #0d6efd;
+        }
+		
+		
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* body {
+  	font-family: 'Poppins', sans-serif;
+  display: grid;
+  padding: 100px;
+  color: #4f546c;
+  font-size: 0.9rem;
+  background-color: #f9fbff;;
 } */
 
-.copyright {
-  display:block;
-  margin-top: 100px;
-  text-align: center;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: uppercase;
+table {
+	margin-top : 30px;
+  border-collapse: collapse;
+  box-shadow: 0 5px 10px #e1e5ee;
+  background-color: white;
+  text-align: left;
+  overflow: hidden;
+  width: 100%;
 }
-.copyright a{
-  text-decoration: none;
-  color: #EE4E44;
+  thead {
+    box-shadow: 0 5px 10px #e1e5ee;
+  }
+
+  th {
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 0.7rem;
+    font-weight: 900;
+  }
+
+  td {
+    padding: 1rem 2rem;
+  }
+
+  a {
+    text-decoration: none;
+    color:#2962ff;
+  }
+
+  .status {
+    border-radius:  0.2rem;
+    background-color: red;
+    padding: 0.2rem 1rem;
+    text-align: center;
 }
+   .status-pending {
+      background-color: #fff0c2;
+      color: #a68b00;
+    }
 
-.button {
-  background-color: #5fbae9; /* Green */
-	border-radius: 10px;
-  border: none;
-  color: white;
-	
+     .status-paid {
+      background-color: #c8e6c9;
+      color:  #388e3c;
+    }
 
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-	
-}
+      .status-unpaid {
+      background-color: #ffcdd2;
+      color: #c62828;
+    }
+  
 
-.button1 {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}	
+  .amount {
+    text-align: right;
+  }
 
-/****** CODE ******/
-
-.file-upload{display:block;text-align:center;font-family: Helvetica, Arial, sans-serif;font-size: 12px;}
-.file-upload .file-select{display:block;border: 2px solid #dce4ec;color: #34495e;cursor:pointer;height:40px;line-height:40px;text-align:left;background:#FFFFFF;overflow:hidden;position:relative;}
-.file-upload .file-select .file-select-button{background:#dce4ec;padding:0 10px;display:inline-block;height:40px;line-height:40px;}
-.file-upload .file-select .file-select-name{line-height:40px;display:inline-block;padding:0 10px;}
-.file-upload .file-select:hover{border-color:#34495e;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
-.file-upload .file-select:hover .file-select-button{background:#34495e;color:#FFFFFF;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
-.file-upload.active .file-select{border-color:#3fa46a;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
-.file-upload.active .file-select .file-select-button{background:#3fa46a;color:#FFFFFF;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
-.file-upload .file-select input[type=file]{z-index:100;cursor:pointer;position:absolute;height:100%;width:100%;top:0;left:0;opacity:0;filter:alpha(opacity=0);}
-.file-upload .file-select.file-select-disabled{opacity:0.65;}
-.file-upload .file-select.file-select-disabled:hover{cursor:default;display:block;border: 2px solid #dce4ec;color: #34495e;cursor:pointer;height:40px;line-height:40px;margin-top:5px;text-align:left;background:#FFFFFF;overflow:hidden;position:relative;}
-.file-upload .file-select.file-select-disabled:hover .file-select-button{background:#dce4ec;color:#666666;padding:0 10px;display:inline-block;height:40px;line-height:40px;}
-.file-upload .file-select.file-select-disabled:hover .file-select-name{line-height:40px;display:inline-block;padding:0 10px;}
-	</style>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<title>Login Form Using HTML And CSS Only</title>
-</head>
-<body>
-	
-	
-	<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <!-- Tabs Titles -->
-	  <h2 class="active" style="color:black"> <b>CODE : HARSHA001</b> </h2>
-    <h2 class="active" style="color:green"> <b>Welcome</b> </h2>
-   
-
-    <!-- Icon -->
-    <!-- <div class="fadeIn first">
-		<img src="https://img.icons8.com/fluent/240/000000/task-planning.png" id="icon" alt="User Icon"/> -->
-	
-      <!-- <img src="https://img.icons8.com/cotton/2x/search--v2.png" id="icon" alt="User Icon" /> -->
-    <!-- </div> -->
-
-    <!-- Login Form -->
-    <form  action="/intern_application"  method="post" >
-		
-
-		
-	
  
-
-		<h4>
-	Course + Industry Certification + Internship Certificate + LOR (letter of recommendation) + Placement Opportunities in Just 2000/-
-		</h4>
-		Get 10% OFF on Every Referral !
-		<h4>
-			
-		</h4>
-      <input type="text" id="login" class="fadeIn second" name="name" placeholder="FULL NAME" required>
-		 <input type="text" id="login" class="fadeIn second" name="contact" placeholder="CONTACT +91" required>
+  tr:nth-child(even) {
+    background-color: #f4f6fb;
+  }
+ 
 		
-		<div style="margin-top : 10px; margin-bottom:20px">
-		<button class="button button1" type="submit" >Submit Application</button>
-		</div>		
+		
+    </style>
+</head>
+<body style="background-color : #F5F5F5">
+   <nav class="navbar navbar-light .bg-dark.bg-gradient p-3">
+        <div class="d-flex col-12 col-md-3 col-lg-2 mb-2 mb-lg-0 flex-wrap flex-md-nowrap justify-content-between">
+            <a class="navbar-brand" href="#">
+               <img src="https://res.cloudinary.com/education4ol/image/upload/v1624697903/education4ol_vuw0rx.jpg"/>
+               <b style="color:white;">Education4ol</b>
+            </a>
+            <button class="navbar-toggler d-md-none collapsed mb-3" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="col-12 col-md-4 col-lg-2">
+            <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search">
+        </div>
+        <div class="col-12 col-md-5 col-lg-8 d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
+         
+            <div class="dropdown">
+                <button class="btn  dropdown-toggle" style="background-color: midnightblue; color:white ;"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                  Hello, HR
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li><a class="dropdown-item" href="#">Settings</a></li>
+                  <li><a class="dropdown-item" href="#">Messages</a></li>
+                  <li><a class="dropdown-item" href="#">Sign out</a></li>
+                </ul>
+              </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block .bg-dark.bg-gradient sidebar collapse" style="background-color: midnightblue;">
+                <div class="position-sticky">
+                    <ul class="nav flex-column" style="background-color: midnightblue;">
+                        <li class="nav-item">
+                          <a class="nav-link " aria-current="page" href="/hrdashboard" style="color:white;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            <span class="ml-2">Dashboard</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link " href="/dashboard_new_hiring" style="color:white;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                            <span class="ml-2">New Hiring</span>
+                          </a>
+                        </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/dashboard_assignedetail" style="color:white;">
+                             <img src="https://img.icons8.com/ios/50/FFFFFF/book.png" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart" /><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                            <span class="ml-2">Assignment</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a id="profile-tab" class="nav-link active" href="#profile" style="color:#5dcaf5;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            <span class="ml-2">Interns Details</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#" style="color:white;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                            <span class="ml-2">Reports</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#" style="color:white;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                            <span class="ml-2">Activities</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-sm btn-secondary ml-3 mt-2" href="https://themesberg.com/blog/bootstrap/simple-bootstrap-5-dashboard-tutorial">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-book" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M1 2.828v9.923c.918-.35 2.107-.692 3.287-.81 1.094-.111 2.278-.039 3.213.492V2.687c-.654-.689-1.782-.886-3.112-.752-1.234.124-2.503.523-3.388.893zm7.5-.141v9.746c.935-.53 2.12-.603 3.213-.493 1.18.12 2.37.461 3.287.811V2.828c-.885-.37-2.154-.769-3.388-.893-1.33-.134-2.458.063-3.112.752zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+                                </svg>
+                                <span class="ml-2">Read tutorial</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-sm btn-warning ml-3 mt-2" href="https://themesberg.com/product/admin-dashboard/volt-bootstrap-5-dashboard">
+                                ⚡︎ Eduol Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-sm btn-primary ml-3 mt-2" href="https://themesberg.com">
+                                By Education4ol ❤️
+                            </a>
+                        </li>
+                      </ul>
+                </div>
+				
+				<div style="margin-top: 25px; font-size: 12px;text-align: center; margin-bottom: -50px;">
+					 <li class="nav-item">
+                           Powered by <b>UpClick Labs PVT</b>
+                        </li>
+					<p>
+						
+					</p>
+					
+				</div>
+            </nav>
+            <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+                <nav aria-label="breadcrumb">
+                  
+					<!-- <span style="float:right; margin-bottom:5px;  "><button style="width:80px" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal"><b><img src="https://img.icons8.com/ios-glyphs/15/FFFFFF/filter-and-sort.png"/> Filter</b></button>
+					<button style="width:70px" type="button" class="btn btn-primary btn-sm"><b>Edit</b></button>
+					</span> -->
+                </nav>
+				
+				
+				
+<!----------- modal----------------------------------- -->
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><b><img src="https://img.icons8.com/ios-glyphs/20/000000/filter-and-sort.png"/> Filter Interns</b></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+		<form method="POST" action="/hrdashboard_Interndetail">
+      <div class="modal-body">
+		  
 
 	
-    </form>
+	<div class="custom-control custom-radio">
+  <input type="radio" id="customRadio1" name="customRadio" value="June2021" class="custom-control-input">
+  <label class="custom-control-label" for="customRadio1">June 2021</label>
+</div>
+<div class="custom-control custom-radio">
+  <input type="radio" id="customRadio2" name="customRadio" value="July2021"  class="custom-control-input">
+  <label class="custom-control-label" for="customRadio2">July 2021</label>
+</div>
+		  <div class="custom-control custom-radio">
+  <input type="radio" id="customRadio3" name="customRadio" value="Aug2021" class="custom-control-input">
+  <label class="custom-control-label" for="customRadio3">Aug 2021</label>
+</div>
+<div class="custom-control custom-radio">
+  <input type="radio" id="customRadio4" name="customRadio" value="Sep2021" class="custom-control-input">
+  <label class="custom-control-label" for="customRadio4">Sep 2021</label>
+</div>
+		  <div class="custom-control custom-radio">
+  <input type="radio" id="customRadio4" name="customRadio" value="Nov2021" class="custom-control-input">
+  <label class="custom-control-label" for="customRadio4">Nov 2021</label>
+</div>
+		  <div class="custom-control custom-radio">
+  <input type="radio" id="customRadio4" name="customRadio" value="Dec2021"  class="custom-control-input">
+  <label class="custom-control-label" for="customRadio4">Dec 2021</label>
+</div>
+	
+	
+		  	  
+ 
+		  
+      </div>
 		
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-   
-		<a class="underlineHover" href="#">Education4ol  |  Powered by <b>UpClick Labs</b></a>
+		
+		
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Filter</button>
+      </div> -->
+		  </form>	
     </div>
-
   </div>
 </div>
-
-		<script>
+				
+				<div class="row">
+  <div class="col">
+	<div class="card" style="background:#999999">
+      <div class="card-body" style="color:white">
+        <h6 class="card-title">MONTHLY INTERN <img style="float:right" src="https://img.icons8.com/material/48/FFFFFF/student-female--v1.png"/> </h6>
+ <h4>
+	23
+		  </h4>
+		  <div style="width: auto;
+  height: 1px;
+  background-color: white;"></div>
+      </div>
+    </div>
+	  
+		</div>
+					
+  <div class="col">
+	
+	<div class="card" style="background: #5ad654">
+      <div class="card-body" style="color:white">
+        <h6 class="card-title">MONTHLY REVENUE <img style="float:right" src="https://img.icons8.com/material-outlined/48/FFFFFF/money-bag-rupee.png"/> </h6>
+         <h4>
+			₹ 2000
+		  </h4>
+		  <div style="width: auto;
+  height: 1px;
+  background-color: white;"></div>
+      </div>
+  </div>					
+</div>
+					
+					
+  <div class="col">
+ 
+	<div class="card" style="background:#606661 ">
+      <div class="card-body" style="color:white">
+        <h6 class="card-title">TOTAL INTERNS <img style="float:right" src="https://img.icons8.com/material/48/FFFFFF/student-female--v1.png"/></h6>
+ <h4>
+			 89
+		  </h4>
+		  <div style="width: auto;
+  height: 1px;
+  background-color: white;"></div>
+      </div>
+    </div>				
+</div>
+					
+					
+  <div class="col">
+	<div class="card" style="background:#08a600">
+      
+      <div class="card-body" style="color:white">
+        <h6 class="card-title">TOTAL REVENUE  <img style="float:right" src="https://img.icons8.com/material/48/FFFFFF/money-bag-rupee.png"/></h6>
+        <h4>
+			₹ 15390
+		  </h4>
+		    <div style="width: auto;
+  height: 1px;
+  background-color: white;"></div>
+      </div>
+    </div>
+	  
+		</div>
+</div>
+				
 		
+				
+				
+				
+			
+				
+				
+				
+				
+		<table>
+	<thead>
+		<tr>
+			<th>Invoice No.</th>
+			<th>Name</th>
+			<th>Date Of payment</th>
+			<th>Status</th>
 
-$('#chooseFile').bind('change', function () {
-  var filename = $("#chooseFile").val();
-  if (/^\s*$/.test(filename)) {
-    $(".file-upload").removeClass('active');
-    $("#noFile").text("No file chosen..."); 
-  }
-  else {
-    $(".file-upload").addClass('active');
-    $("#noFile").text(filename.replace("C:\\fakepath\\", "")); 
-  }
-});
+		</tr>
+	</thead>
+ 
+<tr> <td><a href="#">INV1001</a></td>
+        <td>Paragon</td>
+        <td>1/5/2021</td>
+        <td>
+          <p class="status status-unpaid">Unpaid</p>
+        </td>
+
+      </tr>
+
+	    
+      <tr>
+        <td><a href="#">INV1002</a></td>
+        <td>Sonic</td>
+        <td>1/4/2021</td>
+        <td>
+          <p class="status status-paid">Paid</p>
+        </td>
+
+      </tr>
+      <tr>
+        <td><a href="#">INV1003</a></td>
+        <td>Innercircle</td>
+        <td>1/2/2021</td>
+        <td>
+          <p class="status status-pending">Pending</p>
+        </td>
+
+      </tr>
+      <tr>
+        <td><a href="#">INV1004</a></td>
+        <td>Varsity Plus</td>
+        <td>12/30/2020</td>
+        <td>
+          <p class="status status-pending">Pending</p>
+        </td>
+
+      </tr>
+      <tr>
+        <td><a href="#">INV1005</a></td>
+        <td>Highlander</td>
+        <td>12/18/2020</td>
+        <td>
+          <p class="status status-paid">Paid</p>
+        </td>
+
+      </tr>
+</tr>
+
+</table>
+				
+				
 
 
+				
+				
+              
+              
+				
+			
+
+
+
+				
+				
+	
 		
-		</script>	
+                <footer class="pt-5 d-flex justify-content-between " style="margin-top: 400px;">
+                    <span>Copyright © 2020-2021 <a href="https://www.education4ol.com">Education4ol | Powered by UpClick Labs Pvt.Ltd. </a></span>
+                    <ul class="nav m-0">
+                        <li class="nav-item">
+                          <a class="nav-link text-secondary" aria-current="page" href="#">Privacy Policy</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link text-secondary" href="#">Terms and conditions</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link text-secondary" href="#">Contact</a>
+                        </li>
+                      </ul>
+					
+					
+					
+
+
+					
+					
+                </footer>
+            </main>
+        </div>
+    </div>
+	
+	
+	
+	
 
 	
+	
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+	
+	
+	
+    <script>
+
+    </script>
 </body>
 </html>

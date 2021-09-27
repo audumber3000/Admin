@@ -54,7 +54,7 @@ router.post("/selection_action",isLoggedIn, function(req, res){
   from: 'hr.education4ol@gmail.com',
   to: req.body.email,
   subject: 'Sorry ! Rejected',
-  text: 'Hi ' +req.body.name   +'\n  We are so Sorry to inform you that  we can’t move forward with your application at this point. \n\n Thank you for applying. We appreciate your effort. \n\n Education4ol | Powered by UpClick Labs \n Company Details : www.education4ol.com \n Company Linkdin : https://www.linkedin.com/company/education-4-ol  '
+  text: 'Hi ' +req.body.name   +'\n  We are so Sorry to inform you that  we can’t move forward with your application at this point. \n\n Thank you for applying. We appreciate your effort. \n\n Education4ol | Powered by UpClick Labs \n Company Details : www.education4ol.in \n Company Linkdin : https://www.linkedin.com/company/education-4-ol  '
 };
 	
 	//---------------------------------------section one
@@ -66,11 +66,13 @@ router.post("/selection_action",isLoggedIn, function(req, res){
       res.send(err);
     }
 	   
+
+	   
 	   var mailOptions = {
   from: 'hr.education4ol@gmail.com',
   to: req.body.email,
-  subject: 'Congratulations ! Now Interview',
-  text: 'Hi ' +req.body.name   +'\n  We are so happy to inform you that We found you Resume Impressive. Congratulations you have been selected for an interview Process. \n\n Our HR Team will soon contact you for futher Details. \n\n Education4ol | Powered by UpClick Labs \n Company Details : www.education4ol.com \n Company Linkdin : https://www.linkedin.com/company/education-4-ol  '
+  subject: 'Congratulations ! Interview process',
+  text: 'Dear ' +req.body.name+',\nWe are so happy to inform you that We found you Resume Impressive. After reviewing your application, we are excited to move forward with the interview process.\n\nPlease Keep an eye on your mail. With in a day or two your Interview will shedule and communicated to you through Email.\n\nNOTE : Please Reply this mail with "YES" to proceed futher. \n\nRegards,\nEducation4ol \nPowered by UpClick Labs  \n\nWebsite: www.education4ol.in \nLinkedIn profile: https://www.linkedin.com/company/education-4-ol  '
 };
 	   
       //sending mail	   	

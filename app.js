@@ -242,97 +242,6 @@ res.render("portal_intern/dashboard_ID")
 });
    
 
-var transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'education4ol4@gmail.com',
-    pass: 'Audumber@3000'
-  }
-});
-
-
-
-	
-
-app.post("/intern_portal", function(req, res){
-
-	console.log(req.body.intern_id);
-
-	
-		
-	Interninfo_final.find({InternID : req.body.intern_id}, function (err, one_detail) {
-          if (err){
-            console.log("something went wrong!!!")
-          }else{
-			  
-			  if(one_detail.length <1){
-				  console.log("please enter valid id")
-				  res.render("portal_intern/incorrect_info")
-			  }else{
-				    console.log(one_detail)
-			  var val = Math.floor(1000 + Math.random() * 9000);
-				  console.log(val);
-				  console.log(one_detail[0].Email)
-				  
-	var mailOptions = {
-  from: 'education4ol4@gmail.com',
-  to: one_detail[0].Email,
-  subject: 'OTP for Intern Portal',
-  text: 'Hi Intern'   +'\n Thankyou for  Using Intern portal . \n\n 1.OTP : ' + val  + '\n\n Good Luck ! with the Intern Portal , we hope you have an smooth Experience. \n\n Education4ol | Powered by UpClick Labs \n Company Details : www.education4ol.com \n Company Linkedin : https://www.linkedin.com/company/education-4-ol  '
-};
-				  
-				  
-transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-	res.render("portal_intern/dashboard_OTP",{otp:val , intern:req.body.intern_id})
-				  
-  }
-	
-});
-				  
-				  
-			 
-			  }
-             
-          
-          }
-});
-	
-	
-});
-   
-app.post("/intern_portal_otp", function(req, res){
-
-	console.log(req.body.intern_id)
-	console.log(req.body.pto)
-	console.log(req.body.intern_otp)
-	
-	if(req.body.intern_otp === req.body.pto){
-		console.log("success otp");
-		
-		
-			Interninfo_final.find({InternID : req.body.intern_id}, function (err, one_detail) {
-          if (err){
-            console.log("something went wrong!!!")
-          }else{
-			  
-			  
-			  
-			  
-			  
-			  
-			    res.render("portal_intern/dashboard_portal",{ intern:one_detail})
-		}
-});
-		
-}
-	
-	
-	
-});
 
 
 //intern-Activity-------------------------------------------------------------------------------------
@@ -406,36 +315,27 @@ res.render("user_Setting/show_user" ,{user_details:user_details})
 });
 
 
+//------------------------------------------------------payment
 
-app.get("/facebook", function(req, res){
-    res.render("facebook");
-});
-
-//handling user sign up
-app.post("/register", function(req, res){
-    req.body.username;
-    req.body.password
-
-console.log("hii audumber")
-
+app.get("/Payment", function(req, res){
 	
-
-
-    User.create({username: req.body.username  , password:req.body.password }, function (err, user){
-		console.log("reached here")
-        if(err) {
-
-            res.redirect("/register");
-        } else{
-			res.redirect("/facebook");
-		}
-
-
-    }) 
-
-
-
+  Interninfo_final.find({}, function (err, one_detail) {
+          if (err){
+            console.log("something went wrong!!!")
+          }else{
+      console.log(one_detail)
+			   res.render("ref1", {intern:one_detail});
+          
+          }
 });
+	
+});
+
+
+
+
+
+
 
 
 function isLoggedIn(req, res, next) { //next is the next thing that needs to be called.

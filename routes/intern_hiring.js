@@ -9,14 +9,39 @@ var express               = require("express"),
 
 var nodemailer = require('nodemailer');
 var flash = require("connect-flash");
-
 var multer  = require('multer');
 var cloudinary = require('cloudinary').v2; //media upload
 var Interninfo_final = require("../models/Interinfo");
-
+var date = require('date-and-time');
+var now = new Date();
+const pattern = date.compile('ddd, MMM DD YYYY');
 
 
 const router = express.Router();
+
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './public/tempfile')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname)
+    }
+})
+var upload = multer({ storage: storage })
+
+
+cloudinary.config({ 
+  cloud_name: 'education4ol', 
+  api_key: '438746385353451', 
+  api_secret: 'O9_8y7hKmkkUDo6-gqIO2lBg4zw' 
+});
+
+var fs = require('fs');
+
+
+
+
 
 
 
@@ -53,7 +78,7 @@ var mailOptions = {
   from: 'hr.education4ol@gmail.com',
   to: req.body.email,
   subject: 'Thank you for applying at Education4ol',
-  text: 'Dear ' +req.body.name+',\nWe appreciate your interest in internship at Education4ol.Thank you for giving us your valuable time.\n\nPlease cross verify your details given below for smooth interview and onboarding process \n\n Email : ' + req.body.email  +'\n Contact number : ' + req.body.contact + '\n\nOur HR team will soon be connecting with you for further process. \n\nRegards,\nEducation4ol \nPowered by UpClick Labs  \n\nWebsite: www.education4ol.com \nLinkedIn profile: https://www.linkedin.com/company/education-4-ol  '
+  text: 'Dear ' +req.body.name+',\nWe appreciate your interest in internship at Education4ol.Thank you for giving us your valuable time.\n\nPlease cross verify your details given below for smooth interview and onboarding process \n\n Email : ' + req.body.email  +'\n Contact number : ' + req.body.contact + '\n\nOur HR team will soon be connecting with you for further process. Please Keep an eye on Mails. \n\nRegards,\nEducation4ol \nPowered by UpClick Labs  \n\nWebsite: www.education4ol.in \nLinkedIn profile: https://www.linkedin.com/company/education-4-ol  '
 };
 	
 	
@@ -75,30 +100,76 @@ transporter.sendMail(mailOptions, function(error, info){
 	Task2_date:"",
 	Task3_date:"",
 	Task4_date:"" ,
-    profile_img:""}, function (err, small) {
+    profile_img:"",
+	}, function (err, small) {
      
       if (err){
         console.log("somthing went wrong!!")
       }
-res.render("Intern_Hiring/welcome");
+// res.render("Intern_Hiring/welcome" , {email:req.body.email});
+		res.render("portal_intern/uploadphoto" , {email:req.body.email});
     });
-	  
-		
-
-
-    // }) 
-	  
-  }
+}
 }); 
 	
-	
-	
-	
-	
-	
-		
-    
 });
+
+
+//---upload profile image--------------------------------------------------------------------------------
+
+router.get("/upload_image", function(req, res){
+	res.render("portal_intern/uploadimage");
+});
+
+
+router.post("/upload_image" ,upload.single('profile'), async function(req, res){
+	 
+	var filname = req.file.filename;
+	console.log(req.body.mail);
+	
+
+	// console.log(JSON.stringify(req.file))
+	var path = './public/tempfile/' + filname;
+	var audu = await cloudinary.uploader.upload(path, {
+              folder: 'profile pictures',
+              use_filename: true
+             } , function(error, result) {
+		
+		
+	     fs.readdirSync('./public/tempfile').forEach(file => {
+		 var path = './public/tempfile/' + filname;
+		 console.log(path);
+			 
+			 //responsible for deleting file
+		 fs.unlink(path, function(err){
+	    
+	if(err){
+		console.log("eroor in deleting");
+	}
+			 
+	});
+});
+	})
+	
+	console.log(audu);
+	
+	   Interninfo_final.updateMany({Email: req.body.mail }, {profile_img: audu.url }, function(err,result) {
+	if (err) {
+	console.log(err);
+	res.render("./assign_upload/not-welcome");
+	}
+		
+	res.render("Intern_Hiring/welcome");
+	});
+	//---------------------------------------------------------------------------
+
+	
+	
+
+  
+});
+
+
 
 
 
