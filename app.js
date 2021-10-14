@@ -13,6 +13,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var multer  = require('multer');
 var cloudinary = require('cloudinary').v2; //media upload
 var Interninfo_final = require("./models/Interinfo");
+var pay = require("./models/payment");
 var refral = require("./models/refral");
 
 
@@ -317,19 +318,46 @@ res.render("user_Setting/show_user" ,{user_details:user_details})
 
 //------------------------------------------------------payment
 
-app.get("/Payment", function(req, res){
+
+app.get("/payment_report" , function(req,res){
 	
-  Interninfo_final.find({}, function (err, one_detail) {
+	pay.find({},function(err,data){
+		res.render("ref1" , {payment:data});
+	})
+	
+	
+})
+
+
+
+app.get("/Payment_form", function(req, res){
+      res.render("payment_info")
+});
+
+
+
+app.post("/Payment", function(req, res){
+	
+	const inv = "INV"+req.body.internid;
+	
+	
+  pay.create({Invoice : inv ,name : req.body.name , Intern_id : req.body.internid ,Date : req.body.dt , mode : req.body.intern }, function (err, one_detail) {
           if (err){
             console.log("something went wrong!!!")
           }else{
       console.log(one_detail)
-			   res.render("ref1", {intern:one_detail});
+			   res.render("Intern_Hiring/welcome2");
           
           }
 });
 	
 });
+
+
+
+
+
+
 
 
 

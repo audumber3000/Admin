@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 
@@ -132,6 +132,78 @@ table {
     background-color: #f4f6fb;
   }
  
+	
+		
+		
+		
+		@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+}
+body1{
+  font-family: 'Poppins', sans-serif;
+  width:100vw;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.card1 {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+}
+
+.card1 .text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card1 .text img{
+    height: 170px;
+    border-radius: 50%;
+  margin-bottom:10px;
+}
+
+.card1 .text h3{
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.card1 .text p:nth-of-type(1){
+    color: rgb(35, 182, 219);
+    font-size: 15px;
+    margin-top: -5px;
+}
+
+.card1 .text p:nth-of-type(2){
+    margin: 10px;
+    width: 90%;
+    text-align: center;
+}
+
+.card1 .links{
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card1 .links i{
+    color: rgb(35, 182, 219);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.card1 .links i:hover{
+    color:rgb(29, 157, 189) ;
+}
+		
 		
 		
     </style>
@@ -188,7 +260,7 @@ table {
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a id="profile-tab" class="nav-link active" href="#profile" style="color:#5dcaf5;">
+                          <a id="profile-tab" class="nav-link" href="#profile" style="color:white;"  >
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                             <span class="ml-2">Interns Details</span>
                           </a>
@@ -200,9 +272,9 @@ table {
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#" style="color:white;">
+                          <a class="nav-link active" href="#" style="color:#5dcaf5;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-                            <span class="ml-2">Activities</span>
+                            <span class="ml-2">Payments</span>
                           </a>
                         </li>
                         <li class="nav-item">
@@ -246,70 +318,16 @@ table {
 				
 				
 				
-<!----------- modal----------------------------------- -->
-				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"><b><img src="https://img.icons8.com/ios-glyphs/20/000000/filter-and-sort.png"/> Filter Interns</b></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-		<form method="POST" action="/hrdashboard_Interndetail">
-      <div class="modal-body">
-		  
+<%= payment%>
 
-	
-	<div class="custom-control custom-radio">
-  <input type="radio" id="customRadio1" name="customRadio" value="June2021" class="custom-control-input">
-  <label class="custom-control-label" for="customRadio1">June 2021</label>
-</div>
-<div class="custom-control custom-radio">
-  <input type="radio" id="customRadio2" name="customRadio" value="July2021"  class="custom-control-input">
-  <label class="custom-control-label" for="customRadio2">July 2021</label>
-</div>
-		  <div class="custom-control custom-radio">
-  <input type="radio" id="customRadio3" name="customRadio" value="Aug2021" class="custom-control-input">
-  <label class="custom-control-label" for="customRadio3">Aug 2021</label>
-</div>
-<div class="custom-control custom-radio">
-  <input type="radio" id="customRadio4" name="customRadio" value="Sep2021" class="custom-control-input">
-  <label class="custom-control-label" for="customRadio4">Sep 2021</label>
-</div>
-		  <div class="custom-control custom-radio">
-  <input type="radio" id="customRadio4" name="customRadio" value="Nov2021" class="custom-control-input">
-  <label class="custom-control-label" for="customRadio4">Nov 2021</label>
-</div>
-		  <div class="custom-control custom-radio">
-  <input type="radio" id="customRadio4" name="customRadio" value="Dec2021"  class="custom-control-input">
-  <label class="custom-control-label" for="customRadio4">Dec 2021</label>
-</div>
-	
-	
-		  	  
- 
-		  
-      </div>
-		
-		
-		
-      <!-- <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Filter</button>
-      </div> -->
-		  </form>	
-    </div>
-  </div>
-</div>
 				
 				<div class="row">
   <div class="col">
 	<div class="card" style="background:#999999">
       <div class="card-body" style="color:white">
-        <h6 class="card-title">MONTHLY INTERN <img style="float:right" src="https://img.icons8.com/material/48/FFFFFF/student-female--v1.png"/> </h6>
+        <h6 class="card-title">MONTHLY INTERN<img style="float:right" src="https://img.icons8.com/material/48/FFFFFF/student-female--v1.png"/> </h6>
  <h4>
-	23
+	<%=payment.length   %>
 		  </h4>
 		  <div style="width: auto;
   height: 1px;
@@ -325,7 +343,7 @@ table {
       <div class="card-body" style="color:white">
         <h6 class="card-title">MONTHLY REVENUE <img style="float:right" src="https://img.icons8.com/material-outlined/48/FFFFFF/money-bag-rupee.png"/> </h6>
          <h4>
-			₹ 2000
+			₹ <%=payment.length * 200  %>
 		  </h4>
 		  <div style="width: auto;
   height: 1px;
@@ -341,7 +359,7 @@ table {
       <div class="card-body" style="color:white">
         <h6 class="card-title">TOTAL INTERNS <img style="float:right" src="https://img.icons8.com/material/48/FFFFFF/student-female--v1.png"/></h6>
  <h4>
-			 89
+			 <%=payment.length  %>
 		  </h4>
 		  <div style="width: auto;
   height: 1px;
@@ -357,7 +375,7 @@ table {
       <div class="card-body" style="color:white">
         <h6 class="card-title">TOTAL REVENUE  <img style="float:right" src="https://img.icons8.com/material/48/FFFFFF/money-bag-rupee.png"/></h6>
         <h4>
-			₹ 15390
+			₹ <%=payment.length * 200  %>
 		  </h4>
 		    <div style="width: auto;
   height: 1px;
@@ -375,69 +393,158 @@ table {
 			
 				
 				
+		<div style = "overflow: auto;">
+			
 				
 				
-		<table>
+		<table >
 	<thead>
 		<tr>
 			<th>Invoice No.</th>
 			<th>Name</th>
 			<th>Date Of payment</th>
+			<th>Payment Method</th>
 			<th>Status</th>
 
 		</tr>
 	</thead>
  
-<tr> <td><a href="#">INV1001</a></td>
+			
+			
+			
+			
+		
+			
+<tr> <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" >INV10011</a></td>
         <td>Paragon</td>
         <td>1/5/2021</td>
+	<td>Phone pe</td>
         <td>
           <p class="status status-unpaid">Unpaid</p>
         </td>
 
       </tr>
+		
+			
+			<% for(var i = 0 ; i <payment.length ; i++ ){ %>
+			
+	<tr> <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" ><%= payment[i].Invoice %></a></td>
+        <td><%= payment[i].name %></td>
+        <td><%= payment[i].Date %></td>
+		<%if(payment[i].mode == "gpay"){%>
+		
+		   <td><img style="height:40px ; width:90px " src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvmYMJ_uYvXnK3j0O9_lluoADHRUg8-8OZ5Vk-USE6cGwUA9ofznfIm5gu87OmiRR3dbg&usqp=CAU"</td>
+			   
+		<%}else if(payment[i].mode == "phonepe"){%>
+		
+		  <td ><img style="height:40px ; width:90px "src="https://image4.owler.com/logo/phonepe_owler_20200323_231011_original.png"></td>
+		
+		<%}else if(payment[i].mode  ==  "paytm"){%>
+		
+		<td><img style="height:40px ; width:90px " src="https://content.timesjobs.com/photo/76439597/people-movement/paytm-sets-up-its-biggest-campus-in-noida-plans-similar-expansion-in-bengaluru-to-accommodate-its-growing-teams.jpg"></td>
+		
+		<%}else if(payment[i].mode = "card"){%>
+		  <td> <img style="height:40px ; width:90px " src="https://rc7news.com/wp-content/uploads/2019/04/visa-classic-min.png"> </td>
+		
+		<%}else if(payment[i].mode  = "bank"){%>
+		 <td>Bank</td>
+		
+		<%}%>
 
+        <td>
+              <p class="status status-paid">Paid <span class="badge rounded-pill bg-success">₹ 200/-</span> </p>
+        </td>
+
+      </tr>
+							 
+											 
+		<%}%>
+			
+			
+
+			
+			
+			
+			
+			
 	    
-      <tr>
-        <td><a href="#">INV1002</a></td>
-        <td>Sonic</td>
-        <td>1/4/2021</td>
-        <td>
-          <p class="status status-paid">Paid</p>
-        </td>
-
-      </tr>
-      <tr>
-        <td><a href="#">INV1003</a></td>
-        <td>Innercircle</td>
-        <td>1/2/2021</td>
-        <td>
-          <p class="status status-pending">Pending</p>
-        </td>
-
-      </tr>
-      <tr>
-        <td><a href="#">INV1004</a></td>
-        <td>Varsity Plus</td>
-        <td>12/30/2020</td>
-        <td>
-          <p class="status status-pending">Pending</p>
-        </td>
-
-      </tr>
-      <tr>
-        <td><a href="#">INV1005</a></td>
-        <td>Highlander</td>
-        <td>12/18/2020</td>
-        <td>
-          <p class="status status-paid">Paid</p>
-        </td>
-
-      </tr>
+     
 </tr>
 
 </table>
+			
+	
+	
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      
+		   <div class="card1">
+            <div class="text">
+                <img src="https://www.shareicon.net/data/512x512/2016/09/15/829452_user_512x512.png" alt="">
+                <h3>Jane Smith</h3>
+                <p>Student | Coder</p>
+               
+	
+
 				
+				
+            </div>
+            <div class="links">
+                <a target="_blank" href="https://codepen.io/l-e-e/"><i class="fab fa-codepen"></i></a>
+                <a target="_blank" href="https://github.com/Leena26"><i class="fab fa-github"></i></a>
+                <a target="_blank" href="https://www.youtube.com/channel/UCPOyUi82bRcPTdpDuSHVNbw"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+		  
+	<table class="table table-borderless">
+    <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"></th>
+     
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    
+      <td style="text-align:center">Dummy Name</td>
+      <td style="text-align:center">Under Development</td>
+     
+    </tr>
+    <tr>
+     
+   <td style="text-align:center">Dummy Name</td>
+      <td style="text-align:center">Under Development</td>
+    </tr>
+    <tr>
+  <td style="text-align:center">Dummy Name</td>
+      <td style="text-align:center">Under Development</td>
+    </tr>
+  </tbody>
+</table>
+		  
+		  
+		  
+		  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>		
+
 				
 
 
