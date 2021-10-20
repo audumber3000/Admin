@@ -1,19 +1,7 @@
-
-		
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
-		<meta name="viewport" content="width=device-width,initial-scale=1"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1"/>
 	<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 
 	 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
@@ -130,7 +118,7 @@ input[type=button], input[type=submit], input[type=reset]  {
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: green;
+  background-color: #39ace7;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -316,7 +304,7 @@ input[type=text]:placeholder {
   color: #EE4E44;
 }
 
-.button {
+	.button {
   background-color: #5fbae9; /* Green */
 	border-radius: 10px;
   border: none;
@@ -337,7 +325,7 @@ input[type=text]:placeholder {
 
 .button1 {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}	
+}
 
 /****** CODE ******/
 
@@ -356,7 +344,7 @@ input[type=text]:placeholder {
 .file-upload .file-select.file-select-disabled:hover .file-select-name{line-height:40px;display:inline-block;padding:0 10px;}
 	</style>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<title>Profile Upload | Education4ol</title>
+	<title>Thankyou | Education4ol</title>
 </head>
 <body>
 	
@@ -364,48 +352,39 @@ input[type=text]:placeholder {
 	<div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
-    <h2 class="active" style="color:green"> <b>Upload Cool Profile</b> </h2>
+    <h2 class="active" style="color:green"> Thank-you Intern </h2>
    
 
     <!-- Icon -->
     <div class="fadeIn first">
-		<img src="https://img.icons8.com/color/240/000000/user-male-circle--v1.png" id="icon" alt="User Icon"/>
-	
+		<img src="https://img.icons8.com/color/240/000000/approval--v3.png" id="icon" alt="User Icon"/>
+	<img />
       <!-- <img src="https://img.icons8.com/cotton/2x/search--v2.png" id="icon" alt="User Icon" /> -->
     </div>
 
     <!-- Login Form -->
-    <form  action="/upload_image1"  method="post" enctype="multipart/form-data">
-	
+    <!-- <form  action="#"  method="post" enctype="multipart/form-data"> -->
 		
-		<div style="display: inline-block;">
- 
-		
-		
-		</div>
 <div class="file-upload" style="margin:20px">
-  <div class="file-select">
-    <div class="file-select-button" id="fileName">Choose File</div>
-    <div class="file-select-name" id="noFile">choose coolest pic...</div> 
-    <input type="file" name="profile" id="chooseFile" required>
-  </div>
+ 
+    <p style="font-size: 30px;">
+		Thankyou ! Profile picture uploaded successfully.
+	  </p>
+	
+	<p style="color:red ; font-size: 16px;">
+		Great to see you as Education4ol's Intern !
+	</p>
+
 </div>
 		
 	
  
 
-		
-      <input type="text" id="login" class="fadeIn second" name="internid" placeholder="Intern ID" required>
+<!-- 		
+      <input type="text" id="login" class="fadeIn second" name="internid" placeholder="Intern ID"> -->
+      <button class="button button1" ><a href='https://www.education4ol.in' alt='Broken Link' style="color:white">Continue</a></button>
       
-      
-		
-			<!-- <input type="submit" class="fadeIn fourth" > -->
-<div style="margin-top : 10px; margin-bottom:20px">
-		<button class="button button1" type="submit" >Upload profile</button>
-		</div>		
-
-	
-    </form>
+    <!-- </form> -->
 
     <!-- Remind Passowrd -->
     <div id="formFooter">

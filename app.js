@@ -358,7 +358,9 @@ app.post("/Payment", function(req, res){
 
 
 
-
+app.get("/shutdown", function(req, res){
+  process.exit();
+});
 
 
 
