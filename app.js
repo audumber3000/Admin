@@ -88,6 +88,12 @@ app.use("/" , hrdashboard_hiring);
 const auth_hiring = require('./routes/authentication');
 app.use("/" , auth_hiring);
 
+const communication = require('./routes/communication');
+app.use("/" , communication);
+
+const email = require('./routes/email_templating');
+app.use("/" , email);
+
 //show sign up form
 app.get("/instagram", function(req, res){
 

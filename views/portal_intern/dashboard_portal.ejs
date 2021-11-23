@@ -191,7 +191,7 @@ he/she will be withdrawn from the internship programme immediately.</p></li>
                               <h5 class="card-title">Details</h5>
 								
 								
-							<%	if(intern[0].Task1 == "Yes"){  %>
+							<%	if(intern[0].Task1 != "No"){  %>
 									<p class="card-text" style="color:green">Task 1 : <b>Submitted</b> </p>
 									<%}else{ %>
 									<p class="card-text" >Task 1 : <b>Not Submitted</b> </p>
@@ -199,21 +199,21 @@ he/she will be withdrawn from the internship programme immediately.</p></li>
 									<%} %>
 								
 								
-								<%	if(intern[0].Task2 === "Yes"){  %>
+								<%	if(intern[0].Task2 != "No"){  %>
 									<p class="card-text" style="color:green">Task 2 : <b>Submitted</b> </p>
 									<%}else{ %>
 									
 									<p class="card-text" >Task 2 : <b>Not Submitted</b> </p>
 									<%} %>
 								
-								<%	if(intern[0].Task3 === "Yes"){  %>
+								<%	if(intern[0].Task3 != "No"){  %>
 									<p class="card-text" style="color:green">Task 3 : <b>Submitted</b> </p>
 									<%}else{ %>
 									<p class="card-text" >Task 3 : <b>Not Submitted</b> </p>
 									
 									<%} %>
 								
-								<%	if(intern[0].Task4 === "Yes"){  %>
+								<%	if(intern[0].Task4 =! "No"){  %>
 									<p class="card-text" style="color:green">Task 4 : <b>Submitted</b> </p>
 									<%}else{ %>
 									<p class="card-text" >Task 4 : <b>Not Submitted</b> </p>
@@ -280,31 +280,31 @@ he/she will be withdrawn from the internship programme immediately.</p></li>
                                             <th scope="row">17371705</th>
                                             <td>Task 1</td>
 											 
-                                            <td>2 days</td>
-                                             <td><%=intern[0].Task1_date%></td>
-                                            <td><a href="https://dashboard-education4ol.herokuapp.com/upload_assignment1" class="btn btn-sm btn-primary">Submit</a></td>
+                                            <td>10 Days</td>
+                                             <td>NA</td>
+                                            <td><a href="https://dashboard-education4ol.herokuapp.com/upload_assignment" class="btn btn-sm btn-primary">Submit</a></td>
                                           </tr>
                                           <tr>
                                             <th scope="row">17370540</th>
                                             <td>Task 2</td>
-                                            <td>1 month</td>
-                                           <td><%=intern[0].Task2_date%></td>
+                                            <td>12 Days</td>
+                                           <td>NA</td>
                                             <td><a href="https://dashboard-education4ol.herokuapp.com/upload_assignment" class="btn btn-sm btn-primary">Submit</a></td>
                                           </tr>
                                           <tr>
                                             <th scope="row">17371705</th>
                                             <td>Task 3</td>
-                                            <td>1 month</td>
-                                            <td><%=intern[0].Task3_date%></td>
+                                            <td>15 Days</td>
+                                            <td>NA</td>
                                             <td><a href="https://dashboard-education4ol.herokuapp.com/upload_assignment" class="btn btn-sm btn-primary">Submit</a></td>
                                           </tr>
 											
                                          <tr>
 										<th scope="row">19375705</th>
                                             <td>Task 4</td>
-                                            <td>2 days</td>
-                                             <td><%=intern[0].Task4_date%></td>
-                                            <td><a href="https://dashboard-education4ol.herokuapp.com/upload_assignment1" class="btn btn-sm btn-primary">Submit</a></td>
+                                            <td>12 days</td>
+                                             <td>NA</td>
+                                            <td><a href="https://dashboard-education4ol.herokuapp.com/upload_assignment" class="btn btn-sm btn-primary">Submit</a></td>
                                           </tr>
                                           
                                           

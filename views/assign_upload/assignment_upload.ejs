@@ -375,31 +375,40 @@ input[type=text]:placeholder {
     </div>
 
     <!-- Login Form -->
-    <form  action="/upload_assignment"  method="post" enctype="multipart/form-data">
+    <form  action="/upload_assignment"  method="post">
 	
 		
 		<div style="display: inline-block;">
+
+  <input type="radio" id="male" value="Task1" name="task">
+  <label for="male">Task 1</label>
+
   <input type="radio" id="male" value="Task2" name="task">
   <label for="male">Task 2</label>
 
   <input type="radio" id="female" value="Task3" name="task">
   <label for="female">Task 3</label>
+
+  <input type="radio" id="male" value="Task4" name="task">
+  <label for="male">Task 4</label>
+
+
 		
 		
 		</div>
 <div class="file-upload" style="margin:20px">
-  <div class="file-select">
-    <div class="file-select-button" id="fileName">Choose File</div>
-    <div class="file-select-name" id="noFile">No file chosen...</div> 
-    <input type="file" name="profile" id="chooseFile" required>
-  </div>
-</div>
+ 
+    <input type="text" id="login" class="fadeIn second" name="link" placeholder="GitHub Link" required>
 		
+    <input type="text" id="login" class="fadeIn second" name="internid" placeholder="Intern ID" required>
+
+ 
+</div>
+
 	
  
 
 		
-      <input type="text" id="login" class="fadeIn second" name="internid" placeholder="Intern ID" required>
       
       
 		

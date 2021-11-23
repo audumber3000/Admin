@@ -60,12 +60,12 @@ router.get("/upsu", function(req, res){
 });
 
 //assignment 1 and 4
-router.post("/upload_assignment1" , function(req, res){
+router.post("/upload_assignment" , function(req, res){
 	 
 	
 	console.log(req.body.internid);
 	console.log(req.body.link);
-	console.log(req.body.task);
+	
 	
 	
   
@@ -74,7 +74,7 @@ router.post("/upload_assignment1" , function(req, res){
 
 
      if(req.body.task === "Task1"){
-	Interninfo_final.updateMany({InternID: req.body.internid }, {Task1: "Yes" , Task1_link:req.body.link ,Task1_date:date.format(now, pattern) }, function(err,result) {
+	Interninfo_final.updateMany({InternID: req.body.internid }, {Task1:req.body.link,Task1_date:date.format(now, pattern) }, function(err,result) {
     if (err) {
           console.log(err);
     }
@@ -84,17 +84,43 @@ router.post("/upload_assignment1" , function(req, res){
 	}
 	
 	
-	else if(req.body.task === "Task4"){
+	else if(req.body.task === "Task2"){
 				 
-   Interninfo_final.updateMany({InternID: req.body.internid }, {Task4: "Yes" ,Task4_link:req.body.link,Task4_date:date.format(now, pattern) }, function(err,result) {
+   Interninfo_final.updateMany({InternID: req.body.internid }, {Task2: req.body.link ,Task2_date:date.format(now, pattern) }, function(err,result) {
     if (err) {
     console.log(err)
     }
-		console.log(result);
+    console.log(result);
 	   res.render("./assign_upload/welcome");
    });
 				 
 	}	
+
+  else if(req.body.task === "Task3"){
+
+    Interninfo_final.updateMany({InternID: req.body.internid }, {Task3: req.body.link ,Task3_date:date.format(now, pattern) }, function(err,result) {
+      if (err) {
+      console.log(err)
+      }
+      console.log(result);
+       res.render("./assign_upload/welcome");
+     });
+
+
+  }
+  else if(req.body.task === "Task4"){
+    Interninfo_final.updateMany({InternID: req.body.internid }, {Task4: req.body.link ,Task4_date:date.format(now, pattern) }, function(err,result) {
+      if (err) {
+      console.log(err)
+      }
+      console.log(result);
+       res.render("./assign_upload/welcome");
+     });
+
+    
+  }
+
+
 });
 
 
