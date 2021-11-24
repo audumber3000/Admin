@@ -79,8 +79,8 @@ router.get("/logout", (req, res) => {
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'education4ol4@gmail.com',
-    pass: 'Audumber@3000'
+    user: 'notification.education4ol@gmail.com',
+    pass: 'Ramdas@3000'
   }
 });
 
@@ -101,10 +101,11 @@ router.post("/intern_portal", function(req, res){     //Sending OTP
 				  console.log(one_detail[0].Email)
 				  
 	var mailOptions = {
-  from: 'education4ol4@gmail.com',
+  from: 'notification.education4ol@gmail.com',
   to: one_detail[0].Email,
   subject: 'OTP for Intern Portal',
   text: 'Hi Intern'   +'\nThankyou for Using Intern portal . \n\n 1.OTP : ' + val  + '\n\n Good Luck ! with the Intern Portal , we hope you have an smooth Experience. \n\n Education4ol | Powered by UpClick Labs \n Company Details : www.education4ol.com \n Company Linkedin : https://www.linkedin.com/company/education-4-ol  '
+  // html:'<html> <body> <h1>Audumber chaudhari</h1> </body>   </html>'
 };
 				  
 				  
