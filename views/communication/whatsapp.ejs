@@ -16,7 +16,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
-    <style>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+   
+   <style>
       body {
  background-image: url("https://i.pinimg.com/600x315/8c/98/99/8c98994518b575bfd8c949e91d20548b.jpg");
  background-color: #cccccc;
@@ -427,7 +429,7 @@ button:last-child{
 
 <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-	<p><%= found%></p>
+	<!-- <p><%= found%></p> -->
 		<!-- Section One -------------------------------------------------------   -->
     <div class="wrapper">
       <div style= "text-align: center; font-size: 30px; " class="label">Connecting your Interns...</div>
@@ -462,39 +464,54 @@ button:last-child{
     <!-- <form autocomplete="off" action="/gettoll"  method="POST"> -->
     
     <!-- </form> -->
-    <!-- <div class="row row-cols-1 row-cols-md-3 g-4">  -->
-    <div class='crd'> 
-      <section class="top-card">
-        <img src="https://1.bp.blogspot.com/-aEW05JvCxz0/YTTfWHEtbjI/AAAAAAAACdc/ePAQ9O9moIsa3aEDexcBPguNRCT69mJLgCNcBGAsYHQ/s16000/user.jpg" alt="user picture">
-        <div class="menu-icon">
-          <div class="menu item1"><i class="fas fa-heart"></i></div>
-          <div class="menu item2"><i class="fas fa-bars"></i></div>
-        </div>
-  
-      </section>
-  
-      <section class="middle-card">
-        <h1>Anita Mondol</h1>
-        <p> 
+    <div class="row row-cols-1 row-cols-md-3 g-4"> 
 
-          
-        </p>
-      </section>
-  
-      <footer>
-        <h1>Contact</h1>
-        <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="social-icon google"><i class="fab fa-google"></i></a>
-        <a href="#" class="social-icon github"><i class="fab fa-github"></i></a>
-        <a href="#" class="social-icon linkedin"><i class="fab fa-linkedin"></i></a>
-  
-        <section class="links">
-  <button>Contact me</button>
-  <button>Hire Me</button>
-        </section>
-      </footer>
-    </div>
+      <%for(var i = 0 ; i < found.length ; i++){%>
+
+        <div class='crd'>
+          <section class="top-card">
+            <img class="card-img-top" src= <%= found[i].profile_img %> alt="user picture" >
+            <div class="menu-icon">
+              <div class="menu item1"><i class="fas fa-heart"></i></div>
+              <div class="menu item2"><i class="fas fa-bars"></i></div>
+            </div>
+      
+          </section>
+      
+          <section class="middle-card">
+            <h4><%=found[i].Name%></h4>
+            <ul>
+              
+              <li><b>Contact:</b>  <%=found[i].Contact%></li>
+              <li><b>Email:</b> <%=found[i].Email%></li>
+              <li><b>Internship:</b> <%=found[i].Internship%> </li>
+              <li><b>Skills:</b> <%=found[i].Skills%> </li>
+              <li><b>College:</b> <%=found[i].CollegeName%></li>
+              <li><b>City:</b> <%=found[i].Email%> </li>
+              <li><b>State:</b> <%=found[i].CollegeState%> </li>
+              <li><b>Passout Year:</b> <%=found[i].Year%> </li>
+              
+              
+            </ul>
+          </section>
+      
+          <footer>
+            
+            <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon google"><i class="fab fa-google"></i></a>
+            <a href="#" class="social-icon github"><i class="fab fa-github"></i></a>
+            <a href= "#" class="social-icon linkedin"><i class="fab fa-linkedin"></i></a>
+      
+            <section class="links">
+      <button>Contact me</button>
+      <button>Hire Me</button>
+            </section>
+          </footer>
+        </div>
+
+      <%}%>
+   
 
     
 
@@ -508,7 +525,7 @@ button:last-child{
    
   </div>
 	
-	<!-- </div> -->
+	</div>
 	
 	<!-- Section Two -------------------------------------------------------   -->
 	

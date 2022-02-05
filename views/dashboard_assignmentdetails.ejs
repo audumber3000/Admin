@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 
@@ -59,9 +62,229 @@
   border-radius: 50%;
   display: inline-block;
 }
+
+
+
+p {
+  color: #b3b3b3;
+  font-weight: 300; }
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
+
+a {
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease; }
+  a, a:hover {
+    text-decoration: none !important; }
+
+.content {
+  color: #2e2e36; }
+
+h2 {
+  font-size: 20px;
+  color: black; }
+
+.custom-table {
+  min-width: 900px; }
+  .custom-table thead tr, .custom-table thead th {
+    border-top: none;
+    border-bottom: none !important;
+    color: #fff; }
+  .custom-table tbody th, .custom-table tbody td {
+    color: #777;
+    font-weight: 400;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    font-weight: 300; }
+    .custom-table tbody th small, .custom-table tbody td small {
+      color: #b3b3b3;
+      font-weight: 300; }
+  .custom-table tbody tr:not(.spacer) {
+    border-radius: 7px;
+    overflow: hidden;
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease; }
+    .custom-table tbody tr:not(.spacer):hover {
+      -webkit-box-shadow: 0 2px 10px -5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 10px -5px rgba(0, 0, 0, 0.1); }
+  .custom-table tbody tr th, .custom-table tbody tr td {
+    background: white;
+    border: none;
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease; }
+    .custom-table tbody tr th a, .custom-table tbody tr td a {
+      color: #b3b3b3; }
+    .custom-table tbody tr th:first-child, .custom-table tbody tr td:first-child {
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px; }
+    .custom-table tbody tr th:last-child, .custom-table tbody tr td:last-child {
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px; }
+  .custom-table tbody tr.spacer td {
+    padding: 0 !important;
+    height: 3px;
+    border-radius: 0 !important;
+    background: transparent !important; }
+  .custom-table tbody tr.active th, .custom-table tbody tr.active td, .custom-table tbody tr:hover th, .custom-table tbody tr:hover td {
+    color: #fff;
+    background: #2e2e36; }
+    .custom-table tbody tr.active th a, .custom-table tbody tr.active td a, .custom-table tbody tr:hover th a, .custom-table tbody tr:hover td a {
+      color: #fff; }
+
+/* Custom Checkbox */
+.control {
+  display: block;
+  position: relative;
+  margin-bottom: 25px;
+  cursor: pointer;
+  font-size: 18px; }
+
+.control input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0; }
+
+.control__indicator {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 20px;
+
+  width: 20px;
+  border-radius: 4px;
+  border: 2px solid #3f3f47;
+  background: transparent; }
+
+.control--radio .control__indicator {
+  border-radius: 50%; }
+
+.control:hover input ~ .control__indicator,
+.control input:focus ~ .control__indicator {
+  border: 2px solid #007bff; }
+
+.control input:checked ~ .control__indicator {
+  border: 2px solid #007bff;
+  background: #007bff; }
+
+.control input:disabled ~ .control__indicator {
+  background: #e6e6e6;
+  opacity: 0.6;
+  pointer-events: none;
+  border: 2px solid #ccc; }
+
+.control__indicator:after {
+  font-family: 'icomoon';
+  content: '\e5ca';
+  position: absolute;
+  display: none; }
+
+.control input:checked ~ .control__indicator:after {
+  display: block;
+  color: #fff; }
+
+.control--checkbox .control__indicator:after {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -52%);
+  -ms-transform: translate(-50%, -52%);
+  transform: translate(-50%, -52%); }
+
+.control--checkbox input:disabled ~ .control__indicator:after {
+  border-color: #7b7b7b; }
+
+.control--checkbox input:disabled:checked ~ .control__indicator {
+  background-color: #007bff;
+  opacity: .2;
+  border: 2px solid #007bff; }
+
+
+
+
+
+  *, *:before, *:after {
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
+.nav__menu ul {
+  width: 100%;
+  margin-top: 2.5rem;
+  margin-right: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-end;
+}
+
+.nav__menu li {
+  margin-left: 0.5rem;
+}
+
+.nav__menu li:hover,
+.nav__menu li:focus {
+  cursor: pointer;
+  color: white;
+}
+
+.nav__menu a {
+
+  padding: .5rem 1.5rem;
+  font-family: 'Lobster', cursive;
+  font-size: 1.125rem;
+  color: #d2f4e1
+}
+
+.nav__menu a:hover,
+.nav__menu a:focus {
+  color: #6b3e26;
+}
+
+.cont {
+  display: flex;
+  align-items: stretch;
+}
+
+.main1 {
+ 
+  width: 80%;
+  /* padding: 2rem 3.5rem; */
+}
+
+
+/* second page css */
+.side {
+  background: #D8D8D8;
+  width: 20%;
+  flex-basis: auto;
+  min-height: calc(100vh - 10.5rem);
+  min-width: 11.25rem;
+
+  border-radius:3px ;
+  
+  
+}
+
+
+
+  body{
+			 background-color:#F8F8F8;
+		}
     </style>
 </head>
-<body>
+<body >
     <nav class="navbar navbar-light .bg-dark.bg-gradient p-3">
         <div class="d-flex col-12 col-md-3 col-lg-2 mb-2 mb-lg-0 flex-wrap flex-md-nowrap justify-content-between">
             <a class="navbar-brand" href="#">
@@ -200,170 +423,327 @@
 	
 
 		<!-- Section One -------------------------------------------------------   -->
-	
-	<table class="table">
-  <thead class="thead-dark">
-    <tr style="background-color:black ">
-      <th style="color:white" scope="col">Intern ID</th>
-      <th style="color:white" scope="col">Name</th>
-		<th style="color:white" scope="col">Department</th>
-      <th style="color:white" scope="col">Contact</th>
-      <th style="color:white" scope="col">Assignment</th>
-    </tr>
-  </thead>
-  <tbody>
-	  
-	   <% for(var i=0;i<intern.length;i++){ %>
+    <div class="content">
+    
+    
+          
+    
+          <div class="table-responsive custom-table-responsive">
+    
+            <table class="table custom-table">
+              <thead>
+                <tr style="color:black">  
+    
+                  <th scope="col">
+                    <label class="control control--checkbox">
+                      <div class="control__indicator"></div>
+                    </label>
+                  </th>
+                  
+                  <th style="color: black;" scope="col">InternID</th>
+                  <th style="color: black;" scope="col">Name</th>
+                  <th style="color: black;" scope="col">Assignment Details</th>
+                  <th style="color: black;" scope="col">Contact</th>
+                  <th  style="color: black;" scope="col">Education</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for(var i = 0 ; i<intern.length ; i++){%>
+                <tr scope="row">
+                  <th scope="row">
+                    <label class="control control--checkbox">
+                      <input type="checkbox"/>
+                      <div class="control__indicator"></div>
+                    </label>
+                  </th>
+                  <td>
+                    <%=intern[i].InternID%>
+                  </td>
+                  <td><a href="#"><%=intern[i].Name%></a></td>
+                  <td>
+                    <%=intern[i].Internship%>
+                    <small class="d-block">JA1234 : <a>https://audumber.com</a> <span class="badge badge-pill badge-primary">Primary</span> </small> 
+                    <small class="d-block">JA1234 : https://audumber.com</small>
+                   
+                  </td>
+                  <td><%=intern[i].Contact%></td>
+                  <td>
+                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                      <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <button type="button" class="btn btn-primary">1</button>
+                        <button type="button" class="btn btn-success">2</button>
+                       
+                        <form>
+                          <button type="button" class="btn btn-info"><img src="https://img.icons8.com/ios-filled/25/FFFFFF/feedback.png"/></button>
+                        </form>
+                       
+                       <form>
+                        <button type="button" class="btn btn-danger"><img src="https://img.icons8.com/ios-glyphs/25/FFFFFF/add-reminder.png"/></button>
+                      </form>
 
-<% if(intern[i].Accepted === 'Yes' && intern[i].Selected === 'Yes' && intern[i].Completed === 'No' && intern[i].Rejected === 'No'){ %>
-    <tr>
-      <th scope="row"><%= intern[i].InternID %></th>
-      <td><%= intern[i].Name %></td>
-		   <td><%= intern[i].Internship %></td>
-      <td><%= intern[i].Contact %></td>
-      <td>
-		  <% if(intern[i].Task1 === 'Yes' ){ %>
-		  <span style="background-color: green" class="dot"></span>
-		  <% } else{ %> 
-		  <span  class="dot"></span>
-	  <%}%>
-		  
-		    <% if(intern[i].Task2 === 'Yes' ){ %>
-		  <span style="background-color: green" class="dot"></span>
-		  <% } else{ %> 
-		  <span  class="dot"></span>
-	  <%}%>
-		  
-		    <% if(intern[i].Task3 === 'Yes' ){ %>
-		  <span style="background-color: green" class="dot"></span>
-		  <% } else{ %> 
-		  <span  class="dot"></span>
-	  <%}%>
-		  
-		    <% if(intern[i].Task4 === 'Yes' ){ %>
-		  <span style="background-color: green" class="dot"></span>
-		  <% } else{ %> 
-		  <span  class="dot"></span>
-	  <%}%>
-		  
-	
-		  
-	
-		  
-		  </td>
-    </tr>
-  <%}%>
-	  <%}%>
-  </tbody>
-</table>
+                      </div>
+                      
+                    </div>
+                  </td>
+                </tr>
+                <tr class="spacer"><td colspan="100"></td></tr>
+               <%}%>
 
 
-	
-	
-	</div>
+                <tr>
+                  <th scope="row">
+                    <label class="control control--checkbox">
+                      <input type="checkbox"/>
+                      <div class="control__indicator"></div>
+                    </label>
+                  </th>
+                  
+                  <td>4616</td>
+                  <td><a href="#">Matthew Wasil</a></td>
+                  <td>
+                    Graphic Designer
+                    <small class="d-block">Far far away, behind the word mountains</small>
+                  </td>
+                  <td>+02 020 3994 929</td>
+                  <td>London College</td>
+                </tr>
+                <tr class="spacer"><td colspan="100"></td></tr>
+                <tr>
+                  <th scope="row">
+                    <label class="control control--checkbox">
+                      <input type="checkbox"/>
+                      <div class="control__indicator"></div>
+                    </label>
+                  </th>
+                  
+                  <td>9841</td>
+                  <td><a href="#">Sampson Murphy</a></td>
+                  <td>
+                    Mobile Dev
+                    <small class="d-block">Far far away, behind the word mountains</small>
+                  </td>
+                  <td>+01 352 1125 0192</td>
+                  <td>Senior High</td>
+                </tr>
+                <tr class="spacer"><td colspan="100"></td></tr>
+                <tr>
+                  <th scope="row">
+                    <label class="control control--checkbox">
+                      <input type="checkbox"/>
+                      <div class="control__indicator"></div>
+                    </label>
+                  </th>
+                  
+                  <td>9548</td>
+                  <td><a href="#">Gaspar Semenov</a></td>
+                  <td>
+                    Illustrator
+                    <small class="d-block">Far far away, behind the word mountains</small>
+                  </td>
+                  <td>+92 020 3994 929</td>
+                  <td>College</td>
+                </tr>
+                <tr class="spacer"><td colspan="100"></td></tr>
+                <tr>
+                  <th scope="row">
+                    <label class="control control--checkbox">
+                      <input type="checkbox"/>
+                      <div class="control__indicator"></div>
+                    </label>
+                  </th>
+                  
+                  <td>4616</td>
+                  <td><a href="#">Matthew Wasil</a></td>
+                  <td>
+                    Graphic Designer
+                    <small class="d-block">Far far away, behind the word mountains</small>
+                  </td>
+                  <td>+02 020 3994 929</td>
+                  <td>London College</td>
+                </tr>
+                <tr class="spacer"><td colspan="100"></td></tr>
+                <tr>
+                  <th scope="row">
+                    <label class="control control--checkbox">
+                      <input type="checkbox"/>
+                      <div class="control__indicator"></div>
+                    </label>
+                  </th>
+                  
+                  <td>9841</td>
+                  <td><a href="#">Sampson Murphy</a></td>
+                  <td>
+                    Mobile Dev
+                    <small class="d-block">Far far away, behind the word mountains</small>
+                  </td>
+                  <td>+01 352 1125 0192</td>
+                  <td>Senior High</td>
+                </tr>
+                <tr class="spacer"><td colspan="100"></td></tr>
+                <tr>
+                  <th scope="row">
+                    <label class="control control--checkbox">
+                      <input type="checkbox"/>
+                      <div class="control__indicator"></div>
+                    </label>
+                  </th>
+                  
+                  <td>9548</td>
+                  <td><a href="#">Gaspar Semenov</a></td>
+                  <td>
+                    Illustrator
+                    <small class="d-block">Far far away, behind the word mountains</small>
+                  </td>
+                  <td>+92 020 3994 929</td>
+                  <td>College</td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+    
+    
+        </div>
+    
+      </div>
+
+
+
 	
 	<!-- Section Two -------------------------------------------------------   -->
 	
   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 	  
-	  <div class="card  text-white bg-success" style="margin-bottom:10px">
-  <div class="card-header text-center" style="color:red ">
-    *From Here you can send important notice to every intern with sigle click. | Be Cautious
-  </div>
-  <div class="card-body">
-    <h5 class="card-title text-center">Notice Board !</h5>
-    <p class="card-text">
-	  
-		
-		
-		<form>
-			
-			
- 	
-			
-			
-  <div class="form-group" style="margin-bottom:10px">
-    <label for="formGroupExampleInput2" style="margin-bottom:5px"><b>Add Notice</b></label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
-			
-			
-	 <div class="form-check form-check-inline" >
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" disabled>
-  <label class="form-check-label" for="inlineRadio1">June Session</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="July2021">
-  <label class="form-check-label" for="inlineRadio2">July Session</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
-  <label class="form-check-label" for="inlineRadio3">September Session</label>
-</div>
-				
-			
-			
-</form>
-	  
-	  
-	  
-	  </p>
-    <a href="#" class="btn btn-primary">Send Notice</a>
-  </div>
+	
+    <div class="cont">
+      <div class="main1" style="margin-right: 3px; border-radius: 10px;">
+        <div class="content">
+    
+    
+          
+    
+          <div class="table-responsive custom-table-responsive">
+    
+            <table class="table custom-table" >
+              <thead >
+                <tr style="color:white ; background-color: midnightblue;" >
+                  <th scope="col">
+                    <label class="control control--checkbox">
+                      <div class="control__indicator"></div>
+                    </label>
+                  </th>
+                  
+                  <th style="color: white" scope="col">InternID</th>
+                  <th style="color: white;" scope="col">Name</th>
+                  <th style="color: white;" scope="col">Assignment Details</th>
+                 
+                  <th  style="color: white;" scope="col">Education</th>
+                </tr>
+              </thead>
+              <tbody>
 
-</div>
-	  
+               <% for(var i = 0 ; i<intern.length ; i++){%>
+                  <tr scope="row">
+                    <th scope="row">
+                      <label class="control control--checkbox">
+                        <input type="checkbox"/>
+                        <div class="control__indicator"></div>
+                      </label>
+                    </th>
+                    <td>
+                      <%=intern[i].InternID%>
+                    </td>
+                    <td><a href="#"><%=intern[i].Name%></a></td>
+                    <td>
+                      <%=intern[i].Internship%>
+                      <p><%=intern[i].CollegeName%></p>
+                      
+                    
+                      <!-- <small class="d-block">JA1234 : https://audumber.com</small>
+                      <small class="d-block">JA1234 : https://audumber.com</small>
+                      <small class="d-block">JA1234 : https://audumber.com</small> -->
+                    </td>
+                  
+                    <td style="padding-right: 10%;">
+                      <form action="/allot_task" , method="post">
+                        <div class="input-group" >
+                          <input type="hidden" name="internid" value=<%=intern[i].InternID%> >
+                          <input type="text" name="taskid" class="form-control"  >
+                          <button class="btn btn-outline-success" type="submit" id="inputGroupFileAddon04" style="padding-right: 10px;">Allot</button>
+                        </div>
+                      </form>
+                          
+                         
+                          
+                         
+                         
+  
+                       
+                    </td>
+                  </tr>
+                  <tr class="spacer"><td colspan="100"></td></tr>
+                <%}%>
+               
+
+
+
+
+
+                <tr>
+                  <th scope="row">
+                    <label class="control control--checkbox">
+                      <input type="checkbox"/>
+                      <div class="control__indicator"></div>
+                    </label>
+                  </th>
+                  
+                  <td>4616</td>
+                  <td><a href="#">Matthew Wasil</a></td>
+                  <td>
+                    Graphic Designer
+                    <small class="d-block">Far far away, behind the word mountains</small>
+                  </td>
+                
+                  <td style="align-items: center;">
+                    <button type="button" class="btn btn-success">
+                      Allotment Done <span class="badge bg-success">4</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr class="spacer"><td colspan="100"></td></tr>
+               
+                
+              </tbody>
+            </table>
+          </div>
+          </div>
+     
+      </div>
+      <aside class="side">
+        <ul class="list-group">
+          <a href="#" class="list-group-item " aria-current="true" style="background-color: midnightblue; color: white;">
+            List Of Tasks
+          </a>
+          <%for(var i=0 ; i<task.length ; i++){%>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <%=task[i].task_id%>
+              <span class="badge bg-primary rounded-pill">14</span>
+            </li>
+          <%}%>
+          
+          
+        </ul>
+         
+       
+      </aside>
+    </div>
 	  
 	  
 	  
 	  
 	
 	  <div class="row row-cols-1 row-cols-md-3 g-4">
- <% for(var i=0;i<intern.length;i++){ %>
 
-<% if(intern[i].Accepted === 'Yes' && intern[i].Selected === 'Yes' && intern[i].Completed === 'No' && intern[i].Rejected === 'No'){ %>
-		<!-- <form action="/selection_action" method="post"> -->
-			
-		   
-  <div class="col">
-    <div class="card h-100">
-    <img src="https://images.ctfassets.net/7thvzrs93dvf/wpImage18643/2f45c72db7876d2f40623a8b09a88b17/linkedin-default-background-cover-photo-1.png?w=800&q=100" class="card-img-top" style="height:8px" alt="...">
-      <div class="card-body">
-        <h5 class="card-title"><b><%= intern[i].Name %> | <%= intern[i].Internship %></b></h5>
-		  <ul>
-			  <li><b>Intern ID :</b><%= intern[i].InternID %></li>
-			  <li><b>Session :</b><%= intern[i].Session %>  </li>
-  <li><b>Contact :</b> +91 <%= intern[i].Contact %></li>
-  <li><b>Email :</b> <%= intern[i].Email %></li>
-			    <li><b>Task 1 :</b><%= intern[i].Task1 %>  </li>
-			  <li><b>Task 2 :</b><%= intern[i].Task2 %>  </li>
-			  <li><b>Task 3 :</b><%= intern[i].Task3 %>  </li>
-			
-			
-
-		
-</ul> 
-    
-      </div>
-		<% var test = 101; %>
-		<div class="btn-group" role="group" aria-label="Basic example">
-			<input type="hidden" id="section" name="section" value="two"> 
-			<input type="hidden" id="custId" name="custId" value=<%= intern[i].ApplicationID %>> 
-				<input type="hidden" id="custId" name="email" value=<%= intern[i].Email %>> 
-			<input type="hidden" id="custId" name="name" value=<%= intern[i].Name %>> 
-		<!-- <button type="submit" class="btn btn-secondary" style="background-color:#990000" name="action" value="rejected" style="width:100px">Reject</button> -->
-        <button type="submit" class="btn btn-secondary"  name="action" value="selected">Send Reminder</button>
-			
-</div>
-			
-				
-    </div>
-	 
-  </div>
- <!-- </form>  -->
-		  
-		<%}%>
-<%}%>	  
 
 		  
 	

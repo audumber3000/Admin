@@ -128,7 +128,7 @@ Interninfo_final.find({}, function (err, one_detail) {
 		if(req.body.section === "two"){
 		if(action === "selected"){
 			var val = Math.floor(1000 + Math.random() * 9000);
-   Interninfo_final.updateOne({ApplicationID:applyid  }, { Selected: "Yes" , InternID : val }, function(err,result) {
+   Interninfo_final.updateOne({ApplicationID:applyid  }, { Selected: "Yes" , InternID : val , Status:"Active" }, function(err,result) {
     if (err) {
       res.send(err);
     }

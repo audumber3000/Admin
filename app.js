@@ -92,6 +92,7 @@ const communication = require('./routes/communication');
 app.use("/" , communication);
 
 const email = require('./routes/email_templating');
+const task_storage = require("./models/task_storage");
 app.use("/" , email);
 
 //show sign up form
@@ -190,18 +191,16 @@ app.post("/hrdashboard_Interndetail",isLoggedIn, function(req, res){
 //--------------------------------------------------------------------------------------
 //assignment details
 
-app.get("/dashboard_assignedetail" ,isLoggedIn, function(req, res){
+app.get("/dashboard_assignedetail" ,isLoggedIn,async function(req, res){
 	
 	
-	Interninfo_final.find({Session : "July2021"}, function (err, one_detail) {
-          if (err){
-            console.log("something went wrong!!!")
-          }else{
-      console.log(one_detail)
-			   res.render("dashboard_assignmentdetails" , {intern:one_detail});
+	var one_detail = await Interninfo_final.find({Selected:"Yes" , Completed:"No"});
+  var task = await task_storage.find({});
+	
+  
+  res.render("dashboard_assignmentdetails" , {intern:one_detail , task:task});
           
-          }
-});
+ 
    
 	
 });
@@ -384,18 +383,18 @@ function isLoggedIn(req, res, next) { //next is the next thing that needs to be 
 
 
 
-// app.listen(3000,function(err){
-// 	if(err){
-// 		console.log("server connection error!!")
-// 		console.log("Reconnecting . . . ")
-// 	}else{
-// 		console.log("connecting . . . ")
-// 		console.log("connected successfully")
-// 	}
-// })
+app.listen(3000,function(err){
+	if(err){
+		console.log("server connection error!!")
+		console.log("Reconnecting . . . ")
+	}else{
+		console.log("connecting . . . ")
+		console.log("connected successfully")
+	}
+})
 
 
 
-app.listen(process.env.PORT, process.env.IP, function(){
-    console.log("server started...")
-});
+// app.listen(process.env.PORT, process.env.IP, function(){
+//     console.log("server started...")
+// });

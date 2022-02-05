@@ -13,11 +13,16 @@ var flash = require("connect-flash");
 var multer  = require('multer');
 var cloudinary = require('cloudinary').v2; //media upload
 var Interninfo_final = require("../models/Interinfo");
+var Task_storage = require("../models/task_storage");
+var Task = require("../models/task");
 
 var date = require('date-and-time');
 var now = new Date();
-const pattern = date.compile('ddd, MMM DD YYYY');
-console.log(date.format(now, pattern));
+const value = date.format(now,'DD/MM/YYYY HH:mm:ss');
+console.log(date.format(now, value));
+
+const now2 = date.addDays(now, 18)
+console.log(date.format(now2, 'DD/MM/YYYY HH:mm:ss'));
 
 const router = express.Router();
 
@@ -60,70 +65,45 @@ router.get("/upsu", function(req, res){
 });
 
 //assignment 1 and 4
-router.post("/upload_assignment" , function(req, res){
-	 
-	
-	console.log(req.body.internid);
-	console.log(req.body.link);
-	
-	
-	
+router.get("/upload_task" , function(req,res){
+
+  res.render("new_assignment");
+
+})
+
+
+
+router.post("/upload_task" , function(req, res){
+  console.log("Updated1111111")
+  Task_storage.create({task_id : req.body.task_id , titile:req.body.task_title ,discription : req.body.task_discription , points :[req.body.task_p1 , req.body.task_p2 , req.body.task_p3 , req.body.task_p4] ,task_date:"" ,task_due_date:"",task_submit_date:"", task_link:"",task_status:"",task_score:""  })
+	console.log("Updated")
+	});
+
+
+router.post("/allot_task" ,async function(req,res){
+  console.log("Enter into allot_task");
+  console.log(req.body.taskid.length)
+  console.log(req.body.internid)
+  var Atask = await Task_storage.find({task_id:req.body.taskid});
+
+  console.log(Atask);
+
+  await Task.updateMany({InternID:req.body.internid},{  $push: {Task: Atask} });
   
-	
- 
-
-
-     if(req.body.task === "Task1"){
-	Interninfo_final.updateMany({InternID: req.body.internid }, {Task1:req.body.link,Task1_date:date.format(now, pattern) }, function(err,result) {
-    if (err) {
-          console.log(err);
-    }
-		console.log("task1 reached");
-	   res.render("./assign_upload/welcome");
-   });
-	}
-	
-	
-	else if(req.body.task === "Task2"){
-				 
-   Interninfo_final.updateMany({InternID: req.body.internid }, {Task2: req.body.link ,Task2_date:date.format(now, pattern) }, function(err,result) {
-    if (err) {
-    console.log(err)
-    }
-    console.log(result);
-	   res.render("./assign_upload/welcome");
-   });
-				 
-	}	
-
-  else if(req.body.task === "Task3"){
-
-    Interninfo_final.updateMany({InternID: req.body.internid }, {Task3: req.body.link ,Task3_date:date.format(now, pattern) }, function(err,result) {
-      if (err) {
-      console.log(err)
-      }
-      console.log(result);
-       res.render("./assign_upload/welcome");
-     });
-
-
-  }
-  else if(req.body.task === "Task4"){
-    Interninfo_final.updateMany({InternID: req.body.internid }, {Task4: req.body.link ,Task4_date:date.format(now, pattern) }, function(err,result) {
-      if (err) {
-      console.log(err)
-      }
-      console.log(result);
-       res.render("./assign_upload/welcome");
-     });
-
+  await Task.updateMany({'InternID':req.body.internid , 'Task.task_id':req.body.taskid} , {'$set': {
+    'Task.$.task_date':date.format(now, value),
+    'Task.$.task_due_date': date.format(now2, 'DD/MM/YYYY HH:mm:ss'),
+    'Task.$.task_status':'Incomplete'
     
-  }
+  }})
 
 
-});
+console.log("Done")
 
 
+
+
+  })
 
 
 

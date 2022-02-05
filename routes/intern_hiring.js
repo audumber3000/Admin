@@ -100,6 +100,7 @@ transporter.sendMail(mailOptions, function(error, info){
 	Task2_date:"",
 	Task3_date:"",
 	Task4_date:"" ,
+	Status:"Inactive",
     profile_img:"",
 	}, function (err, small) {
      
