@@ -24,18 +24,19 @@ var interninfo_finals = new mongoose.Schema({
 	Skills : String,
 	Session : String,
 	InternID : String,
+
 	Task1 : String,
-	Task1_ans : String,
+	
 	Task2 : String,
 	Task3 : String,
 	Task4 : String,
-	Task1_link: String,
-	Task4_link : String,
 	
-	Task1_date:String,
-	Task2_date:String,
-	Task3_date:String,
-	Task4_date:String,
+	
+	Batch:{type:String, default:"NA"},
+	DOB:{type:Date, default:Date.now},
+	Aadhar_no:{type:Number, default:000},
+    Linkdin:{type:String, default:"NA"},
+	Github : {type:String, default:"NA"},
 	Status:String,
 	profile_img : String
 

@@ -108,9 +108,9 @@ h2 {
     -webkit-transition: .3s all ease;
     -o-transition: .3s all ease;
     transition: .3s all ease; }
-    .custom-table tbody tr:not(.spacer):hover {
-      -webkit-box-shadow: 0 2px 10px -5px rgba(0, 0, 0, 0.1);
-      box-shadow: 0 2px 10px -5px rgba(0, 0, 0, 0.1); }
+    /* .custom-table tbody tr:not(.spacer):hover { */
+      /* -webkit-box-shadow: 0 2px 10px -5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 10px -5px rgba(0, 0, 0, 0.1); } */
   .custom-table tbody tr th, .custom-table tbody tr td {
     background: white;
     border: none;
@@ -130,11 +130,11 @@ h2 {
     height: 3px;
     border-radius: 0 !important;
     background: transparent !important; }
-  .custom-table tbody tr.active th, .custom-table tbody tr.active td, .custom-table tbody tr:hover th, .custom-table tbody tr:hover td {
+  /* .custom-table tbody tr.active th, .custom-table tbody tr.active td, .custom-table tbody tr:hover th, .custom-table tbody tr:hover td {
     color: #fff;
     background: #2e2e36; }
     .custom-table tbody tr.active th a, .custom-table tbody tr.active td a, .custom-table tbody tr:hover th a, .custom-table tbody tr:hover td a {
-      color: #fff; }
+      color: #fff; } */
 
 /* Custom Checkbox */
 .control {
@@ -443,30 +443,48 @@ h2 {
                   <th style="color: black;" scope="col">InternID</th>
                   <th style="color: black;" scope="col">Name</th>
                   <th style="color: black;" scope="col">Assignment Details</th>
-                  <th style="color: black;" scope="col">Contact</th>
-                  <th  style="color: black;" scope="col">Education</th>
+                  <!-- <th style="color: black;" scope="col">Contact</th> -->
+                  <th  style="color: black;" scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
-                <% for(var i = 0 ; i<intern.length ; i++){%>
+                <% for(var i = 0 ; i<task1.length ; i++){%>
                 <tr scope="row">
                   <th scope="row">
-                    <label class="control control--checkbox">
-                      <input type="checkbox"/>
-                      <div class="control__indicator"></div>
-                    </label>
+                    
                   </th>
                   <td>
-                    <%=intern[i].InternID%>
+                  <%=task1[i].InternID%>
                   </td>
-                  <td><a href="#"><%=intern[i].Name%></a></td>
+                  <td>N/A</td>
+             
                   <td>
-                    <%=intern[i].Internship%>
-                    <small class="d-block">JA1234 : <a>https://audumber.com</a> <span class="badge badge-pill badge-primary">Primary</span> </small> 
-                    <small class="d-block">JA1234 : https://audumber.com</small>
-                   
+                    
+                    <%for(var a = 0 ; a<task1[i].Task.length ; a++){%>
+                      <div class="card" style="margin-bottom: 3px;">
+                        <div class="card-body">
+                          <h6 class="card-title">Task <%=a+1%> 
+                            <%if(task1[i].Task[a].task_status === "InCompleted" || task1[i].Task[a].task_status ===  "Incomplete"){%>
+                              <span class="badge badge-pill badge-danger">Incomplete</span></h6>
+                            <%}else{%>
+                              <span class="badge badge-pill badge-success">Completed</span>|<span class="badge badge-pill badge-success">Submitted : <%=task1[i].Task[a].task_submit_date%> </span> </h6>
+                            <%}%>
+                          <small class="d-block"><%=task1[i].Task[a].task_id%> : <a href=<%=task1[i].Task[a].task_link%> style="color: #007bff;"><%=task1[i].Task[a].task_link%></a>  </small> 
+                         
+                          <small class="d-block">Task Allotment : <%=task1[i].Task[a].task_date%></a>  </small> 
+                         
+                          <small class="d-block">Task Due : <%=task1[i].Task[a].task_due_date%></a>  </small> 
+                         
+                          <a href="#" class="card-link ; color:black">Set Score</a>
+                          <a href="#" class="card-link ; color:black">Resubmite</a>
+                        </div>
+                      </div>
+
+
+                    <%}%>
+                  
                   </td>
-                  <td><%=intern[i].Contact%></td>
+                 
                   <td>
                     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                       <div class="btn-group mr-2" role="group" aria-label="First group">
@@ -490,113 +508,7 @@ h2 {
                <%}%>
 
 
-                <tr>
-                  <th scope="row">
-                    <label class="control control--checkbox">
-                      <input type="checkbox"/>
-                      <div class="control__indicator"></div>
-                    </label>
-                  </th>
-                  
-                  <td>4616</td>
-                  <td><a href="#">Matthew Wasil</a></td>
-                  <td>
-                    Graphic Designer
-                    <small class="d-block">Far far away, behind the word mountains</small>
-                  </td>
-                  <td>+02 020 3994 929</td>
-                  <td>London College</td>
-                </tr>
-                <tr class="spacer"><td colspan="100"></td></tr>
-                <tr>
-                  <th scope="row">
-                    <label class="control control--checkbox">
-                      <input type="checkbox"/>
-                      <div class="control__indicator"></div>
-                    </label>
-                  </th>
-                  
-                  <td>9841</td>
-                  <td><a href="#">Sampson Murphy</a></td>
-                  <td>
-                    Mobile Dev
-                    <small class="d-block">Far far away, behind the word mountains</small>
-                  </td>
-                  <td>+01 352 1125 0192</td>
-                  <td>Senior High</td>
-                </tr>
-                <tr class="spacer"><td colspan="100"></td></tr>
-                <tr>
-                  <th scope="row">
-                    <label class="control control--checkbox">
-                      <input type="checkbox"/>
-                      <div class="control__indicator"></div>
-                    </label>
-                  </th>
-                  
-                  <td>9548</td>
-                  <td><a href="#">Gaspar Semenov</a></td>
-                  <td>
-                    Illustrator
-                    <small class="d-block">Far far away, behind the word mountains</small>
-                  </td>
-                  <td>+92 020 3994 929</td>
-                  <td>College</td>
-                </tr>
-                <tr class="spacer"><td colspan="100"></td></tr>
-                <tr>
-                  <th scope="row">
-                    <label class="control control--checkbox">
-                      <input type="checkbox"/>
-                      <div class="control__indicator"></div>
-                    </label>
-                  </th>
-                  
-                  <td>4616</td>
-                  <td><a href="#">Matthew Wasil</a></td>
-                  <td>
-                    Graphic Designer
-                    <small class="d-block">Far far away, behind the word mountains</small>
-                  </td>
-                  <td>+02 020 3994 929</td>
-                  <td>London College</td>
-                </tr>
-                <tr class="spacer"><td colspan="100"></td></tr>
-                <tr>
-                  <th scope="row">
-                    <label class="control control--checkbox">
-                      <input type="checkbox"/>
-                      <div class="control__indicator"></div>
-                    </label>
-                  </th>
-                  
-                  <td>9841</td>
-                  <td><a href="#">Sampson Murphy</a></td>
-                  <td>
-                    Mobile Dev
-                    <small class="d-block">Far far away, behind the word mountains</small>
-                  </td>
-                  <td>+01 352 1125 0192</td>
-                  <td>Senior High</td>
-                </tr>
-                <tr class="spacer"><td colspan="100"></td></tr>
-                <tr>
-                  <th scope="row">
-                    <label class="control control--checkbox">
-                      <input type="checkbox"/>
-                      <div class="control__indicator"></div>
-                    </label>
-                  </th>
-                  
-                  <td>9548</td>
-                  <td><a href="#">Gaspar Semenov</a></td>
-                  <td>
-                    Illustrator
-                    <small class="d-block">Far far away, behind the word mountains</small>
-                  </td>
-                  <td>+92 020 3994 929</td>
-                  <td>College</td>
-                </tr>
+               
                 
               </tbody>
             </table>
@@ -645,10 +557,7 @@ h2 {
                <% for(var i = 0 ; i<intern.length ; i++){%>
                   <tr scope="row">
                     <th scope="row">
-                      <label class="control control--checkbox">
-                        <input type="checkbox"/>
-                        <div class="control__indicator"></div>
-                      </label>
+                      
                     </th>
                     <td>
                       <%=intern[i].InternID%>
@@ -664,12 +573,12 @@ h2 {
                       <small class="d-block">JA1234 : https://audumber.com</small> -->
                     </td>
                   
-                    <td style="padding-right: 10%;">
+                    <td style="padding-right: 7%;">
                       <form action="/allot_task" , method="post">
                         <div class="input-group" >
                           <input type="hidden" name="internid" value=<%=intern[i].InternID%> >
                           <input type="text" name="taskid" class="form-control"  >
-                          <button class="btn btn-outline-success" type="submit" id="inputGroupFileAddon04" style="padding-right: 10px;">Allot</button>
+                          <button class="btn btn-outline-success" type="submit" id="inputGroupFileAddon04" style="padding-right: 7px;">Allot</button>
                         </div>
                       </form>
                           
@@ -724,9 +633,9 @@ h2 {
           <a href="#" class="list-group-item " aria-current="true" style="background-color: midnightblue; color: white;">
             List Of Tasks
           </a>
-          <%for(var i=0 ; i<task.length ; i++){%>
+          <%for(var i=0 ; i<tasks.length ; i++){%>
             <li class="list-group-item d-flex justify-content-between align-items-center">
-              <%=task[i].task_id%>
+              <%=tasks[i].task_id%>
               <span class="badge bg-primary rounded-pill">14</span>
             </li>
           <%}%>

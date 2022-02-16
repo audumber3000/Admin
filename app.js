@@ -15,7 +15,7 @@ var cloudinary = require('cloudinary').v2; //media upload
 var Interninfo_final = require("./models/Interinfo");
 var pay = require("./models/payment");
 var refral = require("./models/refral");
-
+const task = require("./models/task");
 
 
 var storage = multer.diskStorage({
@@ -93,6 +93,7 @@ app.use("/" , communication);
 
 const email = require('./routes/email_templating');
 const task_storage = require("./models/task_storage");
+
 app.use("/" , email);
 
 //show sign up form
@@ -194,11 +195,13 @@ app.post("/hrdashboard_Interndetail",isLoggedIn, function(req, res){
 app.get("/dashboard_assignedetail" ,isLoggedIn,async function(req, res){
 	
 	
-	var one_detail = await Interninfo_final.find({Selected:"Yes" , Completed:"No"});
-  var task = await task_storage.find({});
-	
+  var one_detail = await Interninfo_final.find({Selected:"Yes" , Completed:"No"});
   
-  res.render("dashboard_assignmentdetails" , {intern:one_detail , task:task});
+  var task1 = await task.find({});
+  var tasks = await task_storage.find({});
+
+  
+  res.render("dashboard_assignmentdetails" , {intern:one_detail , task1:task1 , tasks:tasks});
           
  
    
@@ -383,18 +386,18 @@ function isLoggedIn(req, res, next) { //next is the next thing that needs to be 
 
 
 
-app.listen(3000,function(err){
-	if(err){
-		console.log("server connection error!!")
-		console.log("Reconnecting . . . ")
-	}else{
-		console.log("connecting . . . ")
-		console.log("connected successfully")
-	}
-})
+// app.listen(3000,function(err){
+// 	if(err){
+// 		console.log("server connection error!!")
+// 		console.log("Reconnecting . . . ")
+// 	}else{
+// 		console.log("connecting . . . ")
+// 		console.log("connected successfully")
+// 	}
+// })
 
 
 
-// app.listen(process.env.PORT, process.env.IP, function(){
-//     console.log("server started...")
-// });
+app.listen(process.env.PORT, process.env.IP, function(){
+    console.log("server started...")
+});
