@@ -410,10 +410,10 @@ h2 {
 				
 				<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
   <li class="nav-item" role="presentation">
-    <button class="btn btn-sm btn-primary ml-3 mt-2"  id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Overview</button>
+    <button class="btn btn-sm btn-primary ml-3 mt-2"  id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Tasks Overview <%=task1.length%> </button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="btn btn-sm btn-warning ml-3 mt-2" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" >Details</button>
+    <button class="btn btn-sm btn-warning ml-3 mt-2" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" >Allotment <%=intern.length%></button>
   </li>
 			
 					
@@ -465,9 +465,25 @@ h2 {
                         <div class="card-body">
                           <h6 class="card-title">Task <%=a+1%> 
                             <%if(task1[i].Task[a].task_status === "InCompleted" || task1[i].Task[a].task_status ===  "Incomplete"){%>
-                              <span class="badge badge-pill badge-danger">Incomplete</span></h6>
+                              <span class="badge badge-pill badge-danger">Incomplete </span> 
+
+                              <form action="/task/delete" method="post">
+                                <span title="Delete the Task" style="float: right;" type="submit"><img src="https://img.icons8.com/ios-glyphs/30/fa314a/filled-trash.png"/></span> 
+
+                              </form>
+
+                              <form id="myForm" action="/task/reminder" method="post">
+                              
+                                  <span onclick="MyClick()" title="Send reminder to Intern" style="float: right;"><img src="https://img.icons8.com/ios-filled/30/fa314a/alarm.png"/></span> 
+
+                           
+
+                              </form>
+                            </h6>
                             <%}else{%>
-                              <span class="badge badge-pill badge-success">Completed</span>|<span class="badge badge-pill badge-success">Submitted : <%=task1[i].Task[a].task_submit_date%> </span> </h6>
+                              <span class="badge badge-pill badge-success">Completed</span>|<span class="badge badge-pill badge-success">Submitted : <%=task1[i].Task[a].task_submit_date%> 
+                              </span> <span style="float: right;" title="Review the task" type="submit"> <img src="https://img.icons8.com/color/30/fa314a/edit-property.png"/></span> 
+                                <span title="Ask Intern to do it again" style="float: right;" type="submit"><img src="https://img.icons8.com/color/30/fa314a/restart--v1.png"/></span> </h6>
                             <%}%>
                           <small class="d-block"><%=task1[i].Task[a].task_id%> : <a href=<%=task1[i].Task[a].task_link%> style="color: #007bff;"><%=task1[i].Task[a].task_link%></a>  </small> 
                          
@@ -488,16 +504,7 @@ h2 {
                   <td>
                     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                       <div class="btn-group mr-2" role="group" aria-label="First group">
-                        <button type="button" class="btn btn-primary">1</button>
-                        <button type="button" class="btn btn-success">2</button>
-                       
-                        <form>
-                          <button type="button" class="btn btn-info"><img src="https://img.icons8.com/ios-filled/25/FFFFFF/feedback.png"/></button>
-                        </form>
-                       
-                       <form>
-                        <button type="button" class="btn btn-danger"><img src="https://img.icons8.com/ios-glyphs/25/FFFFFF/add-reminder.png"/></button>
-                      </form>
+                      
 
                       </div>
                       
@@ -713,7 +720,16 @@ h2 {
 	
 	
 	
-    <script>
+  <script>
+function MyClick()
+{
+
+ console.log("audumber chaudhari")
+ document.getElementById("myForm").submit();
+
+
+ return false;
+}
 
     </script>
 </body>

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment Details | Education4ol</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            padding: 90px 0 0;
+            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+            z-index: 99;
+        }
+
+        @media (max-width: 767.98px) {
+            .sidebar {
+                top: 11.5rem;
+                padding: 0;
+            }
+        }
+            
+        .navbar {
+            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .1);
+        }
+
+        @media (min-width: 767.98px) {
+            .navbar {
+                top: 0;
+                position: sticky;
+                z-index: 999;
+            }
+        }
+
+        .sidebar .nav-link {
+            color: #333;
+        }
+
+        .sidebar .nav-link.active {
+            color: #0d6efd;
+        }
+		
+		.dot {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+
+
+p {
+  color: #b3b3b3;
+  font-weight: 300; }
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
+
+a {
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease; }
+  a, a:hover {
+    text-decoration: none !important; }
+
+.content {
+  color: #2e2e36; }
+
+h2 {
+  font-size: 20px;
+  color: black; }
+
+.custom-table {
+  min-width: 900px; }
+  .custom-table thead tr, .custom-table thead th {
+    border-top: none;
+    border-bottom: none !important;
+    color: #fff; }
+  .custom-table tbody th, .custom-table tbody td {
+    color: #777;
+    font-weight: 400;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    font-weight: 300; }
+    .custom-table tbody th small, .custom-table tbody td small {
+      color: #b3b3b3;
+      font-weight: 300; }
+  .custom-table tbody tr:not(.spacer) {
+    border-radius: 7px;
+    overflow: hidden;
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease; }
+    /* .custom-table tbody tr:not(.spacer):hover { */
+      /* -webkit-box-shadow: 0 2px 10px -5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 10px -5px rgba(0, 0, 0, 0.1); } */
+  .custom-table tbody tr th, .custom-table tbody tr td {
+    background: white;
+    border: none;
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease; }
+    .custom-table tbody tr th a, .custom-table tbody tr td a {
+      color: #b3b3b3; }
+    .custom-table tbody tr th:first-child, .custom-table tbody tr td:first-child {
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px; }
+    .custom-table tbody tr th:last-child, .custom-table tbody tr td:last-child {
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px; }
+  .custom-table tbody tr.spacer td {
+    padding: 0 !important;
+    height: 3px;
+    border-radius: 0 !important;
+    background: transparent !important; }
+  /* .custom-table tbody tr.active th, .custom-table tbody tr.active td, .custom-table tbody tr:hover th, .custom-table tbody tr:hover td {
+    color: #fff;
+    background: #2e2e36; }
+    .custom-table tbody tr.active th a, .custom-table tbody tr.active td a, .custom-table tbody tr:hover th a, .custom-table tbody tr:hover td a {
+      color: #fff; } */
+
+/* Custom Checkbox */
+.control {
+  display: block;
+  position: relative;
+  margin-bottom: 25px;
+  cursor: pointer;
+  font-size: 18px; }
+
+.control input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0; }
+
+.control__indicator {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 20px;
+
+  width: 20px;
+  border-radius: 4px;
+  border: 2px solid #3f3f47;
+  background: transparent; }
+
+.control--radio .control__indicator {
+  border-radius: 50%; }
+
+.control:hover input ~ .control__indicator,
+.control input:focus ~ .control__indicator {
+  border: 2px solid #007bff; }
+
+.control input:checked ~ .control__indicator {
+  border: 2px solid #007bff;
+  background: #007bff; }
+
+.control input:disabled ~ .control__indicator {
+  background: #e6e6e6;
+  opacity: 0.6;
+  pointer-events: none;
+  border: 2px solid #ccc; }
+
+.control__indicator:after {
+  font-family: 'icomoon';
+  content: '\e5ca';
+  position: absolute;
+  display: none; }
+
+.control input:checked ~ .control__indicator:after {
+  display: block;
+  color: #fff; }
+
+.control--checkbox .control__indicator:after {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -52%);
+  -ms-transform: translate(-50%, -52%);
+  transform: translate(-50%, -52%); }
+
+.control--checkbox input:disabled ~ .control__indicator:after {
+  border-color: #7b7b7b; }
+
+.control--checkbox input:disabled:checked ~ .control__indicator {
+  background-color: #007bff;
+  opacity: .2;
+  border: 2px solid #007bff; }
+
+
+
+
+
+  *, *:before, *:after {
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
+.nav__menu ul {
+  width: 100%;
+  margin-top: 2.5rem;
+  margin-right: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-end;
+}
+
+.nav__menu li {
+  margin-left: 0.5rem;
+}
+
+.nav__menu li:hover,
+.nav__menu li:focus {
+  cursor: pointer;
+  color: white;
+}
+
+.nav__menu a {
+
+  padding: .5rem 1.5rem;
+  font-family: 'Lobster', cursive;
+  font-size: 1.125rem;
+  color: #d2f4e1
+}
+
+.nav__menu a:hover,
+.nav__menu a:focus {
+  color: #6b3e26;
+}
+
+.cont {
+  display: flex;
+  align-items: stretch;
+}
+
+.main1 {
+ 
+  width: 80%;
+  /* padding: 2rem 3.5rem; */
+}
+
+
+/* second page css */
+.side {
+  background: #D8D8D8;
+  width: 20%;
+  flex-basis: auto;
+  min-height: calc(100vh - 10.5rem);
+  min-width: 11.25rem;
+
+  border-radius:3px ;
+  
+
+  
+  
+}
+
+
+
+  body{
+			 background-color:#F8F8F8;
+		}
+    </style>
+</head>
+<body >
+    <nav class="navbar navbar-light .bg-dark.bg-gradient p-3">
+        <div class="d-flex col-12 col-md-3 col-lg-2 mb-2 mb-lg-0 flex-wrap flex-md-nowrap justify-content-between">
+            <a class="navbar-brand" href="#">
+				<img src="https://res.cloudinary.com/education4ol/image/upload/v1624697903/education4ol_vuw0rx.jpg"/>
+               <b style="color:white;">Education4ol</b>
+			
+            </a>
+            <button class="navbar-toggler d-md-none collapsed mb-3" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="col-12 col-md-4 col-lg-2">
+            <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search">
+        </div>
+        <div class="col-12 col-md-5 col-lg-8 d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
+          
+            <div class="dropdown">
+                <button class="btn  dropdown-toggle" style="background-color: midnightblue; color:white ;"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                  Hello, HR
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li><a class="dropdown-item" href="#">Settings</a></li>
+                  <li><a class="dropdown-item" href="#">Messages</a></li>
+                  <li><a class="dropdown-item" href="/logout">Sign out</a></li>
+                </ul>
+              </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+             <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block .bg-dark.bg-gradient sidebar collapse" style="background-color: midnightblue;">
+                <div class="position-sticky">
+                    <ul class="nav flex-column" style="background-color: midnightblue;">
+                        <li class="nav-item">
+                          <a class="nav-link " aria-current="page" href="/hrdashboard" style="color:white;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            <span class="ml-2">Dashboard</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link " href="/dashboard_new_hiring" style="color:white;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                            <span class="ml-2">New Hiring</span>
+                          </a>
+                        </li>
+                       <li class="nav-item">
+                          <a class="nav-link" href="/dashboard_assignedetail" style="color:white;">
+                             <img src="https://img.icons8.com/ios/50/FFFFFF/book.png" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart" /><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                            <span class="ml-2">Assignment</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a id="profile-tab" class="nav-link" href="/hrdashboard_Interndetail" style="color:white;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            <span class="ml-2">Interns Details</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/dashboard_report" style="color:white;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                            <span class="ml-2">Reports</span>
+                          </a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a class="nav-link" href="/communication" style="color:white;">
+                            <img src="https://img.icons8.com/small/28/FFFFFF/messaging-.png"/>
+                            <span class="ml-2">Messenger</span>
+                          </a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a class="nav-link" href="#" style="color:white;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                            <span class="ml-2">Activities</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-sm btn-secondary ml-3 mt-2" href="https://themesberg.com/blog/bootstrap/simple-bootstrap-5-dashboard-tutorial">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-book" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M1 2.828v9.923c.918-.35 2.107-.692 3.287-.81 1.094-.111 2.278-.039 3.213.492V2.687c-.654-.689-1.782-.886-3.112-.752-1.234.124-2.503.523-3.388.893zm7.5-.141v9.746c.935-.53 2.12-.603 3.213-.493 1.18.12 2.37.461 3.287.811V2.828c-.885-.37-2.154-.769-3.388-.893-1.33-.134-2.458.063-3.112.752zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+                                </svg>
+                                <span class="ml-2">Read tutorial</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-sm btn-warning ml-3 mt-2" href="https://themesberg.com/product/admin-dashboard/volt-bootstrap-5-dashboard">
+                                ⚡︎ Eduol Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-sm btn-primary ml-3 mt-2" href="https://themesberg.com">
+                                By Education4ol ❤️
+                            </a>
+                        </li>
+                      </ul>
+                </div>
+				
+				<div style="margin-top: 25px; font-size: 12px;text-align: center; margin-bottom: -50px;">
+					 <li class="nav-item">
+                           Powered by <b>UpClick Labs PVT</b>
+                        </li>
+					<p>
+						
+					</p>
+					
+				</div>
+            </nav>
+            <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+             
+                
+					 
+				
+						<!-- BEGIN TICKET CONTENT -->
+						
+
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Pending <span class="badge bg-warning"><%=allquery.length%></span></button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Resolved <span class="badge bg-success">29</span></button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">UnResolved <span class="badge bg-danger">00</span></button>
+                                </li>
+                              </ul>
+
+
+
+                              
+                              <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                          
+
+                                        <%for(var i = 0 ; i < allquery.length ; i++){%>
+
+                                            <li class="list-group-item"  style="margin-top: 2%;">
+                                                <div class="media">
+                                                    <i class="fa fa-cog pull-left"></i>
+                                                    <div class="media-body">
+                                                        <strong><%=allquery[i].subject%>  <span style="color: #7b7b7b;">|</span></strong>
+                                                       <% if(allquery[i].priority == 'Low'){%>
+                                                            <span class="badge bg-success">LOW</span>
+                                                       <%}else if(allquery[i].priority == 'Medium'){%>
+                                                        <span class="badge bg-warning">Medium</span>
+                                                        <%}else{%>
+                                                            <span class="badge bg-danger">High</span>
+                                                        <%}%>
+
+                                                         <span style="float: right;"># <%=allquery[i]._id%></span>
+                                                         <h6 style="padding-top: 1%;"><b>Name :</b> <%=allquery[i].person.Name%> <span style="color:#777;">(<%=allquery[i].person.InternID%>)</span> | <%=allquery[i].person.Batch%> | <a href="#" class="badge badge-info"><%=allquery[i].person.Session%></a> </h6>
+                                                        <h6><b>Internship :</b> <%=allquery[i].person.Internship%></h6> 
+                                                        <h6><b>Message :</b> <%=allquery[i].detail%></h6>
+                                                            <h6><img src="https://img.icons8.com/ios-filled/30/000000/cell-phone.png"/> : <%=allquery[i].person.Contact%> </h6>
+                                                            <h6><img src="https://img.icons8.com/external-bearicons-glyph-bearicons/28/000000/external-Email-essential-collection-bearicons-glyph-bearicons.png"/> : <%=allquery[i].person.Email%> </h6>
+                                                            <p class="info">Asked at <a href="#"><%=allquery[i].askedAt%></a> | <i class="fa fa-comments"></i>  
+                                                                
+                                                               
+                                                                    <form  action="/ticket/modify" method="post">
+                                                                        <button style="float: right;"  class="btn btn-primary btn-sm" type="submit">Reply <img src="https://img.icons8.com/external-kmg-design-glyph-kmg-design/16/FFFFFF/external-send-user-interface-kmg-design-glyph-kmg-design.png"/></button>
+                                                                    </form>
+                                                                    <form style="margin-left: 20px;" action="/modify/ticket" method="post">
+                                                                        <input type="hidden" name="doc_id" value=<%=allquery[i]._id%> >
+                                                                        <button style="float: right;" class="btn btn-primary btn-sm" type="submit">Resolved <img src="https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/18/FFFFFF/external-tick-interface-royyan-wijaya-detailed-outline-royyan-wijaya-4.png"/></button>
+                                                                    </form>
+                                                               
+                                                               
+                                                               
+                                                                
+                                                                
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                       <% }%>
+                                          
+            
+
+
+
+                                            <li class="list-group-item"   style="margin-top: 1%;">
+                                                <div class="media">
+                                                    <i class="fa fa-file-o pull-left"></i>
+                                                    <div class="media-body">
+                                                        <strong>Document that Helvetica Neue can cause problems on Windows</strong> <span class="label label-success">SUCCESS</span><span class="number pull-right"># 13697</span>
+                                                        <p class="info">Opened by <a href="#">lgardner</a> 12 hours ago <i class="fa fa-comments"></i> <a href="#">7 comments</a></p>
+                                                    </div>
+                                                </div>
+                                            </li>
+            
+                                            <li class="list-group-item" style="margin-top: 1%;" >
+                                                <div class="media">
+                                                    <i class="fa fa-file-o pull-left"></i>
+                                                    <div class="media-body">
+                                                        <strong>Document that Helvetica Neue can cause problems on Windows</strong> <span class="label label-success">SUCCESS</span><span class="number pull-right"># 13697</span>
+                                                        <p class="info">Opened by <a href="#">lgardner</a> 12 hours ago <i class="fa fa-comments"></i> <a href="#">7 comments</a></p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        
+                                        
+
+
+
+
+
+
+
+                                </div>
+
+                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Profile</div>
+                                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+                              </div>
+				
+				
+				
+				
+              
+              
+	
+
+
+
+
+				
+				
+	
+		
+                <footer class="pt-5 d-flex justify-content-between " style="margin-top: 400px;">
+                    <span>Copyright © 2020-2021 <a href="https://www.education4ol.com">Education4ol | Powered by UpClick Labs Pvt.Ltd. </a></span>
+                    <ul class="nav m-0">
+                        <li class="nav-item">
+                          <a class="nav-link text-secondary" aria-current="page" href="#">Privacy Policy</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link text-secondary" href="#">Terms and conditions</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link text-secondary" href="#">Contact</a>
+                        </li>
+                      </ul>
+					
+					
+					
+
+
+					
+					
+                </footer>
+            </main>
+        </div>
+    </div>
+	
+	
+	
+	
+
+	
+	
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+	
+	
+	
+  <script>
+function MyClick()
+{
+
+ console.log("audumber chaudhari")
+ document.getElementById("myForm").submit();
+
+
+ return false;
+}
+
+    </script>
+</body>
+</html>

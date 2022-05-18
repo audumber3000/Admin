@@ -91,10 +91,12 @@ app.use("/" , auth_hiring);
 const communication = require('./routes/communication');
 app.use("/" , communication);
 
-const email = require('./routes/email_templating');
+// const email = require('./routes/email_templating');
+// app.use("/" , email);
+
 const task_storage = require("./models/task_storage");
 
-app.use("/" , email);
+
 
 //show sign up form
 app.get("/instagram", function(req, res){

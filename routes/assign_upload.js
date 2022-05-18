@@ -45,6 +45,7 @@ cloudinary.config({
 
 
 var fs = require('fs');
+const { route } = require("./hrdashboard_hiring");
 
 router.get("/upload_assignment", function(req, res){
 	
@@ -54,7 +55,8 @@ router.get("/upload_assignment", function(req, res){
 
 router.get("/upload_assignment1", function(req, res){
 	
-		
+
+
     res.render("assign_upload/assignment_upload1");
 });
 
@@ -173,7 +175,12 @@ router.post("/upload_assignment" ,upload.single('profile'), function(req, res){
 
 
 
+//-----------------task Over view
 
+router.post("/task/reminder" , function(req,res){
+  console.log("reached audumber heer.....")
+  return false;
+})
 
 
 

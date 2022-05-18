@@ -13,11 +13,19 @@ var flash = require("connect-flash");
 var multer  = require('multer');
 var cloudinary = require('cloudinary').v2; //media upload
 var interinfo = require('../models/Interinfo');
+var certificate = require("../models/certificate")
+var query = require('../models/query');
 const { constants } = require("fs");
+const { Certificate } = require("crypto");
 
 
 const router = express.Router();
 
+
+//sending bulk mail0-------------------------
+// router.get("/email/bulk" , function(req,res){
+//     res.render('portal_intern/send_email');
+// })
 
 //--------------------------feting all interns
 const search_results = [];
@@ -31,6 +39,28 @@ interinfo.find({},function(req,res){
 
 
 //----------------------------routers
+
+router.get("/certificate/request" , async function(req,res){
+  var allcert = await certificate.find({});
+    res.render('certificate' , {certificate:allcert});
+})
+
+router.get("/ticket" ,async function(req,res){
+    
+    let allquery = await query.find({status: 'Open'});
+   
+    console.log(allquery);
+    res.render('dashboard_activity' , {allquery :allquery});
+})
+
+router.post("/modify/ticket" , async function(req,res){
+
+   let da =  await query.findOneAndUpdate({_id :req.body.doc_id} , {status:"closed"})
+
+
+    res.redirect("/ticket");
+})
+
 
 router.get("/communication" ,function(req,res){
     res.render('communication/whatsapp' , {Results:search_results , found : ""});

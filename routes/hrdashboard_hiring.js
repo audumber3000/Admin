@@ -31,6 +31,8 @@ var transporter = nodemailer.createTransport({
 });
 
 
+
+
 router.get("/dashboard_new_hiring", isLoggedIn, function (req, res) {
 
 
@@ -43,6 +45,17 @@ router.get("/dashboard_new_hiring", isLoggedIn, function (req, res) {
     }
   });
 });
+
+
+
+router.post("/selection_action_completed" , isLoggedIn , async function(req,res){
+  console.log(req.body.internid);
+  console.log("status changed!")
+  let founduser =await Interninfo_final.updateOne({InternID:req.body.internid} , {Completed : "Yes" , Status:"Inactive"});
+  console.log(founduser);
+  res.redirect("/dashboard_new_hiring");
+
+})
 
 
 router.post("/selection_action", isLoggedIn, async function (req, res) {
