@@ -16,7 +16,7 @@ var Interninfo_final = require("./models/Interinfo");
 var pay = require("./models/payment");
 var refral = require("./models/refral");
 const task = require("./models/task");
-
+const axios = require("axios")
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -67,6 +67,13 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(express.static("public"));
 // code to set up passport to work in our app -> THESE TWO cdMETHODS/LINES ARE REQUIRED EVERY TIME
+
+
+
+
+
+
+
 
 
 //-----------------------------routes

@@ -80,7 +80,7 @@ var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: 'notification.education4ol@gmail.com',
-    pass: 'Ramdas@3000'
+    pass: 'wncsethvvjgqotnv'
   }
 });
 
