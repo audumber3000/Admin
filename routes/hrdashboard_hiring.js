@@ -218,6 +218,7 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
     }else{
 
       Interninfo_final.updateOne({ ApplicationID: applyid }, { Rejected: "Yes" }, function (err, result) {
+        return res.redirect('/dashboard_new_hiring');
      });
 
     }
