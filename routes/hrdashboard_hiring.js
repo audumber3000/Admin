@@ -160,7 +160,7 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
       var val = await uniq(v);
       console.log(val);
 
-      Interninfo_final.updateOne({ ApplicationID: applyid }, { Selected: "Yes", InternID: val, Status: "Active" }, function (err, result) {
+      Interninfo_final.updateOne({ ApplicationID: applyid }, {Accepted: "Yes", Selected: "Yes", InternID: val, Status: "Active" }, function (err, result) {
         if (err) {
           res.send(err);
         }
