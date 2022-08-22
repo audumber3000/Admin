@@ -67,7 +67,7 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
     from: 'hr.education4ol@gmail.com',
     to: req.body.email,
     subject: 'Sorry ! Rejected',
-    text: 'Hi ' + req.body.name + '\n  We are so Sorry to inform you that  we can’t move forward with your application at this point. \n\n Thank you for applying. We appreciate your effort. \n\n Education4ol | Powered by UpClick Labs \n Company Details : www.education4ol.in \n Company Linkdin : https://www.linkedin.com/company/education-4-ol  '
+    text: 'Hi ' + req.body.name + '\n  We are so Sorry to inform you that  we can’t move forward with your application at this point. \n\n Thank you for applying. We appreciate your effort.\n\nIf you have any queries please feel free to drop a text at +91 8766742410 (whatsapp)\n\nCheers ! \n\n Education4ol | Powered by UpClick Labs \n Company Details : www.education4ol.in \n Company Linkdin : https://www.linkedin.com/company/education-4-ol  '
   };
 
   //---------------------------------------section one
@@ -193,7 +193,7 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
           }
         });
       });
-    } else {
+    } else if(action === "rejected") {
       Interninfo_final.updateOne({ ApplicationID: applyid }, { Rejected: "Yes" }, function (err, result) {
         if (err) {
           res.send(err);
@@ -215,6 +215,11 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
           }
         });
       });
+    }else{
+
+      Interninfo_final.updateOne({ ApplicationID: applyid }, { Rejected: "Yes" }, function (err, result) {
+     });
+
     }
 
   }
