@@ -478,10 +478,10 @@
                                                 aria-labelledby="pills-contact-tab">
 
                                                 <div class="row row-cols-1 row-cols-md-3 g-4">
-                                                  <% for(var i=0;i<intern.length;i++){ %>
+                                                  <% for(var i=0;i<selected_interns.length;i++){ %>
 
-                                                    <% if(intern[i].Accepted==='Yes' && intern[i].Selected==='Yes' &&
-                                                      intern[i].Completed==='No' && intern[i].Rejected==='No' ){ %>
+                                                    <% if(selected_interns[i].Accepted==='Yes' && selected_interns[i].Selected==='Yes' &&
+                                                    selected_interns[i].Completed==='No' && selected_interns[i].Rejected==='No' ){ %>
                                                       <!-- <form action="/selection_action" method="post"> -->
 
 
@@ -492,29 +492,29 @@
                                                             class="card-img-top" style="height:8px" alt="...">
                                                           <div class="card-body">
                                                             <h5 class="card-title"> <img style="height:80px"
-                                                                src=<%=intern[i].profile_img %> > <b>
-                                                                <%= intern[i].Name %> | <%= intern[i].Internship %>
+                                                                src=<%=selected_interns[i].profile_img %> > <b>
+                                                                <%= selected_interns[i].Name %> | <%= selected_interns[i].Internship %>
                                                               </b></h5>
                                                             <ul>
                                                               <li><b>InternID :</b>
-                                                                <%= intern[i].InternID %>
+                                                                <%= selected_interns[i].InternID %>
                                                               </li>
-                                                              <li><b>Contact :</b> +91 <%= intern[i].Contact %>
+                                                              <li><b>Contact :</b> +91 <%= selected_interns[i].Contact %>
                                                               </li>
                                                               <li><b>Email :</b>
-                                                                <%= intern[i].Email %>
+                                                                <%= selected_interns[i].Email %>
                                                               </li>
                                                               <li><b>Qualification :</b>
-                                                                <%= intern[i].Qualification %>
+                                                                <%= selected_interns[i].Qualification %>
                                                               </li>
                                                               <li><b>College :</b>
-                                                                <%= intern[i].CollegeName %>
+                                                                <%= selected_interns[i].CollegeName %>
                                                               </li>
                                                               <li><b>City :</b>
-                                                                <%= intern[i].CollegeCity %>
+                                                                <%= selected_interns[i].CollegeCity %>
                                                               </li>
                                                               <li><b>Skills :</b>
-                                                                <%= intern[i].Skills %>
+                                                                <%= selected_interns[i].Skills %>
                                                               </li>
 
 
@@ -531,7 +531,7 @@
                                                                 <input type="hidden" id="section" name="section"
                                                                   value="three">
                                                                 <input type="hidden" id="custId" name="internid"
-                                                                  value=<%=intern[i].InternID %> >
+                                                                  value=<%=selected_interns[i].InternID %> >
 
                                                                 <button type="submit" class="btn btn-success btn-lg"
                                                                   name="action" value="suspend"

@@ -17,15 +17,38 @@ var certificate = require("../models/certificate")
 var query = require('../models/query');
 const { constants } = require("fs");
 const { Certificate } = require("crypto");
-
+const Email = require("./email_templating");
 
 const router = express.Router();
 
 
 //sending bulk mail0-------------------------
-// router.get("/email/bulk" , function(req,res){
-//     res.render('portal_intern/send_email');
-// })
+router.get("/marketing" , function(req,res){
+    res.render('communication/marketing_tool');
+})
+
+
+
+
+ 
+
+router.post("/email" , async function(req,res){
+    
+    
+    if(req.body.people == "all"){
+        data =await interinfo.find({},function(req,res,err){
+            if (err){
+                console.log("Error while sending the email....")
+            }
+        });
+        Email.bulk_email(data , req.body.sub , req.body.email); 
+
+    }else if(req.body.people == "applied"){
+
+    }else if(req.body.people == "selected"){
+
+    }
+})
 
 //--------------------------feting all interns
 const search_results = [];

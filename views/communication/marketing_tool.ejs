@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+
+	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Hiring | Education4ol</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+   
+   <style>
+      body {
+ background-image: url("https://i.pinimg.com/600x315/8c/98/99/8c98994518b575bfd8c949e91d20548b.jpg");
+ background-color: #cccccc;
+}
+
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            padding: 90px 0 0;
+            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+            z-index: 99;
+        }
+
+        @media (max-width: 767.98px) {
+            .sidebar {
+                top: 11.5rem;
+                padding: 0;
+            }
+        }
+            
+        .navbar {
+            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .1);
+        }
+
+        @media (min-width: 767.98px) {
+            .navbar {
+                top: 0;
+                position: sticky;
+                z-index: 999;
+            }
+        }
+
+        .sidebar .nav-link {
+            color: #333;
+        }
+
+        .sidebar .nav-link.active {
+            color: #0d6efd;
+        }
+
+
+ 
+
+.wrapper {
+  width: 100%;
+  max-width: 40rem;
+  
+  margin: 5rem auto;
+}
+
+.label {
+  font-size: .625rem;
+  font-weight: 400;
+  font-family: 'Architects Daughter', cursive;
+  color: midnightblue;
+  letter-spacing: +1.3px;
+  margin-bottom: 1rem;
+}
+
+.searchBar {
+  width: 100%;
+  border-color: blue;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.searchBar:hover, .searchBar:focus {
+  border-radius: 1.625rem;
+    border: 1.5px solid midnightblue;
+    background-color: white;
+  }
+
+#searchQueryInput {
+  width: 100%;
+  height: 2.8rem;
+  background:rgb(189, 189, 255);
+  outline: none;
+  border: none;
+  border-radius: 1.625rem;
+  padding: 0 3.5rem 0 1.5rem;
+  font-size: 1rem;
+}
+
+#searchQuerySubmit {
+  width: 3.5rem;
+  height: 2.8rem;
+  margin-left: -3.5rem;
+  background: midnightblue;
+  border-bottom-right-radius:1.625rem ;
+  border-top-right-radius:1.625rem ;
+  outline: none;
+}
+
+#searchQuerySubmit:hover {
+  cursor: pointer;
+}
+
+
+
+
+.autocomplete {
+  position: relative;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  overflow: scroll;
+  height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: midnightblue;
+  color: white; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: midnightblue;
+  color: white; 
+}
+
+
+/* main {
+    width: 340px;
+    overflow: hidden;
+    background-color: #fdfcfc;
+    font-size: 16px;
+    line-height: 22px;
+    color: #000;
+    border-radius: 7px;
+    box-shadow: -4px -4px 20px rgba(0, 0, 0, 0.505);
+    margin: 50px auto;
+
+}  */
+.crd {
+  width: 340px;
+  background-color: #fdfcfc;
+  overflow: hidden;
+  font-size: 16px;
+    line-height: 22px;
+    color: #000;
+    border-radius: 7px;
+    box-shadow: -4px -4px 20px rgba(0, 0, 0, 0.505);
+    margin: 10px auto;
+}
+
+.top-card {
+    width: 100%;
+   
+    /* height: 200px; */
+}
+
+.top-card img {
+    width: 100%;
+}
+
+.top-card .menu-icon {
+    position: relative;
+
+    bottom: 13.7em;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+
+
+.top-card .menu-icon .item1 {
+    margin-left: 10px;
+		margin-top: 15px;
+		color: red;
+}
+
+.top-card .menu-icon .item2 {
+   float: right;
+   margin-right: 20px;
+	 margin-top: -10px;
+	 color: blue;
+
+}
+
+ 
+
+h1 {
+    font-size: 22px;
+    color: #000;
+    font-weight: 600;
+    margin: 12px 0;
+    text-align: center;
+
+}
+
+
+.middle-card, footer {
+    margin: 5px 25px;
+}
+
+.middle-card {
+    text-align: justify;
+}
+
+footer {
+    text-align: center;
+
+}
+
+footer .social-icon {
+    /* padding: 7%; */
+    font-size: 20px;
+    margin: 0 5%;
+    color: rgba(0, 0, 0, .9);
+}
+
+.facebook:hover {color:#3b5999;}
+.twitter:hover {color: #55acee;}
+.google:hover {color: #dd4b39;}
+.github:hover {color: #302f2f;}
+.linkedin:hover {color: #0077B5;}
+
+footer .links {
+    border-top: 2px solid rgba(0, 0, 0, .1);
+    text-align: center;
+    margin-top: 10px;
+    padding: 8px 0;
+
+}
+
+
+
+button{
+	width: 110px;
+	height: 37px;
+	margin-top: 10px;
+	border-radius: 2px;
+	background: #1990cc;
+	font-size: 15px;
+	border: none;
+	color: white;
+}
+button:last-child{
+	margin-left: 40px;
+	border: 2px solid #1990cc;
+	background: white;
+	color: black;
+}
+
+.cont {
+  display: flex;
+  align-items: stretch;
+}
+
+.main1 {
+ 
+  width: 80%;
+  background: #fff;
+  /* padding: 2rem 3.5rem; */
+}
+
+
+/* second page css */
+.side {
+  background: #fff;
+  width: 20%;
+  flex-basis: auto;
+  min-height: calc(100vh - 10.5rem);
+  min-width: 11.25rem;
+
+  border-radius:3px ;
+  
+  
+}
+
+.container {
+  padding: 2rem 0rem;
+}
+
+h4 {
+  margin: 2rem 0rem 1rem;
+}
+
+.table-image td,
+.table-image th {
+  vertical-align: middle;
+}
+
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-light .bg-dark.bg-gradient p-3">
+        <div class="d-flex col-12 col-md-3 col-lg-2 mb-2 mb-lg-0 flex-wrap flex-md-nowrap justify-content-between">
+            <a class="navbar-brand" href="#">
+				<img src="https://res.cloudinary.com/education4ol/image/upload/v1624697903/education4ol_vuw0rx.jpg"/>
+               <b style="color:white;">Education4ol</b>
+            </a>
+            <button class="navbar-toggler d-md-none collapsed mb-3" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="col-12 col-md-4 col-lg-2">
+            <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search">
+        </div>
+        <div class="col-12 col-md-5 col-lg-8 d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
+           
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" style="background-color: midnightblue; color:white ;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                  Hello, HR
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li><a class="dropdown-item" href="#">Settings</a></li>
+                  <li><a class="dropdown-item" href="#">Messages</a></li>
+                  <li><a class="dropdown-item" href="/logout">Sign out</a></li>
+                </ul>
+              </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block .bg-dark.bg-gradient sidebar collapse" style="background-color: midnightblue;">
+                <div class="position-sticky">
+                    <ul class="nav flex-column" style="background-color: midnightblue;">
+                        <li class="nav-item">
+                          <a class="nav-link " aria-current="page" href="/hrdashboard" style="color:white;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            <span class="ml-2">Dashboard</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#" style="color:white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                            <span class="ml-2">New Hiring</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/dashboard_assignedetail" style="color:white;">
+                             <img src="https://img.icons8.com/ios/50/FFFFFF/book.png" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart" /><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                            <span class="ml-2">Assignment</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a id="profile-tab" class="nav-link" href="/hrdashboard_Interndetail" style="color:white;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            <span class="ml-2">Interns Details</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/dashboard_report" style="color:white;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                            <span class="ml-2">Reports</span>
+                          </a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a class="nav-link" href="/communication" style="color:white">
+                            <img src="https://img.icons8.com/small/28/FFFFFF/messaging-.png"/>
+                            <span class="ml-2">Messenger</span>
+                          </a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a class="nav-link" href="#" style="color:#5dcaf5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                            <span class="ml-2">Marketing</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-sm btn-secondary ml-3 mt-2" href="https://themesberg.com/blog/bootstrap/simple-bootstrap-5-dashboard-tutorial">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-book" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M1 2.828v9.923c.918-.35 2.107-.692 3.287-.81 1.094-.111 2.278-.039 3.213.492V2.687c-.654-.689-1.782-.886-3.112-.752-1.234.124-2.503.523-3.388.893zm7.5-.141v9.746c.935-.53 2.12-.603 3.213-.493 1.18.12 2.37.461 3.287.811V2.828c-.885-.37-2.154-.769-3.388-.893-1.33-.134-2.458.063-3.112.752zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+                                </svg>
+                                <span class="ml-2">Read tutorial</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-sm btn-warning ml-3 mt-2" href="https://themesberg.com/product/admin-dashboard/volt-bootstrap-5-dashboard">
+                                ⚡︎ Eduol Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-sm btn-primary ml-3 mt-2" href="https://themesberg.com">
+                                By Education4ol ❤️
+                            </a>
+                        </li>
+                      </ul>
+                </div>
+				
+				<div style="margin-top: 25px; font-size: 12px;text-align: center; margin-bottom: -50px;">
+					 <li class="nav-item">
+                           Powered by <b>UpClick Labs PVT</b>
+                        </li>
+					<p>
+						
+					</p>
+					
+				</div>
+            </nav>
+            <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+               
+
+              
+              
+				
+				<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="btn btn-sm btn-primary ml-3 mt-2"  id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Email</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="btn btn-sm btn-warning ml-3 mt-2" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" >SMS</button>
+  </li>
+  
+  		
+					
+</ul>
+
+
+
+
+
+
+
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+	
+		<!-- Section One -------------------------------------------------------   -->
+        <div class="cont">
+            <div class="main1" style="margin-right: 3px; border-radius: 10px;">
+              <div class="content">
+          
+               
+                <table class="table table-bordered">
+                    <thead style="background:midnightblue; color: white;">
+                      <tr>
+                        <th scope="col">SR.No</th>
+                        <th scope="col">Email Type</th>
+                        <th scope="col">Count</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                     
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Selected Emails</td>
+                        <td>Cristina</td>
+                        <form>
+                            <td><input style="margin: 5px;"></td>
+                            <td>
+                              <button style="background-color:#008000 ;margin: 5px; color: white;" type="button" class="btn"><i class="fas fa-rocket"></i></button>
+                            
+                            </td>
+                        </form>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Reminder Emails</td>
+                        <td>Cristina</td>
+                        <form>
+                            <td><input style="margin: 5px;"></td>
+                            <td>
+                              <button style="background-color:#008000 ;margin: 5px; color: white;" type="button" class="btn"><i class="fas fa-rocket"></i></button>
+                            
+                            </td>
+                        </form>
+                        
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Festival wishes Emails</td>
+                        <td>Cristina</td>
+                        <form>
+                            <td><input style="margin: 5px;"></td>
+                            <td>
+                              <button style="background-color:#008000 ;margin: 5px; color: white;" type="button" class="btn"><i class="fas fa-rocket"></i></button>
+                            
+                            </td>
+                        </form>
+                        
+                      </tr>
+                    </tbody>
+                  </table>
+          
+                
+          
+               
+                   
+                     
+                </div>
+            <div style="padding:10px ;">
+                <h3>Custom Email</h3>
+                <form action="/email" method="POST" style="padding:20px ;">
+                    
+                  <select name="people" class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="all">All</option>
+                    <option value="applied">Applied</option>
+                    <option value="selected">Selected</option>
+                  </select>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Subject</label>
+                      <input name="sub" type="text" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Email</label>
+                        <textarea name="email" class="form-control" id="exampleFormControlTextarea1" rows="7"></textarea>
+                      </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+            </div>
+           
+            </div>
+
+
+
+            <aside class="side">
+                <ul class="list-group">
+
+
+                </ul>
+               
+             
+            </aside>
+          </div>
+
+          <div>
+
+
+          </div>
+            
+            
+            
+            
+          
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+      
+            </div>
+  </div>
+	
+	<!-- Section Two -------------------------------------------------------   -->
+	
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+	
+
+
+
+
+
+	
+	</div>
+	
+	
+	
+	
+	
+	
+
+
+    </script>
+</body>
+</html>
