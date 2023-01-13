@@ -36,27 +36,27 @@ var transporter = nodemailer.createTransport({
 router.get("/dashboard_new_hiring", isLoggedIn, async function (req, res) {
 
 
-  accepted_interns = await Interninfo_final.find({Accepted:"No",Selected:"No",Rejected:"No"}, function (err, one_detail) {
+  accepted_interns = await Interninfo_final.find({ Accepted: "No", Selected: "No", Rejected: "No" }, function (err, one_detail) {
     if (err) {
       console.log("something went wrong!!!")
-    } 
+    }
   });
 
-  selected_interns = await Interninfo_final.find({Accepted:"Yes",Selected:"Yes",Rejected:"No" , Completed:"No"}, function (err, one_detail) {
+  selected_interns = await Interninfo_final.find({ Accepted: "Yes", Selected: "Yes", Rejected: "No", Completed: "No" }, function (err, one_detail) {
     if (err) {
       console.log("something went wrong!!!")
-    } 
+    }
   });
 
-  res.render("dashboard_new_hiring", { intern: accepted_interns , selected_interns : selected_interns  });
+  res.render("dashboard_new_hiring", { intern: accepted_interns, selected_interns: selected_interns });
 });
 
 
 
-router.post("/selection_action_completed" , isLoggedIn , async function(req,res){
+router.post("/selection_action_completed", isLoggedIn, async function (req, res) {
   console.log(req.body.internid);
   console.log("status changed!")
-  let founduser =await Interninfo_final.updateOne({InternID:req.body.internid} , {Completed : "Yes" , Status:"Inactive"});
+  let founduser = await Interninfo_final.updateOne({ InternID: req.body.internid }, { Completed: "Yes", Status: "Inactive" });
   console.log(founduser);
   res.redirect("/dashboard_new_hiring");
 
@@ -72,7 +72,7 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
     from: 'hr.education4ol@gmail.com',
     to: req.body.email,
     subject: 'Internship application - ' + req.body.name,
-    text: 'Hi ' + req.body.name + '\nThank you for your interest in our internship program. We appreciate the time you took to apply and to share your qualifications with us. \n\nAfter careful consideration, we have decided to move forward with other candidates whose skills and experience more closely match the specific needs of the internship. \n\nWe encourage you to continue to explore internship opportunities and We will keep your resume on file in case another opportunity opens up. \n\nThank you again for your interest in our company. We wish you the best of luck in your job search \n\nIf you have any queries please feel free to drop a text at +91 8766742410 (whatsapp)\n\nCheers ! \n\n\n Education4ol | Powered by UpClick Labs \n Company Details : www.education4ol.in \n Company Linkdin : https://www.linkedin.com/company/education-4-ol  '
+    text: 'Hi ' + req.body.name + ',\n\nThank you for your interest in our internship program. We appreciate the time you took to apply and to share your qualifications with us. \n\nAfter careful consideration, we have decided to move forward with other candidates whose skills and experience more closely match the specific needs of the internship. \n\nWe encourage you to continue to explore internship opportunities and We will keep your resume on file in case another opportunity opens up. \n\nThank you again for your interest in our company. We wish you the best of luck in your job search \n\nIf you have any queries please feel free to drop a text at +91 8766742410 (whatsapp)\n\nCheers ! \n\n Education4ol | Powered by UpClick Labs \n Company Details : www.education4ol.in \n Company Linkdin : https://www.linkedin.com/company/education-4-ol  '
   };
 
   //---------------------------------------section one
@@ -160,12 +160,59 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
   }
 
   if (req.body.section === "two") {
-    if (action === "selected") {
-      let v = Math.floor(1000 + Math.random() * 9000); 
+
+    if (action == "notify") {
+      //sending mail		  
+      var mailOptions = {
+        from: 'hr.education4ol@gmail.com',
+        to: req.body.email,
+        subject: 'Congratulations, Internship application accepted !',
+        text: 'Dear ' + req.body.name + ',\nCongratulations ! Our tech team is happy with your skill set and projects mentioned in the application . We are really happy to onboard you as an Intern. Please read the below mail carefully and Reply .\n\nHiring Process Flow Chart :\n\nStep1 : New Intern Application link : https://dashboard-education4ol.herokuapp.com/intern_application (Completed) \nStep2 : Application Screening Process (Completed) \nStep3 : Payment (payment link will be send for 450/- Application Fee , will be used for desitalizing you Certificates and LOR (Pending) \nStep4 : Offer Letter (Pending) \n\nPerks & Benefits of Internship : \n\n1. Internship Certificate \n2. LOR ( Letter of Recommendation ) \n3. Opportunity to work on Real Time Projects. \n4. Referrals From Company for Full time Jobs. \n5. Star Performance Certificate (Depends On your Performance ) . \n6. PPO (pre placement offer) Full time will be offered By Our Parent Company "UPCLICK LABS Pvt. Ltd."  based on your performance from Rs. 4LPA to 8LPA \n\nWe look forward to have you on board.! \n\nPlease Reply with "YES" So we could Initiate the payment Link for the application fee followed by offer Letter. \n\n*Note : for any queries feel free to contact us on +91 8766742410 (whatsapp) or email : hr.education4ol@gmail.com. \n\nRegards,\nHR Team , Education4ol \nPowered by UpClick Labs Pvt. Ltd.\nWebsite: www.education4ol.in \nLinkedin profile: https://www.linkedin.com/company/education-4-ol  '
+      };
+
+      //sending SMS
+      var unirest = require("unirest");
+      var sms_req = unirest("POST", "https://www.fast2sms.com/dev/bulkV2");
+
+      sms_req.headers({
+        "authorization": "tl4vJzuUZL7cYe90DNgKoRFqynaP6X2WpTshmQdkxbSwAHC5iEEQ4WOiKhnoeqjIHdZkgBNR2PXL19ra",
+        "Content-Type":"application/json"
+      });
+
+      sms_req.form({
+        "sender_id": "UPCLIK",
+        "message": "149356",
+        "variables_values":req.body.name ,
+        "route": "dlt",
+        "numbers": req.body.contact,
+      });
+
+      sms_req.end(function (res) {
+        if (res.error) throw new Error(res.error);
+
+        console.log(res.body);
+      });
+
+      //sending mail	   	
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+          return res.redirect('/dashboard_new_hiring');
+
+        }
+      });
+
+
+
+    }
+    else if (action === "selected") {
+      let v = Math.floor(1000 + Math.random() * 9000);
       var val = await uniq(v);
       console.log(val);
 
-      Interninfo_final.updateOne({ ApplicationID: applyid }, {Accepted: "Yes", Selected: "Yes", InternID: val, Status: "Active" }, function (err, result) {
+      Interninfo_final.updateOne({ ApplicationID: applyid }, { Accepted: "Yes", Selected: "Yes", InternID: val, Status: "Active" }, function (err, result) {
         if (err) {
           res.send(err);
         }
@@ -198,7 +245,7 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
           }
         });
       });
-    } else if(action === "rejected") {
+    } else if (action === "rejected") {
       Interninfo_final.updateOne({ ApplicationID: applyid }, { Rejected: "Yes" }, function (err, result) {
         if (err) {
           res.send(err);
@@ -220,11 +267,11 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
           }
         });
       });
-    }else{
+    } else {
 
       Interninfo_final.updateOne({ ApplicationID: applyid }, { Rejected: "Yes" }, function (err, result) {
         return res.redirect('/dashboard_new_hiring');
-     });
+      });
 
     }
 

@@ -298,26 +298,24 @@
 
                                                 <!-- Section One -------------------------------------------------------   -->
 
-                                                <div class="row row-cols-1 row-cols-md-3 g-4">
+                                                <div class="row row-cols-1 row-cols-md-3 g-4 h-100">
 
                                                   <% for(var i=0;i<intern.length;i++){ %>
 
                                                     <% if(intern[i].Accepted==='No' && intern[i].Selected==='No' &&
                                                       intern[i].Completed==='No' && intern[i].Rejected==='No' ){ %>
-                                                      <form action="/selection_action" method="post">
+                                                      
 
 
                                                         <div class="col">
-                                                          <div class="card h-100">
+                                                          <div class="card h-100 shadow bg-white rounded ">
 
-                                                            <img
-                                                              src="https://images.ctfassets.net/7thvzrs93dvf/wpImage18643/2f45c72db7876d2f40623a8b09a88b17/linkedin-default-background-cover-photo-1.png?w=800&q=100"
-                                                              class="card-img-top" style="height:8px" alt="...">
+                                    
                                                             <div class="card-body">
 
 
 
-                                                              <h5 class="card-title"> <img style="height:80px"
+                                                              <h5 class="card-title">  <img class="rounded-circle" width="85" height="100" style="height:80px"
                                                                   src=<%=intern[i].profile_img %> > <b>
                                                                   <%= intern[i].Name %> | <%= intern[i].Internship %>
                                                                 </b></h5>
@@ -351,33 +349,46 @@
 
                                                             </div>
                                                             <% var test=101; %>
-                                                            <div class="btn-group" role="group"
-                                                            aria-label="Basic example">
-                                                            <input type="hidden" id="section" name="section"
-                                                              value="two">
-                                                            <input type="hidden" id="custId" name="custId"
-                                                              value=<%=intern[i].ApplicationID %>>
-                                                            <input type="hidden" id="custId" name="email"
-                                                              value=<%=intern[i].Email %>>
-                                                            <input type="hidden" id="custId" name="name"
-                                                              value=<%=intern[i].Name %>>
-                                                              <button type="submit" class="btn btn-secondary"
-                                                              style="background-color:lightskyblue" name="action"
-                                                              value="dublicate" style="width:100px">Reject</button>
-                                                            <button type="submit" class="btn btn-secondary"
-                                                              style="background-color:#990000" name="action"
-                                                              value="rejected" style="width:100px">Reject</button>
-                                                            <button type="submit" class="btn btn-secondary"
-                                                              style="background-color:#006600" name="action"
-                                                              value="selected">Selected</button>
+                                                            <form action="/selection_action" method="post">
+                                                              <div class="btn-group text-center" role="group"
+                                                                aria-label="Basic example">
+                                                                <input type="hidden" id="section" name="section"
+                                                                  value="two">
+                                                                <input type="hidden" id="custId" name="custId"
+                                                                  value=<%=intern[i].ApplicationID %>>
 
-                                                          </div>
+                                                                  <input type="hidden" id="contact" name="contact"
+                                                                  value=<%= intern[i].Contact %>>
+
+                                                                <input type="hidden" id="custId" name="email"
+                                                                  value=<%=intern[i].Email %>>
+                                                                <input type="hidden" id="custId" name="name"
+                                                                  value=<%=intern[i].Name %>>
+                                                                <button type="submit" class="btn btn-secondary"
+                                                                  style="background-color:#004e89" name="action"
+                                                                  value="notify">Notify <img src="https://img.icons8.com/ios-glyphs/20/FFFFFF/filled-sent.png"/></button>
+                                                                <button type="submit" class="btn btn-secondary"
+                                                                  style="background-color:#1a659e" name="action"
+                                                                  value="remind">Remind <img src="https://img.icons8.com/material-sharp/20/FFFFFF/alarm.png"/></button>
+                                                                <button type="submit" class="btn btn-secondary"
+                                                                  style="background-color:#1A9E74" name="action"
+                                                                  value="selected">Selected</button>
+                                                                <button type="submit" class="btn btn-secondary"
+                                                                  style="background-color:#FF3D33" name="action"
+                                                                  value="rejected" style="width:100px">Reject</button>
+                                                                
+
+
+
+
+                                                              </div>
+                                                            </form>
 
 
                                                           </div>
 
                                                         </div>
-                                                      </form>
+                                                      
 
                                                       <%}%>
                                                         <%}%>
@@ -480,8 +491,10 @@
                                                 <div class="row row-cols-1 row-cols-md-3 g-4">
                                                   <% for(var i=0;i<selected_interns.length;i++){ %>
 
-                                                    <% if(selected_interns[i].Accepted==='Yes' && selected_interns[i].Selected==='Yes' &&
-                                                    selected_interns[i].Completed==='No' && selected_interns[i].Rejected==='No' ){ %>
+                                                    <% if(selected_interns[i].Accepted==='Yes' &&
+                                                      selected_interns[i].Selected==='Yes' &&
+                                                      selected_interns[i].Completed==='No' &&
+                                                      selected_interns[i].Rejected==='No' ){ %>
                                                       <!-- <form action="/selection_action" method="post"> -->
 
 
@@ -493,13 +506,15 @@
                                                           <div class="card-body">
                                                             <h5 class="card-title"> <img style="height:80px"
                                                                 src=<%=selected_interns[i].profile_img %> > <b>
-                                                                <%= selected_interns[i].Name %> | <%= selected_interns[i].Internship %>
+                                                                <%= selected_interns[i].Name %> | <%=
+                                                                    selected_interns[i].Internship %>
                                                               </b></h5>
                                                             <ul>
                                                               <li><b>InternID :</b>
                                                                 <%= selected_interns[i].InternID %>
                                                               </li>
-                                                              <li><b>Contact :</b> +91 <%= selected_interns[i].Contact %>
+                                                              <li><b>Contact :</b> +91 <%= selected_interns[i].Contact
+                                                                  %>
                                                               </li>
                                                               <li><b>Email :</b>
                                                                 <%= selected_interns[i].Email %>
@@ -523,11 +538,11 @@
 
                                                           </div>
                                                           <% var test=101; %>
-                                                          <div class="btn-group" role="group"
-                                                                aria-label="Basic example">
+                                                            <div class="btn-group" role="group"
+                                                              aria-label="Basic example">
 
-                                                            <form action="/selection_action_completed" method="post">
-                                                              
+                                                              <form action="/selection_action_completed" method="post">
+
                                                                 <input type="hidden" id="section" name="section"
                                                                   value="three">
                                                                 <input type="hidden" id="custId" name="internid"
@@ -536,58 +551,59 @@
                                                                 <button type="submit" class="btn btn-success btn-lg"
                                                                   name="action" value="suspend"
                                                                   style="width:100%">Request Complete</button>
-                                                             
-                                                            </form>
 
-                                                                </div>
+                                                              </form>
 
-                                                            
+                                                            </div>
 
-                                                       
 
+
+
+
+
+                                                        </div>
 
                                                       </div>
 
+
+                                                      <%}%>
+                                                        <%}%>
+
                                                 </div>
-
-
-                                                <%}%>
-                                                  <%}%>
-
                                               </div>
-                                            </div>
 
-                                            <!-- -------------------------------------------------section4------------------- -->
-
-
-
-
-
-                                            <footer class="pt-5 d-flex justify-content-between "
-                                              style="margin-top: 400px;">
-                                              <span>Copyright © 2020-2021 <a
-                                                  href="https://www.education4ol.com">Education4ol | Powered by UpClick
-                                                  Labs Pvt.Ltd. </a></span>
-                                              <ul class="nav m-0">
-                                                <li class="nav-item">
-                                                  <a class="nav-link text-secondary" aria-current="page"
-                                                    href="#">Privacy Policy</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                  <a class="nav-link text-secondary" href="#">Terms and conditions</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                  <a class="nav-link text-secondary" href="#">Contact</a>
-                                                </li>
-                                              </ul>
+                                              <!-- -------------------------------------------------section4------------------- -->
 
 
 
 
 
+                                              <footer class="pt-5 d-flex justify-content-between "
+                                                style="margin-top: 400px;">
+                                                <span>Copyright © 2020-2021 <a
+                                                    href="https://www.education4ol.com">Education4ol | Powered by
+                                                    UpClick
+                                                    Labs Pvt.Ltd. </a></span>
+                                                <ul class="nav m-0">
+                                                  <li class="nav-item">
+                                                    <a class="nav-link text-secondary" aria-current="page"
+                                                      href="#">Privacy Policy</a>
+                                                  </li>
+                                                  <li class="nav-item">
+                                                    <a class="nav-link text-secondary" href="#">Terms and conditions</a>
+                                                  </li>
+                                                  <li class="nav-item">
+                                                    <a class="nav-link text-secondary" href="#">Contact</a>
+                                                  </li>
+                                                </ul>
 
 
-                                            </footer>
+
+
+
+
+
+                                              </footer>
       </main>
     </div>
   </div>
