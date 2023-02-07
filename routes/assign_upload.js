@@ -74,6 +74,26 @@ router.get("/upload_task" , function(req,res){
 })
 
 
+//work in progress to improve the assignment page. problem is we are seeing 258 details but it should show only active interns assignment.
+router.get("/upAs",async function(req,res){
+  var Atask = await Task.find({});
+  selected_interns = await Interninfo_final.find({ Accepted: "Yes", Selected: "Yes", Rejected: "No", Completed: "No" },async function (err, one_detail) {
+    if (err) {
+      console.log("something went wrong!!!")
+    }
+    
+    for(var i=0 ; i<one_detail.length ; i++){
+      for(var j=0 ; j<Atask.length ; j++){
+        if(one_detail[i].InternID === Atask[j].InternID ){
+          var ktask = await Task.updateOne({InternID:Atask[j].InternID}, {$set:{Status:"Active"}});
+          console.log(ktask)
+          console.log(one_detail[i].InternID , Atask[j].InternID)
+        }
+      }
+      
+    }
+  });
+})
 
 router.post("/upload_task" , function(req, res){
   console.log("Updated1111111")
@@ -82,6 +102,7 @@ router.post("/upload_task" , function(req, res){
 	});
 
 
+  //task allotment
 router.post("/allot_task" ,async function(req,res){
   console.log("Enter into allot_task");
   console.log(req.body.taskid.length)
