@@ -32,7 +32,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run":"nodemon app.js",
+    "dev":"nodemon app.js",
     "start": "node app.js"
   },
   "author": "audi",

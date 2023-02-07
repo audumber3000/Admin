@@ -327,7 +327,7 @@ body1{
       <div class="card-body" style="color:white">
         <h6 class="card-title">MONTHLY INTERN<img style="float:right" src="https://img.icons8.com/material/48/FFFFFF/student-female--v1.png"/> </h6>
  <h4>
-	<%=payment.length   %>
+	NA
 		  </h4>
 		  <div style="width: auto;
   height: 1px;
@@ -343,7 +343,7 @@ body1{
       <div class="card-body" style="color:white">
         <h6 class="card-title">MONTHLY REVENUE <img style="float:right" src="https://img.icons8.com/material-outlined/48/FFFFFF/money-bag-rupee.png"/> </h6>
          <h4>
-			₹ <%=payment.length * 200  %>
+			₹ NA
 		  </h4>
 		  <div style="width: auto;
   height: 1px;
@@ -359,7 +359,7 @@ body1{
       <div class="card-body" style="color:white">
         <h6 class="card-title">TOTAL INTERNS <img style="float:right" src="https://img.icons8.com/material/48/FFFFFF/student-female--v1.png"/></h6>
  <h4>
-			 <%=payment.length  %>
+			 NA
 		  </h4>
 		  <div style="width: auto;
   height: 1px;
@@ -375,7 +375,7 @@ body1{
       <div class="card-body" style="color:white">
         <h6 class="card-title">TOTAL REVENUE  <img style="float:right" src="https://img.icons8.com/material/48/FFFFFF/money-bag-rupee.png"/></h6>
         <h4>
-			₹ <%=payment.length * 200  %>
+			₹ NA
 		  </h4>
 		    <div style="width: auto;
   height: 1px;
@@ -400,10 +400,10 @@ body1{
 		<table >
 	<thead>
 		<tr>
-			<th>Invoice No.</th>
+			<th>BANKTXNID</th>
 			<th>Name</th>
 			<th>Date Of payment</th>
-			<th>Payment Method</th>
+			<th>PAYMENT MODE</th>
 			<th>Status</th>
 
 		</tr>
@@ -412,47 +412,29 @@ body1{
 			
 			
 			
-			
-		
-			
-<tr> <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" >INV10011</a></td>
-        <td>Paragon</td>
-        <td>1/5/2021</td>
-	<td>Phone pe</td>
-        <td>
-          <p class="status status-unpaid">Unpaid</p>
-        </td>
 
-      </tr>
 		
 			
-			<% for(var i = 0 ; i <payment.length ; i++ ){ %>
+			<% for(var i = payment.length-1 ; i>=0 ; i-- ){ %>
 			
-	<tr> <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" ><%= payment[i].Invoice %></a></td>
-        <td><%= payment[i].name %></td>
-        <td><%= payment[i].Date %></td>
-		<%if(payment[i].mode == "gpay"){%>
+	<tr> <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" ><%= payment[i].payment_Info.BANKTXNID %></a></td>
+        <td><%= payment[i].Name %></td>
+        <td><%= payment[i].payment_Info.TXNDATE %></td>
 		
-		   <td><img style="height:40px ; width:90px " src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvmYMJ_uYvXnK3j0O9_lluoADHRUg8-8OZ5Vk-USE6cGwUA9ofznfIm5gu87OmiRR3dbg&usqp=CAU"</td>
+		
+
+		   <td><%= payment[i].payment_Info.PAYMENTMODE %></td>
 			   
-		<%}else if(payment[i].mode == "phonepe"){%>
 		
-		  <td ><img style="height:40px ; width:90px "src="https://image4.owler.com/logo/phonepe_owler_20200323_231011_original.png"></td>
-		
-		<%}else if(payment[i].mode  ==  "paytm"){%>
-		
-		<td><img style="height:40px ; width:90px " src="https://content.timesjobs.com/photo/76439597/people-movement/paytm-sets-up-its-biggest-campus-in-noida-plans-similar-expansion-in-bengaluru-to-accommodate-its-growing-teams.jpg"></td>
-		
-		<%}else if(payment[i].mode = "card"){%>
-		  <td> <img style="height:40px ; width:90px " src="https://rc7news.com/wp-content/uploads/2019/04/visa-classic-min.png"> </td>
-		
-		<%}else if(payment[i].mode  = "bank"){%>
-		 <td>Bank</td>
-		
-		<%}%>
 
         <td>
-              <p class="status status-paid">Paid <span class="badge rounded-pill bg-success">₹ 200/-</span> </p>
+         <% if(payment[i].payment_Info.STATUS==="TXN_SUCCESS"){%>
+          <p class="status status-paid"><%= payment[i].payment_Info.STATUS %> <span class="badge rounded-pill bg-success">₹ <%= payment[i].payment_Info.TXNAMOUNT %></span> </p>
+
+          <%}else{%>
+            <p class="status status-unpaid"><%= payment[i].payment_Info.STATUS %> <span class="badge rounded-pill bg-danger">₹ <%= payment[i].payment_Info.TXNAMOUNT %></span> </p>
+
+          <%}%>
         </td>
 
       </tr>
