@@ -43,6 +43,9 @@ router.get("/dashboard_new_hiring", isLoggedIn, async function (req, res) {
   });
 
   selected_interns = await Interninfo_final.find({ Accepted: "Yes", Selected: "Yes", Rejected: "No", Completed: "No" }, function (err, one_detail) {
+    // for(var i = 0 ; i<one_detail.length; i++){
+    //   console.log(one_detail[i].Name +","+one_detail[i].Contact)
+    // }
     if (err) {
       console.log("something went wrong!!!")
     }
@@ -71,7 +74,7 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
   var mailrejected = {
     from: 'hr.education4ol@gmail.com',
     to: req.body.email,
-    subject: 'Internship application - ' + req.body.name,
+    subject: 'Sorry, Rejected ! - ' + req.body.name,
     text: 'Hi ' + req.body.name + ',\n\nThank you for your interest in our internship program. We appreciate the time you took to apply and to share your qualifications with us. \n\nAfter careful consideration, we have decided to move forward with other candidates whose skills and experience more closely match the specific needs of the internship. \n\nWe encourage you to continue to explore internship opportunities and We will keep your resume on file in case another opportunity opens up. \n\nThank you again for your interest in our company. We wish you the best of luck in your job search \n\nIf you have any queries please feel free to drop a text at +91 8766742410 (whatsapp)\n\nCheers ! \n\n Education4ol | Powered by UpClick Labs \n Company Details : www.education4ol.in \n Company Linkdin : https://www.linkedin.com/company/education-4-ol  '
   };
 
