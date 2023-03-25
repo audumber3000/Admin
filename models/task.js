@@ -20,7 +20,11 @@ var Task = new mongoose.Schema({
             task_score : String
         }
         
-    ]
+    ],
+    status:{
+        type:String,
+        default:"Active"
+    },
     
 	
 

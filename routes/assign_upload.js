@@ -81,15 +81,13 @@ router.get("/upAs",async function(req,res){
     if (err) {
       console.log("something went wrong!!!")
     }
-    
+    console.log(one_detail.length)
     for(var i=0 ; i<one_detail.length ; i++){
-      for(var j=0 ; j<Atask.length ; j++){
-        if(one_detail[i].InternID === Atask[j].InternID ){
-          var ktask = await Task.updateOne({InternID:Atask[j].InternID}, {$set:{Status:"Active"}});
+      
+          var ktask = await Task.updateOne({InternID:one_detail[i].InternID}, {status:"Active"});
           console.log(ktask)
-          console.log(one_detail[i].InternID , Atask[j].InternID)
-        }
-      }
+          console.log(typeof(one_detail[i].InternID))
+      
       
     }
   });

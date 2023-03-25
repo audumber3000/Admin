@@ -206,7 +206,7 @@ app.get("/dashboard_assignedetail" ,isLoggedIn,async function(req, res){
 	
   var one_detail = await Interninfo_final.find({Selected:"Yes" , Completed:"No"});
   
-  var task1 = await task.find({});
+  var task1 = await task.find({status:"Active"});
   var tasks = await task_storage.find({});
 
   
