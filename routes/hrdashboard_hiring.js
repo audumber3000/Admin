@@ -177,7 +177,7 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
       //sending whatsapp
       const request = require('request');
       const my_apikey = "7DSIVLYJC9QVCVH06SVQ";
-      const destination = req.body.contact;
+      const destination ="91"+req.body.contact;
       const message = 'Dear ' + req.body.name + ',\nCongratulations ! Our tech team is happy with your skill set and projects mentioned in the internship application . We are really happy to onboard you as an Intern. Please read the Email send to you carefully and Reply As soon as possible. \n\n*Note : for any queries feel free to contact us on +91 8766742410 (whatsapp Here) or email : hr.education4ol@gmail.com. \n\nRegards,\nRohit Kale\nHR Team , Education4ol \nPowered by UpClick Labs Pvt. Ltd.\nWebsite: www.education4ol.in \nLinkedin profile: https://www.linkedin.com/company/education-4-ol  '
       const api_url = "http://panel.rapiwha.com/send_message.php";
       const url = `${api_url}?apikey=${encodeURIComponent(my_apikey)}&number=${encodeURIComponent(destination)}&text=${encodeURIComponent(message)}`;
@@ -257,7 +257,7 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
             //sending whatsapp
       const request = require('request');
       const my_apikey = "7DSIVLYJC9QVCVH06SVQ";
-      const destination = req.body.contact;
+      const destination = "91"+req.body.contact;
       const message ='Dear ' + req.body.name + ',\nWe are glad to inform that you have cleared your interview and you have been selected as an intern at Education4ol.\nWe are looking forward to the best in you throughout this learning experience\n\n Intern ID :' + val + '\n\nAll the very best for your future endeavors. \n\nRegards,\nEducation4ol \nPowered by UpClick Labs '
       const api_url = "http://panel.rapiwha.com/send_message.php";
       const url = `${api_url}?apikey=${encodeURIComponent(my_apikey)}&number=${encodeURIComponent(destination)}&text=${encodeURIComponent(message)}`;
