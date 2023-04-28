@@ -340,6 +340,54 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
           }
         });
       });
+    }else if(action==="remind") {
+
+      //sending mail		  
+      var mailOptions = {
+        from: 'hr.education4ol@gmail.com',
+        to: req.body.email,
+        subject: 'Final call ,Need Action on application!',
+        text: 'Dear ' + req.body.name + ',\nWe wanted to follow up on your internship application with our company. We have received a high volume of applications, and time is running out. We believe you would be a great fit, but we need to hear back from you ASAP. If you are still interested, please let us know by replying "YES" or if not with "NO". We need to make our decisions soon, so we appreciate your urgent response. \n\n*Note : for any queries feel free to contact us on +91 8766742410 (whatsapp) or email : hr.education4ol@gmail.com. \n\nRegards,\nHR Team , Education4ol \nPowered by UpClick Labs Pvt. Ltd.\nWebsite: www.education4ol.in \nLinkedin profile: https://www.linkedin.com/company/education-4-ol  '
+      };
+
+
+      //sending whatsapp
+      const request = require('request');
+      const my_apikey = "7DSIVLYJC9QVCVH06SVQ";
+      const destination ="91"+req.body.contact.slice(-10);
+      const message = 'Hey ' + req.body.name +' 🧑‍🎓'+ '\n\nFinal Call , Action needed ⏰\n\nWe wanted to follow up on your internship application with our company. We have received a high volume of applications, and time is running out. We believe you would be a great fit, but we need to hear back from you as soon as possible. If you are still interested, please let us know by replying "YES" or if not with "NO". We need to make our decisions soon, so we appreciate your urgent response.\n\nRegards,\nRohit Kale\nHR Team , Education4ol \nPowered by UpClick Labs Pvt. Ltd.\nwww.education4ol.in'
+      const api_url = "http://panel.rapiwha.com/send_message.php";
+      const url = `${api_url}?apikey=${encodeURIComponent(my_apikey)}&number=${encodeURIComponent(destination)}&text=${encodeURIComponent(message)}`;
+
+      request(url, function (error, response, body) {
+        if (error) {
+          console.error(error);
+        } else {
+          const my_result_object = JSON.parse(body);
+          console.log(`Result: ${my_result_object.success}`);
+          console.log(`Description: ${my_result_object.description}`);
+          console.log(`Code: ${my_result_object.result_code}`);
+        }
+      });
+
+
+
+      //sending mail	   	
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+          return res.redirect('/dashboard_new_hiring');
+
+        }
+      });
+
+
+
+
+
+
     } else {
 
       Interninfo_final.updateOne({ ApplicationID: applyid }, { Rejected: "Yes" }, function (err, result) {
