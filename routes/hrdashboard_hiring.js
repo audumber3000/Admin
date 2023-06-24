@@ -42,9 +42,9 @@ router.get("/dashboard_new_hiring", isLoggedIn, async function (req, res) {
     }
   });
 
-  selected_interns = await Interninfo_final.find({ Accepted: "Yes", Selected: "Yes", Rejected: "No", Completed: "No" }, function (err, one_detail) {
+  selected_interns = await Interninfo_final.find({ Accepted: "Yes", Selected: "Yes", Rejected: "No", Completed: "Yes" }, function (err, one_detail) {
     for (var i = 0; i < one_detail.length; i++) {
-      console.log(one_detail[i].Name + "," + one_detail[i].Contact)
+    
     }
     if (err) {
       console.log("something went wrong!!!")
@@ -168,11 +168,12 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
 
     if (action == "notify") {
       //sending mail		  
+      
       var mailOptions = {
         from: 'hr.education4ol@gmail.com',
         to: req.body.email,
-        subject: 'Congratulations, Internship application accepted !',
-        text: 'Dear ' + req.body.name + ',\nCongratulations ! Our tech team is happy with your skill set and projects mentioned in the application . We are really happy to onboard you as an Intern. Please read the below mail carefully and Reply .\n\nHiring Process Flow Chart :\n\nStep1 : New Intern Application link : https://dashboard-education4ol.herokuapp.com/intern_application (Completed) \nStep2 : Application Screening Process (Completed) \nStep3 : Payment (payment link will be send for 450/- Application Fee , will be used for desitalizing you Certificates and LOR (Pending) \nStep4 : Offer Letter (Pending) \n\nPerks & Benefits of Internship : \n\n1. Internship Certificate \n2. LOR ( Letter of Recommendation ) \n3. Opportunity to work on Real Time Projects. \n4. Referrals From Company for Full time Jobs. \n5. Star Performance Certificate (Depends On your Performance ) . \n6. PPO (pre placement offer) Full time will be offered By Our Parent Company "UPCLICK LABS Pvt. Ltd."  based on your performance from Rs. 4LPA to 8LPA \n\nWe look forward to have you on board.! \n\nPlease Reply with "YES" So we could Initiate the payment Link for the application fee followed by offer Letter. \n\n*Note : for any queries feel free to contact us on +91 8766742410 (whatsapp) or email : hr.education4ol@gmail.com. \n\nRegards,\nHR Team , Education4ol \nPowered by UpClick Labs Pvt. Ltd.\nWebsite: www.education4ol.in \nLinkedin profile: https://www.linkedin.com/company/education-4-ol  '
+        subject: 'Congratulations, Internship application accepted!',
+        html: 'Dear ' + req.body.name + ',<br><br>Congratulations! Our tech team is happy with your skill set and projects mentioned in the application. We are really happy to onboard you as an Intern. Please read the below mail carefully and reply.<br><br><strong>Hiring Process Flow Chart:</strong><br><br>Step 1: New Intern Application link: <a href="https://dashboard-education4ol.herokuapp.com/intern_application">https://dashboard-education4ol.herokuapp.com/intern_application</a> (Completed)<br>Step 2: Application Screening Process (Completed)<br>Step 3: Payment (payment link will be sent for 750/- Rs , which will be used for deserializing your Certificates and LOR) (Pending)<br>Step 4: Offer Letter (Pending)<br><br><strong>Perks & Benefits of Internship:</strong><br><br>1. Internship Certificate<br>2. LOR (Letter of Recommendation)<br>3. Opportunity to work on Real-Time Projects.<br>4. Referrals From Company for Full-time Jobs.<br>5. Star Performance Certificate (Depends On your Performance).<br>6. PPO (pre-placement offer) Full time will be offered By Our Parent Company "UPCLICK LABS Pvt. Ltd." based on your performance from Rs. 4LPA to 8LPA<br><br>We look forward to having you on board.!<br><br>Please Reply with "<strong>YES</strong>" so we could initiate the payment link for the application fee followed by the offer Letter.<br><br>*Note: for any queries, feel free to contact us on +91 8766742410 (WhatsApp) or email: hr.education4ol@gmail.com.<br><br>Regards,<br>HR Team, Education4ol<br>Powered by UpClick Labs Pvt. Ltd. , Pune <br>Website: <strong>www.education4ol.in</strong><br>LinkedIn profile: <a href="https://www.linkedin.com/company/education-4-ol">https://www.linkedin.com/company/education-4-ol</a>'
       };
 
 
@@ -383,6 +384,48 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
         }
       });
 
+    }else if(action==="payment") {
+
+       //sending mail		  
+       var mailOptions = {
+        from: 'hr.education4ol@gmail.com',
+        to: req.body.email,
+        subject: 'Payment Link Initated',
+        text: 'Dear ' + req.body.name + ',\nTo proceed with the next step, we kindly request you to make a payment of 750/- as the certification fee. This fee will be utilized for deserializing your Certificates and Letter of Recommendation (LOR).\n\n Please click on the following link to make the payment: https://internship-dashboard.up.railway.app/payment/user \n\nOnce the payment is successfully made, please reply as "Payment Done" to initate the process for Offer Letter. \n\n*Note : for any queries feel free to contact us on +91 8766742410 (whatsapp) or email : hr.education4ol@gmail.com. \n\nRegards,\nHR Team , Education4ol \nPowered by UpClick Labs Pvt. Ltd.\nWebsite: www.education4ol.in \nLinkedin profile: https://www.linkedin.com/company/education-4-ol  '
+      };
+
+
+      //sending whatsapp
+      const request = require('request');
+      const my_apikey = "7DSIVLYJC9QVCVH06SVQ";
+      const destination ="91"+req.body.contact.slice(-10);
+      const message = 'Hey ' + req.body.name +' 👨‍💻'+ '\n\nTo proceed with the next step, we kindly request you to make a payment of 750/- as the certification fee. This fee will be utilized for deserializing your Certificates and Letter of Recommendation (LOR).\n\n Please click on the following link to make the payment: https://internship-dashboard.up.railway.app/payment/user \n\nOnce the payment is successfully made, please reply as "Payment Done" to initate the process for Offer Letter 📜. \n\nRohit Kale\n+918766742410\nHR Team , Education4ol'
+      const api_url = "http://panel.rapiwha.com/send_message.php";
+      const url = `${api_url}?apikey=${encodeURIComponent(my_apikey)}&number=${encodeURIComponent(destination)}&text=${encodeURIComponent(message)}`;
+
+      request(url, function (error, response, body) {
+        if (error) {
+          console.error(error);
+        } else {
+          const my_result_object = JSON.parse(body);
+          console.log(`Result: ${my_result_object.success}`);
+          console.log(`Description: ${my_result_object.description}`);
+          console.log(`Code: ${my_result_object.result_code}`);
+        }
+      });
+
+
+
+      //sending mail	   	
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+          return res.redirect('/dashboard_new_hiring');
+
+        }
+      });
 
 
 
