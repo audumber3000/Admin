@@ -391,7 +391,7 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
         from: 'hr.education4ol@gmail.com',
         to: req.body.email,
         subject: 'Payment Link Initated',
-        text: 'Dear ' + req.body.name + ',\nTo proceed with the next step, we kindly request you to make a payment of 750/- as the certification fee. This fee will be utilized for deserializing your Certificates and Letter of Recommendation (LOR).\n\n Please click on the following link to make the payment: https://internship-dashboard.up.railway.app/payment/user \n\nOnce the payment is successfully made, please reply as "Payment Done" to initate the process for Offer Letter. \n\n*Note : for any queries feel free to contact us on +91 8766742410 (whatsapp) or email : hr.education4ol@gmail.com. \n\nRegards,\nHR Team , Education4ol \nPowered by UpClick Labs Pvt. Ltd.\nWebsite: www.education4ol.in \nLinkedin profile: https://www.linkedin.com/company/education-4-ol  '
+        text: 'Dear ' + req.body.name + ',\nThankyou for the confirmation. To proceed with the next step, we kindly request you to make a payment of 750/- as the certification fee. This fee will be utilized for digitalization of your Certificates and Letter of Recommendation (LOR).\n\n Please click on the following link to make the payment: https://app.education4ol.in/payment/user \n\nOnce the payment is successfully made, please reply as "Payment Done" to initate the process for Offer Letter. \n\n*Note : for any queries feel free to contact us on +91 8766742410 (whatsapp) or email : hr.education4ol@gmail.com. \n\nRegards,\nHR Team , Education4ol \nPowered by UpClick Labs Pvt. Ltd.\nWebsite: www.education4ol.in \nLinkedin profile: https://www.linkedin.com/company/education-4-ol  '
       };
 
 
@@ -399,7 +399,7 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
       const request = require('request');
       const my_apikey = "7DSIVLYJC9QVCVH06SVQ";
       const destination ="91"+req.body.contact.slice(-10);
-      const message = 'Hey ' + req.body.name +' 👨‍💻'+ '\n\nTo proceed with the next step, we kindly request you to make a payment of 750/- as the certification fee. This fee will be utilized for deserializing your Certificates and Letter of Recommendation (LOR).\n\n Please click on the following link to make the payment: https://internship-dashboard.up.railway.app/payment/user \n\nOnce the payment is successfully made, please reply as "Payment Done" to initate the process for Offer Letter 📜. \n\nRohit Kale\n+918766742410\nHR Team , Education4ol'
+      const message = 'Hey ' + req.body.name +' 👨‍💻'+ '\n\nThankyou for the confirmation. To proceed with the next step, we kindly request you to make a payment of 750/- as the certification fee. This fee will be utilized for digitalization of your Certificates and Letter of Recommendation (LOR).\n\n Please click on the following link to make the payment: https://app.education4ol.in/payment/user \n\nOnce the payment is successfully made, please reply as "Payment Done" to initate the process for Offer Letter 📜. \n\nRohit Kale\n+918766742410\nHR Team , Education4ol'
       const api_url = "http://panel.rapiwha.com/send_message.php";
       const url = `${api_url}?apikey=${encodeURIComponent(my_apikey)}&number=${encodeURIComponent(destination)}&text=${encodeURIComponent(message)}`;
 
