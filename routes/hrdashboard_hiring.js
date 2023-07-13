@@ -42,7 +42,7 @@ router.get("/dashboard_new_hiring", isLoggedIn, async function (req, res) {
     }
   });
 
-  selected_interns = await Interninfo_final.find({ Accepted: "Yes", Selected: "Yes", Rejected: "No", Completed: "Yes" }, function (err, one_detail) {
+  selected_interns = await Interninfo_final.find({ Accepted: "Yes", Selected: "Yes", Rejected: "No", Completed: "No" }, function (err, one_detail) {
     for (var i = 0; i < one_detail.length; i++) {
     
     }
