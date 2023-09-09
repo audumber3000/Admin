@@ -81,21 +81,21 @@ router.post("/intern_application", function (req, res) {
 	const api_url = "http://panel.rapiwha.com/send_message.php";
 	const url = `${api_url}?apikey=${encodeURIComponent(my_apikey)}&number=${encodeURIComponent(destination)}&text=${encodeURIComponent(message)}`;
 
-	request(url, function (error, response, body) {
-		if (error) {
-			console.error(error);
-		} else {
-			const my_result_object = JSON.parse(body);
-			console.log(`Result: ${my_result_object.success}`);
-			console.log(`Description: ${my_result_object.description}`);
-			console.log(`Code: ${my_result_object.result_code}`);
-		}
-	});
+	// request(url, function (error, response, body) {
+	// 	if (error) {
+	// 		console.error(error);
+	// 	} else {
+	// 		const my_result_object = JSON.parse(body);
+	// 		console.log(`Result: ${my_result_object.success}`);
+	// 		console.log(`Description: ${my_result_object.description}`);
+	// 		console.log(`Code: ${my_result_object.result_code}`);
+	// 	}
+	// });
 	var mailOptions = {
 		from: 'hr.education4ol@gmail.com',
 		to: req.body.email,
-		subject: 'Thank you for applying at Education4ol',
-		text: 'Dear ' + req.body.name + ',\nWe appreciate your interest in internship at Education4ol.Thank you for giving us your valuable time.\n\nPlease cross verify your details given below for smooth interview and onboarding process \n\n Email : ' + req.body.email + '\n Contact number : ' + req.body.contact + '\n\nOur HR team will soon be connecting with you for further process. Please Keep an eye on Mails.\n\n*Note:If Nobody contacts you within 3 working days then please contact +91 8766742410. \n\nRegards,\nEducation4ol \nPowered by UpClick Labs  \n\nWebsite: www.education4ol.in \nLinkedIn profile: https://www.linkedin.com/company/education-4-ol  '
+		subject: 'Thank you for applying at Education4ol (UpClick Labs)',
+		text: 'Dear ' + req.body.name + ',\nWe appreciate your interest in internship at Education4ol (Upclick Labs Pvt. Ltd.).Thank you for giving us your valuable time.\n\nPlease cross verify your details given below for smooth interview and onboarding process \n\n Email : ' + req.body.email + '\n Contact number : ' + req.body.contact + '\n\nOur HR team will soon be connecting with you for further process. Please Keep an eye on Mails.\n\n*Note:If Nobody contacts you within 3 working days then please contact +91 8766742410. \n\nRegards,\nEducation4ol \nPowered by UpClick Labs  \n\nWebsite: www.education4ol.in \nLinkedIn profile: https://www.linkedin.com/company/education-4-ol  '
 	};
 
 
