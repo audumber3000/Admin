@@ -279,7 +279,7 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
       <html>
         <head>
           <style>
-            /* Add CSS styles here */
+            /*Add CSS style here*/
           </style>
         </head>
         <body>
