@@ -365,7 +365,7 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
       var mailOptions = {
         from: 'hr.education4ol@gmail.com',
         to: req.body.email,
-        subject: 'Final call ,Need Action on application!',
+        subject: 'Urgent: Final call, Need Action on application!',
         text: 'Dear ' + req.body.name + ',\nWe wanted to follow up on your internship application with our company. We have received a high volume of applications, and time is running out. We believe you would be a great fit, but we need to hear back from you ASAP. If you are still interested, please let us know by replying "YES" or if not with "NO". We need to make our decisions soon, so we appreciate your urgent response. \n\n*Note : for any queries feel free to contact us on +91 8766742410 (whatsapp) or email : hr.education4ol@gmail.com. \n\nRegards,\nHR Team , Education4ol \nPowered by UpClick Labs Pvt. Ltd.\nWebsite: www.education4ol.in \nLinkedin profile: https://www.linkedin.com/company/education-4-ol  '
       };
 
