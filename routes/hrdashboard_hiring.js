@@ -340,13 +340,31 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
           console.log(`Code: ${my_result_object.result_code}`);
         }
       });
+      const htmlTemplate = `
+      <html>
+        <head>
+          <style>
+            /*Add CSS style here*/
+          </style>
+        </head>
+        <body>
+          <h1>Congratulations!</h1>
+          <p>Dear ${req.body.name},</p>
+          <p>We are glad to inform you that you have been selected as an intern at Education4ol.</p>
+          <p>Intern ID: ${val}</p>
+          <p>All the very best for your future endeavors.</p>
+          <p>Regards,<br>Education4ol<br>Powered by UpClick Labs</p>
+        </body>
+      </html>
+    `;
 
             //sending mail		  
             var mailOptions = {
               from: 'hr.education4ol@gmail.com',
               to: req.body.email,
               subject: 'Congratulations! You have been selected.',
-              text: 'Dear ' + req.body.name + ',\nWe are glad to inform that you have cleared your interview and you have been selected as an intern at Education4ol.\nWe are looking forward to the best in you throughout this learning experience\n\n Intern ID :' + val + '\n\nAll the very best for your future endeavors. \n\nRegards,\nEducation4ol \nPowered by UpClick Labs \n\nWebsite: www.education4ol.com \nLinkedin profile: https://www.linkedin.com/company/education-4-ol  '
+              // text: 'Dear ' + req.body.name + ',\nWe are glad to inform that you have cleared your interview and you have been selected as an intern at Education4ol.\nWe are looking forward to the best in you throughout this learning experience\n\n Intern ID :' + val + '\n\nAll the very best for your future endeavors. \n\nRegards,\nEducation4ol \nPowered by UpClick Labs \n\nWebsite: www.education4ol.com \nLinkedin profile: https://www.linkedin.com/company/education-4-ol  '
+              html:htmlTemplate
             };
 
             //sending mail	   	
