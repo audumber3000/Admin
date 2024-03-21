@@ -61,6 +61,45 @@
     .sidebar .nav-link.active {
       color: #0d6efd;
     }
+
+    .card {
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+.card-title {
+  margin-bottom: 1rem;
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  padding: 1rem 0;
+}
+
+.btn {
+  white-space: nowrap;
+}
+
+.btn-primary {
+ 
+  width: 100px;
+
+}
+.btn-success,
+.btn-danger {
+  width: 130px;
+}
+
+
+
   </style>
 </head>
 
@@ -261,48 +300,56 @@
 
 
                     <div class="col">
-                      <div class="card h-100 shadow bg-white rounded">
+                      <div class="card h-100 shadow bg-light rounded">
                         <div class="card-body">
-                          <h5 class="card-title">
-                            <img class="rounded-circle" width="85" height="100" style="height:80px" src="<%= intern[i].profile_img %>">
+                          <h5 class="card-title d-flex align-items-center">
+                            <img class="rounded-circle mr-3" width="85" height="100" style="height:80px" src="<%= intern[i].profile_img %>">
                             <b><%= intern[i].Name %> | <%= intern[i].Internship %></b>
                           </h5>
-                          <ul>
-                            <li><b>Applied On:</b> <%= intern[i].ApplyDate %></li>
-                            <li><b>Contact :</b> +91 <%= intern[i].Contact %></li>
-                            <li><b>Email :</b> <%= intern[i].Email %></li>
-                            <li><b>Qualification :</b> <%= intern[i].Qualification %></li>
-                            <li><b>College :</b> <%= intern[i].CollegeName %></li>
-                            <li><b>City :</b> <%= intern[i].CollegeCity %></li>
-                            <li><b>Skills :</b> <%= intern[i].Skills %></li>
+                          <ul class="list-unstyled">
+                            <li><i class="bi bi-calendar-check-fill text-primary"></i> <b>Applied On:</b> <%= intern[i].ApplyDate %></li>
+                            <li><i class="bi bi-telephone-fill text-primary"></i> <b>Contact:</b> +91 <%= intern[i].Contact %></li>
+                            <li><i class="bi bi-envelope-fill text-primary"></i> <b>Email:</b> <a href="mailto:<%= intern[i].Email %>"><%= intern[i].Email %></a></li>
+                            <li><i class="bi bi-book-fill text-primary"></i> <b>Qualification:</b> <%= intern[i].Qualification %></li>
+                            <li><i class="bi bi-building-fill text-primary"></i> <b>College:</b> <%= intern[i].CollegeName %></li>
+                            <li><i class="bi bi-geo-alt-fill text-primary"></i> <b>City:</b> <%= intern[i].CollegeCity %></li>
+                            <li><i class="bi bi-tools text-primary"></i> <b>Skills:</b> <%= intern[i].Skills %></li>
+                            <li><i class="bi bi-clock-fill text-primary"></i> <b>Duration:</b> <%= intern[i].Session %></li>
                           </ul>
                         </div>
                         <form action="/selection_action" method="post">
-                          <div class="card-footer text-center">
+                          <div class="card-footer d-flex justify-content-center flex-column align-items-center">
                             <input type="hidden" id="section" name="section" value="two">
                             <input type="hidden" id="custId" name="custId" value="<%=intern[i].ApplicationID %>">
                             <input type="hidden" id="contact" name="contact" value="<%=intern[i].Contact %>">
                             <input type="hidden" id="custId" name="email" value="<%=intern[i].Email %>">
                             <input type="hidden" id="custId" name="name" value="<%=intern[i].Name %>">
-                            <button type="submit" class="btn btn-secondary" style="background-color:#004e89" name="action" value="notify">
-                              Notify <img src="https://img.icons8.com/ios-glyphs/20/FFFFFF/filled-sent.png" />
-                            </button>
-                            <button type="submit" class="btn btn-secondary" style="background-color:#1a659e" name="action" value="remind">
-                              Remind <img src="https://img.icons8.com/material-sharp/20/FFFFFF/alarm.png" />
-                            </button>
-                            <button type="submit" class="btn btn-secondary" style="background-color:#c48b08" name="action" value="payment">
-                              Payment <img width="20" height="20" src="https://img.icons8.com/FFFFFF/64/rupee.png" alt="rupee"/>
-                            </button>
-                            <button type="submit" class="btn btn-secondary" style="background-color:#1A9E74" name="action" value="selected">
-                              Selected
-                            </button>
-                            <button type="submit" class="btn btn-secondary" style="background-color:#FF3D33; width:100px" name="action" value="rejected">
-                              Reject
-                            </button>
+                            <div class="d-flex justify-content-center mb-3">
+                              <button type="submit" class="btn btn-primary mr-1" name="action" value="notify">
+                                <i class="bi bi-envelope-fill mr-2"></i> Notify
+                              </button>
+                              <button type="submit" class="btn btn-primary mr-1" name="action" value="remind">
+                                <i class="bi bi-alarm-fill mr-2"></i> Remind
+                              </button>
+                              <button type="submit" class="btn btn-primary mr-1" name="action" value="payment">
+                                <i class="bi bi-currency-rupee-fill mr-2"></i> Payment
+                              </button>
+                            </div>
+                            <div class="mb-3">
+                              <button type="submit" class="btn btn-success mr-1" name="action" value="selected">
+                                Selected
+                              </button>
+                              <button type="submit" class="btn btn-danger" name="action" value="rejected">
+                                Reject
+                              </button>
+                            </div>
                           </div>
                         </form>
                       </div>
                     </div>
+                    
+                    
+                    
                     
 
 
@@ -334,67 +381,44 @@
                   selected_interns[i].Completed==='No' && selected_interns[i].Rejected==='No' ){ %>
                   <!-- <form action="/selection_action" method="post"> -->
 
-
-                  <div class="col">
-                    <div class="card h-100">
-                      <img
-                        src="https://images.ctfassets.net/7thvzrs93dvf/wpImage18643/2f45c72db7876d2f40623a8b09a88b17/linkedin-default-background-cover-photo-1.png?w=800&q=100"
-                        class="card-img-top" style="height:8px" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title"> <img style="height:80px" src=<%=selected_interns[i].profile_img %> > <b>
-                            <%= selected_interns[i].Name %> | <%= selected_interns[i].Internship %>
-                          </b></h5>
-                        <ul>
-                          <li><b>InternID :</b>
-                            <%= selected_interns[i].InternID %>
-                          </li>
-                          <li><b>Contact :</b> +91 <%= selected_interns[i].Contact %>
-                          </li>
-                          <li><b>Email :</b>
-                            <%= selected_interns[i].Email %>
-                          </li>
-                          <li><b>Qualification :</b>
-                            <%= selected_interns[i].Qualification %>
-                          </li>
-                          <li><b>College :</b>
-                            <%= selected_interns[i].CollegeName %>
-                          </li>
-                          <li><b>City :</b>
-                            <%= selected_interns[i].CollegeCity %>
-                          </li>
-                          <li><b>Skills :</b>
-                            <%= selected_interns[i].Skills %>
-                          </li>
-
-
-
-                        </ul>
-
-                      </div>
-                      <% var test=101; %>
-                        <div class="btn-group" role="group" aria-label="Basic example">
-
-                          <form action="/selection_action_completed" method="post">
+ <div class="col">
+                      <div class="card h-100">
+                        <div class="card-body">
+                          <h5 class="card-title d-flex align-items-center">
+                            <img class="rounded-circle mr-3" width="85" height="100" src="<%= selected_interns[i].profile_img %>">
+                            <b><%= selected_interns[i].Name %> | <%= selected_interns[i].Internship %></b>
+                          </h5>
+                          <ul class="list-unstyled">
+                            <li><b>InternID :</b> <%= selected_interns[i].InternID %></li>
+                            <li><b>Contact :</b> +91 <%= selected_interns[i].Contact %></li>
+                            <li><b>Email :</b> <%= selected_interns[i].Email %></li>
+                            <li><b>Qualification :</b> <%= selected_interns[i].Qualification %></li>
+                            <li><b>College :</b> <%= selected_interns[i].CollegeName %></li>
+                            <li><b>City :</b> <%= selected_interns[i].CollegeCity %></li>
+                            <li><b>Skills :</b> <%= selected_interns[i].Skills %></li>
+                          </ul>
+                        </div>
+                        <div class="card-footer d-flex justify-content-center">
+                          <form action="/selection_action_completed" method="post" class="mr-2">
+                            <input type="hidden" id="section" name="section" value="three">
+                            <input type="hidden" id="custId" name="internid" value=<%= selected_interns[i].InternID %>>
+                            <input type="hidden" id="custId" name="email" value=<%= selected_interns[i].Email %>>
+                            <input type="hidden" id="custId" name="name" value=<%= selected_interns[i].Name %>>
+                            <button type="submit" class="btn btn-success btn-md" name="action" value="suspend" style="width:100%">Mark as
+                              Complete</button>
+                          </form>
+                          <form action="/selection_action_greetmeet" method="post">
 
                             <input type="hidden" id="section" name="section" value="three">
-                            <input type="hidden" id="custId" name="internid" value=<%=selected_interns[i].InternID %> >
-
-                            <button type="submit" class="btn btn-success btn-lg" name="action" value="suspend"
-                              style="width:100%">Request
-                              Complete</button>
-
+                            <input type="hidden" id="custId" name="internid" value=<%= selected_interns[i].InternID %>>
+                            <input type="hidden" id="custId" name="email" value=<%= selected_interns[i].Email %>>
+                            <input type="hidden" id="custId" name="name" value=<%= selected_interns[i].Name %>>
+                            <button type="submit" class="btn btn-secondary btn-md" name="action" value="another_action" style="width:100%">
+                              Greet and Meet</button>
                           </form>
-
                         </div>
-
-
-
-
-
-
+                      </div>
                     </div>
-
-                  </div>
 
 
                   <%}%>

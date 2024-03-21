@@ -60,9 +60,74 @@ router.get("/dashboard_new_hiring", isLoggedIn, async function (req, res) {
 router.post("/selection_action_completed", isLoggedIn, async function (req, res) {
   console.log(req.body.internid);
   console.log("status changed!")
-  let founduser = await Interninfo_final.updateOne({ InternID: req.body.internid }, { Completed: "Yes", Status: "Inactive" });
-  console.log(founduser);
-  res.redirect("/dashboard_new_hiring");
+  
+
+
+  var internship_completed_email = {
+    from: 'Rohit Kale (Education4ol)',
+    to: req.body.email,
+    subject: 'Education4ol:Best Wishes for Your Future Endeavors!',
+    text: 'Dear ' + req.body.name + ',\n\nAs your internship comes to a close, we wanted to take a moment to express our sincerest appreciation for your dedication and hard work during your time with us. It has been a pleasure having you as part of our team. \n\nWe hope that your experience with us has been fulfilling and rewarding, and that you have gained valuable insights and skills that will serve you well in your future endeavors. Your contributions have been invaluable, and we are confident that you will go on to achieve great success in your chosen field. \n\nAs you prepare to move forward, we want to extend our best wishes for your future journey. May you encounter countless opportunities for growth and prosperity, and may you find fulfillment in all your endeavors. \n\nAdditionally, if you have any pending matters or require assistance with internship end formalities, certificates, or any other concerns, please do not hesitate to reach out to us. Whether through WhatsApp (https://wa.me/918766742410) or email, our team is here to support you every step of the way. \nOnce again, thank you for your hard work and dedication. We wish you all the best in your future endeavors, and we hope to stay in touch as you continue on your professional journey. \n\nYour Internship Mentor \nRohit Kale  \nWordifyMe | Education4ol (UpClick Labs Pvt. Ltd.) \nwww.wordifyme.com  '
+  };
+
+  //sending mail	   	
+  transporter.sendMail(internship_completed_email,  function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+
+      //rendering back to dashboard   
+      Interninfo_final.find({}, async function (err, one_detail) {
+        if (err) {
+          console.log("something went wrong!!!")
+        } else {
+          let founduser = await Interninfo_final.updateOne({ InternID: req.body.internid }, { Completed: "Yes", Status: "Inactive" });
+          console.log(founduser);
+          return res.redirect('/dashboard_new_hiring');
+        }
+      });
+
+    }
+  });
+ 
+
+})
+
+
+router.post("/selection_action_greetmeet", isLoggedIn, async function (req, res) {
+  console.log(req.body.internid);
+  console.log("status changed!")
+  
+
+
+  var internship_completed_email = {
+    from: 'Rohit Kale (Education4ol)',
+    to: req.body.email,
+    subject: 'Your Feedback Matters: Lets Address Any Internship Concerns Together!',
+    text: 'Dear ' + req.body.name + ',\n\nI hope this email finds you well and that youre enjoying your internship experience with us so far. \n\nAs we strive to provide the best possible environment for your growth and development, we want to ensure that your internship experience is both rewarding and enriching. Your feedback is crucial in helping us achieve this goal \n\nIf you have encountered any challenges, hurdles, or concerns while carrying out your internship tasks, or if there are any issues related to your internship that you would like to discuss, please dont hesitate to reach out to me. Your satisfaction and success during this internship are of utmost importance to us, and we are here to support you every step of the way. \n\nYou can easily reach me via WhatsApp at +91 8766742410 (https://wa.me/918766742410), or you can also schedule a meeting with me at your convenience to address any concerns you may have. Your feedback is valuable, and I assure you that your input will be treated with the utmost confidentiality and respect. \n\nLooking forward to hearing from you and working together to make your internship experience a positive and fulfilling one. \n\nYour Internship Mentor \nRohit Kale  \nEducation4ol (UpClick Labs Pvt. Ltd.) \nwww.education4ol.in  '
+  };
+
+  //sending mail	   	
+  transporter.sendMail(internship_completed_email,  function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+
+      //rendering back to dashboard   
+      Interninfo_final.find({}, async function (err, one_detail) {
+        if (err) {
+          console.log("something went wrong!!!")
+        } else {
+         
+          return res.redirect('/dashboard_new_hiring');
+        }
+      });
+
+    }
+  });
+ 
 
 })
 

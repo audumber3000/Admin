@@ -94,7 +94,7 @@ router.post("/intern_application", function (req, res) {
 	var mailOptions = {
 		from: 'Education4ol (UpClick Labs)',
 		to: req.body.email,
-		subject: 'Thank you for applying at Education4ol (UpClick Labs)',
+		subject: 'Thank you for applying at UpClick Labs Pvt. Ltd.',
 		text: 'Dear ' + req.body.name + ',\nWe appreciate your interest in internship at Education4ol (Upclick Labs Pvt. Ltd.).Thank you for giving us your valuable time.\n\nPlease cross verify your details given below for smooth interview and onboarding process \n\n Email : ' + req.body.email + '\n Contact number : ' + req.body.contact + '\n\nOur HR team will soon be connecting with you for further process. Please Keep an eye on Mails.\n\n*Note:If Nobody contacts you within 3 working days then please contact +91 8766742410. \n\nRegards,\nEducation4ol \nPowered by UpClick Labs  \n\nWebsite: www.education4ol.in \nLinkedIn profile: https://www.linkedin.com/company/education-4-ol  '
 	};
 
@@ -111,7 +111,7 @@ router.post("/intern_application", function (req, res) {
 			// 	    mongoose.connect("mongodb+srv://audumber:Ramdas3000@cluster0-bj3vd.mongodb.net/Dashboard?retryWrites=true& w=majority");
 			var InternSession = "Sep2021"  //Change
 			Interninfo_final.create({
-				Name: req.body.name, Contact: req.body.contact, Email: req.body.email, Internship: req.body.intern, CollegeName: req.body.clgname, CollegeState: req.body.clgstate, CollegeCity: req.body.clgcity, Qualification: req.body.qualification, ApplicationID: applyID, Accepted: "No", Selected: "No", Rejected: "No", Completed: "No", Year: req.body.clgyear, Skills: req.body.skills, ApplyDate: today, Session: InternSession, InternID: "No", Task1: "No", Task2: "No", Task3: "No", Task4: "No",
+				Name: req.body.name, Contact: req.body.contact, Email: req.body.email, Internship: req.body.intern, CollegeName: req.body.clgname, CollegeState: req.body.clgcity, CollegeCity: req.body.clgcity, Qualification: req.body.qualification, ApplicationID: applyID, Accepted: "No", Selected: "No", Rejected: "No", Completed: "No", Year: req.body.clgyear, Skills: req.body.skills, ApplyDate: today, Session: req.body.inter_duration, InternID: "No", Task1: "No", Task2: "No", Task3: "No", Task4: "No",
 
 
 
