@@ -16,7 +16,9 @@ var cloudinary = require('cloudinary').v2; //media upload
 var Interninfo_final = require("../models/Interinfo");
 
 const router = express.Router();
+const crypto = require('crypto');
 
+const createPaymentRequest = require("./phonepe_payments")
 
 
 
@@ -45,7 +47,7 @@ router.get("/dashboard_new_hiring", isLoggedIn, async function (req, res) {
   selected_interns = await Interninfo_final.find({}, function (err, one_detail) {
     for (var i = 0; i < one_detail.length; i++) {
       // console.log(one_detail[i].Email+","+one_detail[i].Name)
-    
+
     }
     if (err) {
       console.log("something went wrong!!!")
@@ -60,7 +62,7 @@ router.get("/dashboard_new_hiring", isLoggedIn, async function (req, res) {
 router.post("/selection_action_completed", isLoggedIn, async function (req, res) {
   console.log(req.body.internid);
   console.log("status changed!")
-  
+
 
 
   var internship_completed_email = {
@@ -71,7 +73,7 @@ router.post("/selection_action_completed", isLoggedIn, async function (req, res)
   };
 
   //sending mail	   	
-  transporter.sendMail(internship_completed_email,  function (error, info) {
+  transporter.sendMail(internship_completed_email, function (error, info) {
     if (error) {
       console.log(error);
     } else {
@@ -90,7 +92,7 @@ router.post("/selection_action_completed", isLoggedIn, async function (req, res)
 
     }
   });
- 
+
 
 })
 
@@ -98,7 +100,7 @@ router.post("/selection_action_completed", isLoggedIn, async function (req, res)
 router.post("/selection_action_greetmeet", isLoggedIn, async function (req, res) {
   console.log(req.body.internid);
   console.log("status changed!")
-  
+
 
 
   var internship_completed_email = {
@@ -109,7 +111,7 @@ router.post("/selection_action_greetmeet", isLoggedIn, async function (req, res)
   };
 
   //sending mail	   	
-  transporter.sendMail(internship_completed_email,  function (error, info) {
+  transporter.sendMail(internship_completed_email, function (error, info) {
     if (error) {
       console.log(error);
     } else {
@@ -120,14 +122,14 @@ router.post("/selection_action_greetmeet", isLoggedIn, async function (req, res)
         if (err) {
           console.log("something went wrong!!!")
         } else {
-         
+
           return res.redirect('/dashboard_new_hiring');
         }
       });
 
     }
   });
- 
+
 
 })
 
@@ -146,6 +148,8 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
 
   //---------------------------------------section one
   if (req.body.section === "one") {
+    console.log("Audumber in payment")
+
     if (action === "interview") {
 
       Interninfo_final.updateOne({ ApplicationID: applyid }, { Accepted: "Yes" }, function (err, result) {
@@ -186,7 +190,7 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
       });
     }
     else {
-           
+
 
       Interninfo_final.updateOne({ ApplicationID: applyid }, { Rejected: "Yes" }, function (err, result) {
         if (err) {
@@ -234,7 +238,7 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
 
     if (action == "notify") {
       //sending mail		  
-      
+
       var mailOptions = {
         from: 'hr.education4ol@gmail.com',
         to: req.body.email,
@@ -246,8 +250,8 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
       //sending whatsapp
       const request = require('request');
       const my_apikey = "7DSIVLYJC9QVCVH06SVQ";
-      const destination ="91"+req.body.contact.slice(-10);
-      const message = 'Dear ' + req.body.name +' 🧑‍🎓'+ ',\nCongratulations ! Our tech team is happy with your skill set and projects mentioned in the internship application . We are really happy to onboard you as an Intern. Please read the Email send to you carefully and Reply As soon as possible. \n\n*Note : for any queries feel free to contact us on +91 8766742410 (whatsapp Here) or email : hr.education4ol@gmail.com. \n\nRegards,\nRohit Kale\nHR Team , Education4ol \nPowered by UpClick Labs Pvt. Ltd.\nWebsite: www.education4ol.in \nLinkedin profile: https://www.linkedin.com/company/education-4-ol  '
+      const destination = "91" + req.body.contact.slice(-10);
+      const message = 'Dear ' + req.body.name + ' 🧑‍🎓' + ',\nCongratulations ! Our tech team is happy with your skill set and projects mentioned in the internship application . We are really happy to onboard you as an Intern. Please read the Email send to you carefully and Reply As soon as possible. \n\n*Note : for any queries feel free to contact us on +91 8766742410 (whatsapp Here) or email : hr.education4ol@gmail.com. \n\nRegards,\nRohit Kale\nHR Team , Education4ol \nPowered by UpClick Labs Pvt. Ltd.\nWebsite: www.education4ol.in \nLinkedin profile: https://www.linkedin.com/company/education-4-ol  '
       const api_url = "http://panel.rapiwha.com/send_message.php";
       const url = `${api_url}?apikey=${encodeURIComponent(my_apikey)}&number=${encodeURIComponent(destination)}&text=${encodeURIComponent(message)}`;
 
@@ -305,6 +309,60 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
 
 
     }
+
+    else if (action == "payment") {
+      createPaymentRequest.createPaymentRequest('order123', 10000, 'https://yourcallbackurl.com')
+      .then(response => console.log('Payment Request Response:', response))
+        .catch(error => console.error('Payment Request Error:', error));
+    //   const axios = require('axios');
+    //   transId = Math.floor(10000 + Math.random() * 90000);
+    //   const data = {
+    //     "merchantId": "M22AWJC5OXCHL",
+    //     "transactionId": "UPCLK" + transId,
+    //     "merchantOrderId": "TEST20231004021536",
+    //     "amount": 750,
+    //     "mobileNumber": req.body.contact,
+    //     "redirectUrl": "",
+    //       "redirectMode": "REDIRECT",
+    //       "callbackUrl": "",
+    //       "paymentInstrument": {
+    //         "type": "PAY_PAGE"
+          
+    //   }
+    // }
+    //   const payload = JSON.stringify(data)
+    //   const payloadMain = Buffer.from(payload).toString('base64')
+    //   const salt_key = '47af02e6-3017-4b48-8a12-f446081228f4';
+    //   const salt_index = 1;
+    //   const data_to_hash = payloadMain + "/v3/payLink/init" + salt_key;
+    //   const hashed_data = crypto.createHash('sha256').update(data_to_hash).digest('hex');
+    //   const x_verify_string = hashed_data + "###" + salt_index;
+    
+    //   const options = {
+    //     method: 'post',
+    //     url: 'https://api.phonepe.com/apis/hermes/pg/v1/pay',
+    //     headers: {
+    //       accept: 'text/plain',
+    //       'Content-Type': 'application/json',
+    //       'X-VERIFY': x_verify_string
+    //     },
+    //     data: {
+    //       request : payloadMain
+    //     }
+    //   };
+    //   axios
+    //     .request(options)
+    //     .then(function (response) {
+    //       console.log(response.data);
+    //       return res.redirect('/dashboard_new_hiring');
+    //     })
+    //     .catch(function (error) {
+    //       console.error(error);
+    //     });
+
+    }
+
+
     else if (action === "selected") {
       let v = Math.floor(1000 + Math.random() * 9000);
       var val = await uniq(v);
@@ -323,24 +381,24 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
 
             //sending whastapp
             //sending whatsapp
-      const request = require('request');
-      const my_apikey = "7DSIVLYJC9QVCVH06SVQ";
-      const destination = "91"+req.body.contact.slice(-10);
-      const message ='Dear ' + req.body.name +' 🧑‍🎓'+ ',\n\nWe are glad to inform that you have cleared your interview and you have been selected as an intern at Education4ol.\nWe are looking forward to the best in you throughout this learning experience\n\n 👨‍💻Intern ID :' + val + '\n\nAll the very best for your future endeavors 🙌. \n\nRegards,\nEducation4ol \nPowered by UpClick Labs '
-      const api_url = "http://panel.rapiwha.com/send_message.php";
-      const url = `${api_url}?apikey=${encodeURIComponent(my_apikey)}&number=${encodeURIComponent(destination)}&text=${encodeURIComponent(message)}`;
+            const request = require('request');
+            const my_apikey = "7DSIVLYJC9QVCVH06SVQ";
+            const destination = "91" + req.body.contact.slice(-10);
+            const message = 'Dear ' + req.body.name + ' 🧑‍🎓' + ',\n\nWe are glad to inform that you have cleared your interview and you have been selected as an intern at Education4ol.\nWe are looking forward to the best in you throughout this learning experience\n\n 👨‍💻Intern ID :' + val + '\n\nAll the very best for your future endeavors 🙌. \n\nRegards,\nEducation4ol \nPowered by UpClick Labs '
+            const api_url = "http://panel.rapiwha.com/send_message.php";
+            const url = `${api_url}?apikey=${encodeURIComponent(my_apikey)}&number=${encodeURIComponent(destination)}&text=${encodeURIComponent(message)}`;
 
-      request(url, function (error, response, body) {
-        if (error) {
-          console.error(error);
-        } else {
-          const my_result_object = JSON.parse(body);
-          console.log(`Result: ${my_result_object.success}`);
-          console.log(`Description: ${my_result_object.description}`);
-          console.log(`Code: ${my_result_object.result_code}`);
-        }
-      });
-      const htmlTemplate = `
+            request(url, function (error, response, body) {
+              if (error) {
+                console.error(error);
+              } else {
+                const my_result_object = JSON.parse(body);
+                console.log(`Result: ${my_result_object.success}`);
+                console.log(`Description: ${my_result_object.description}`);
+                console.log(`Code: ${my_result_object.result_code}`);
+              }
+            });
+            const htmlTemplate = `
       <html>
         <head>
           <style>
@@ -364,7 +422,7 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
               to: req.body.email,
               subject: 'Congratulations! You have been selected.',
               // text: 'Dear ' + req.body.name + ',\nWe are glad to inform that you have cleared your interview and you have been selected as an intern at Education4ol.\nWe are looking forward to the best in you throughout this learning experience\n\n Intern ID :' + val + '\n\nAll the very best for your future endeavors. \n\nRegards,\nEducation4ol \nPowered by UpClick Labs \n\nWebsite: www.education4ol.com \nLinkedin profile: https://www.linkedin.com/company/education-4-ol  '
-              html:htmlTemplate
+              html: htmlTemplate
             };
 
             //sending mail	   	
@@ -384,24 +442,24 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
       });
     } else if (action === "rejected") {
 
-       //sending whatsapp
-       const request = require('request');
-       const my_apikey = "7DSIVLYJC9QVCVH06SVQ";
-       const destination = "91"+req.body.contact.slice(-10);
-       const message ='Hi ' + req.body.name +" 😥 "+ ',\n\nApplication Rejected ⛔ \n\nThank you for applying to our internship program. We have chosen other candidates whose qualifications better match our needs. Your resume will be kept on file for future opportunities. If you have any queries please feel free to drop a text at +91 8766742410 (whatsapp)\n\nCheers 🤝! \n\nRohit Kale (HR Team) \nEducation4ol | Powered by UpClick Labs \nwww.education4ol.in'
-       const api_url = "http://panel.rapiwha.com/send_message.php";
-       const url = `${api_url}?apikey=${encodeURIComponent(my_apikey)}&number=${encodeURIComponent(destination)}&text=${encodeURIComponent(message)}`;
- 
-       request(url, function (error, response, body) {
-         if (error) {
-           console.error(error);
-         } else {
-           const my_result_object = JSON.parse(body);
-           console.log(`Result: ${my_result_object.success}`);
-           console.log(`Description: ${my_result_object.description}`);
-           console.log(`Code: ${my_result_object.result_code}`);
-         }
-       });
+      //sending whatsapp
+      const request = require('request');
+      const my_apikey = "7DSIVLYJC9QVCVH06SVQ";
+      const destination = "91" + req.body.contact.slice(-10);
+      const message = 'Hi ' + req.body.name + " 😥 " + ',\n\nApplication Rejected ⛔ \n\nThank you for applying to our internship program. We have chosen other candidates whose qualifications better match our needs. Your resume will be kept on file for future opportunities. If you have any queries please feel free to drop a text at +91 8766742410 (whatsapp)\n\nCheers 🤝! \n\nRohit Kale (HR Team) \nEducation4ol | Powered by UpClick Labs \nwww.education4ol.in'
+      const api_url = "http://panel.rapiwha.com/send_message.php";
+      const url = `${api_url}?apikey=${encodeURIComponent(my_apikey)}&number=${encodeURIComponent(destination)}&text=${encodeURIComponent(message)}`;
+
+      request(url, function (error, response, body) {
+        if (error) {
+          console.error(error);
+        } else {
+          const my_result_object = JSON.parse(body);
+          console.log(`Result: ${my_result_object.success}`);
+          console.log(`Description: ${my_result_object.description}`);
+          console.log(`Code: ${my_result_object.result_code}`);
+        }
+      });
 
       Interninfo_final.updateOne({ ApplicationID: applyid }, { Rejected: "Yes" }, function (err, result) {
         if (err) {
@@ -424,7 +482,7 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
           }
         });
       });
-    }else if(action==="remind") {
+    } else if (action === "remind") {
 
       //sending mail		  
       var mailOptions = {
@@ -438,8 +496,8 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
       //sending whatsapp
       const request = require('request');
       const my_apikey = "7DSIVLYJC9QVCVH06SVQ";
-      const destination ="91"+req.body.contact.slice(-10);
-      const message = 'Hey ' + req.body.name +' 🧑‍🎓'+ '\n\nFinal Call , Action needed ⏰\n\nWe wanted to follow up on your internship application with our company. We have received a high volume of applications, and time is running out. We believe you would be a great fit, but we need to hear back from you as soon as possible. If you are still interested, please let us know by replying "YES" or if not with "NO". We need to make our decisions soon, so we appreciate your urgent response.\n\nRegards,\nRohit Kale\nHR Team , Education4ol \nPowered by UpClick Labs Pvt. Ltd.\nwww.education4ol.in'
+      const destination = "91" + req.body.contact.slice(-10);
+      const message = 'Hey ' + req.body.name + ' 🧑‍🎓' + '\n\nFinal Call , Action needed ⏰\n\nWe wanted to follow up on your internship application with our company. We have received a high volume of applications, and time is running out. We believe you would be a great fit, but we need to hear back from you as soon as possible. If you are still interested, please let us know by replying "YES" or if not with "NO". We need to make our decisions soon, so we appreciate your urgent response.\n\nRegards,\nRohit Kale\nHR Team , Education4ol \nPowered by UpClick Labs Pvt. Ltd.\nwww.education4ol.in'
       const api_url = "http://panel.rapiwha.com/send_message.php";
       const url = `${api_url}?apikey=${encodeURIComponent(my_apikey)}&number=${encodeURIComponent(destination)}&text=${encodeURIComponent(message)}`;
 
@@ -467,10 +525,10 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
         }
       });
 
-    }else if(action==="payment") {
+    } else if (action === "payment") {
 
-       //sending mail		  
-       var mailOptions = {
+      //sending mail		  
+      var mailOptions = {
         from: 'hr.education4ol@gmail.com',
         to: req.body.email,
         subject: 'Payment Link Initated',
@@ -481,8 +539,8 @@ router.post("/selection_action", isLoggedIn, async function (req, res) {
       //sending whatsapp
       const request = require('request');
       const my_apikey = "7DSIVLYJC9QVCVH06SVQ";
-      const destination ="91"+req.body.contact.slice(-10);
-      const message = 'Hey ' + req.body.name +' 👨‍💻'+ '\n\nThankyou for the confirmation. To proceed with the next step, we kindly request you to make a payment of 750/- as the certification fee. This fee will be utilized for digitalization of your Certificates and Letter of Recommendation (LOR).\n\n Please click on the following link to make the payment: https://app.education4ol.in/payment/user \n\nOnce the payment is successfully made, please reply as "Payment Done" to initate the process for Offer Letter 📜. \n\nRohit Kale\n+918766742410\nHR Team , Education4ol'
+      const destination = "91" + req.body.contact.slice(-10);
+      const message = 'Hey ' + req.body.name + ' 👨‍💻' + '\n\nThankyou for the confirmation. To proceed with the next step, we kindly request you to make a payment of 750/- as the certification fee. This fee will be utilized for digitalization of your Certificates and Letter of Recommendation (LOR).\n\n Please click on the following link to make the payment: https://app.education4ol.in/payment/user \n\nOnce the payment is successfully made, please reply as "Payment Done" to initate the process for Offer Letter 📜. \n\nRohit Kale\n+918766742410\nHR Team , Education4ol'
       const api_url = "http://panel.rapiwha.com/send_message.php";
       const url = `${api_url}?apikey=${encodeURIComponent(my_apikey)}&number=${encodeURIComponent(destination)}&text=${encodeURIComponent(message)}`;
 
