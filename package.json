@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
-    "axios": "^0.27.2",
+    "axios": "^1.7.2",
     "body-parser": "^1.19.0",
     "cloudinary": "^1.26.0",
     "connect-flash": "^0.1.1",
@@ -16,7 +16,7 @@
     "email-templates-v2": "^2.0.3",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
-    "express-session": "^1.17.2",
+    "express-session": "^1.18.0",
     "formidable": "^1.2.2",
     "fs": "0.0.1-security",
     "http": "0.0.1-security",
@@ -26,8 +26,8 @@
     "node": "^19.8.1",
     "node-datetime": "^2.1.2",
     "nodemailer": "^6.7.2",
-    "nodemailer-express-handlebars": "^4.0.0",
-    "passport": "^0.4.1",
+    "nodemailer-express-handlebars": "^6.1.2",
+    "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^6.1.0",
     "unirest": "^0.6.0"
@@ -40,6 +40,6 @@
   "author": "audi",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "nodemon": "^3.1.1"
   }
 }
