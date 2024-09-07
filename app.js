@@ -38,7 +38,7 @@ cloudinary.config({
 });
 
 // Connect to MongoDB
-mongoose.connect("mongodb+srv://audumber:Ramdas3000@cluster0-bj3vd.mongodb.net/Dashboard?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://audumber3000:Ramdas3000@admin-dashboard.hgkhh.mongodb.net/Dashboard?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
